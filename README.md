@@ -1,2 +1,2 @@
 # hotel-management-front
-Front end hotel management
+hotel management frontend
