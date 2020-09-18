@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hotel_management_front"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="MainWindow" Height="500" Width="350">
     <Grid>
-        <Button></Button>
+        <Rectangle Height="200" VerticalAlignment="Top">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF2281D1"/>
+                    <GradientStop Color="#FF34268A" Offset="1"/>
+                    <GradientStop Color="#FF33288B" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Source="NewFolder1/Home.png" Width="100" Height="100" VerticalAlignment="Top" Margin="8"/>
+        <Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0,100">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FFBBBBBB" BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,100">
+            <TextBlock Text="LOGIN" HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
+            <StackPanel VerticalAlignment="Center" Margin="10">
+                <TextBox materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" FontFamily="Algerian" FontSize="18"/>
+                <PasswordBox materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10" FontFamily="Algerian" FontSize="18"/>
+            </StackPanel>
+        </Grid>
+        <Button VerticalAlignment="Bottom" Margin="0,85" Width="150" Content="LOGIN"/>
+        <TextBlock Text="You can always Register" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="50" Foreground="Gray" Cursor="Hand"/>
     </Grid>
 </Window>
