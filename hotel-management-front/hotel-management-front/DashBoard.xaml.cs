@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace hotel_management_front
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DashBoard.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DashBoard : Window
     {
-        public MainWindow()
+        public DashBoard()
         {
             InitializeComponent();
-        }
-
-        private void login(object sender, RoutedEventArgs e)
-        {
-            new DashBoard().Show();
-            this.Close();
         }
     }
 }
