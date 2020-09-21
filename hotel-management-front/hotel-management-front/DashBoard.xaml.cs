@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hotel_management_front.toolboxUserControl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,38 @@ namespace hotel_management_front
         {
             InitializeComponent();
         }
+
+        #region menu button
+        private void dashboardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new tabBoardUserControl());
+        }
+
+        private void hotelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new hotelUserControl());
+        }
+
+        private void stockBtn_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new StockUserControl());
+        }
+
+        private void personnelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new PersonnelUserControl());
+        }
+
+        private void parametresBtn_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new parametresUserControl());
+        }
+
+        #endregion
     }
 }
