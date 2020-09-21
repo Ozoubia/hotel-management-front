@@ -23,6 +23,8 @@ namespace hotel_management_front
         public DashBoard()
         {
             InitializeComponent();
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new tabBoardUserControl());
         }
 
         #region menu button
@@ -56,6 +58,13 @@ namespace hotel_management_front
             gridMenu.Children.Add(new parametresUserControl());
         }
 
+        #endregion
+
+        #region tab settup
+        private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
+        {
+            //GlobalVariables.tbControl = (sender as TabControl);
+        }
         #endregion
     }
 }
