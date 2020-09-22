@@ -28,14 +28,13 @@
         <StackPanel Orientation="Horizontal" x:Name="gridMenu" Grid.Row="1" Width="auto">
         </StackPanel>
         <!--tabs-->
-        <Grid  Grid.Row="2" Background="black" HorizontalAlignment="Stretch">
+        <Grid  Grid.Row="2" HorizontalAlignment="Stretch">
             <!--tab control-->
             <dragablz:TabablzControl Loaded="tabControlDragable_Loaded" FixedHeaderCount="1" ShowDefaultCloseButton="True" x:Name="tabControlDragable">
                 <TabItem Header="Tableau de bord">
                     <Rectangle Fill="red" Width="200" Height="300"></Rectangle>
                 </TabItem>
                 
-
             </dragablz:TabablzControl>
         </Grid>
     </Grid>

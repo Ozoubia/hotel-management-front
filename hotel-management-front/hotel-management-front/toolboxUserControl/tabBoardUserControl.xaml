@@ -8,8 +8,8 @@
              d:DesignHeight="85" d:DesignWidth="600">
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Button Margin="20 0 10 0">Planing</Button>
-            <Button Margin="10 0 10 0">Statistiques</Button>
+            <Button x:Name="planingBtn" Margin="20 0 10 0" Click="planingBtn_Click">Planing</Button>
+            <Button x:Name="statBtn" Margin="10 0 10 0" Click="statBtn_Click">Statistiques</Button>
             
         </StackPanel>
     </Grid>
