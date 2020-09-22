@@ -7,7 +7,7 @@ using System.Windows.Controls;
 
 namespace hotel_management_front.classes
 {
-    class GlobalVariable
+    public class GlobalVariable
     {
         public static TabControl tbControl;
     }

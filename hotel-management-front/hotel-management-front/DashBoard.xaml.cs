@@ -64,6 +64,7 @@ namespace hotel_management_front
         private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
         {
             //GlobalVariables.tbControl = (sender as TabControl);
+            hotel_management_front.classes.GlobalVariable.tbControl = (sender as TabControl);
         }
         #endregion
     }
