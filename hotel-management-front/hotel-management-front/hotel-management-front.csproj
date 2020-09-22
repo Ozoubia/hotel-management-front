@@ -66,11 +66,50 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="classes\GlobalVariable.cs" />
+    <Compile Include="tabsUserControl\aideUserControl.xaml.cs">
+      <DependentUpon>aideUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\arriveeUserControl.xaml.cs">
+      <DependentUpon>arriveeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\chambreUserControl.xaml.cs">
+      <DependentUpon>chambreUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\clientUserControl1.xaml.cs">
+      <DependentUpon>clientUserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\employesUserControl.xaml.cs">
+      <DependentUpon>employesUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\materialUserControl.xaml.cs">
+      <DependentUpon>materialUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\planiningTabUserControl.xaml.cs">
       <DependentUpon>planiningTabUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\rechercheUserControl.xaml.cs">
+      <DependentUpon>rechercheUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\reservationUserControl.xaml.cs">
+      <DependentUpon>reservationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\restaurationUserControl.xaml.cs">
+      <DependentUpon>restaurationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\restaurationUserControl1.xaml.cs">
+      <DependentUpon>restaurationUserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\sauvgardeUserControl.xaml.cs">
+      <DependentUpon>sauvgardeUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\StatTabUserControl.xaml.cs">
       <DependentUpon>StatTabUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\stockSecoursUserControl.xaml.cs">
+      <DependentUpon>stockSecoursUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\utilisateurUserControl.xaml.cs">
+      <DependentUpon>utilisateurUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="toolboxUserControl\hotelUserControl.xaml.cs">
       <DependentUpon>hotelUserControl.xaml</DependentUpon>
@@ -106,11 +145,63 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="tabsUserControl\aideUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\arriveeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\chambreUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\clientUserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\employesUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\materialUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\planiningTabUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="tabsUserControl\rechercheUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\reservationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\restaurationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\restaurationUserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\sauvgardeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\StatTabUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\stockSecoursUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\utilisateurUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

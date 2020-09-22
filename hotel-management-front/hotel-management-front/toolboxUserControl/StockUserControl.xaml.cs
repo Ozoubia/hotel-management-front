@@ -1,4 +1,6 @@
-﻿using System;
+﻿using hotel_management_front.classes;
+using hotel_management_front.tabsUserControl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,60 @@ namespace hotel_management_front.toolboxUserControl
         public StockUserControl()
         {
             InitializeComponent();
+        }
+
+        private void restauration_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Restauration",
+            };
+
+
+            GlobalVariable.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            restaurationUserControl1 UC1 = new restaurationUserControl1();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
+        }
+
+        private void material_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Material",
+            };
+
+
+            GlobalVariable.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            materialUserControl UC1 = new materialUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
+        }
+
+        private void stockSecours_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Stock secours",
+            };
+
+
+            GlobalVariable.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            stockSecoursUserControl UC1 = new stockSecoursUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
         }
     }
 }

@@ -8,10 +8,10 @@
              d:DesignHeight="85" d:DesignWidth="600">
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Button Margin="20 0 10 0">Utilisateurs</Button>
-            <Button Margin="20 0 10 0">Sauvgarde</Button>
-            <Button Margin="20 0 10 0">Restauration</Button>
-            <Button Margin="20 0 10 0">Aide</Button>
+            <Button x:Name="utilisateur" Margin="20 0 10 0" Click="utilisateur_Click" >Utilisateurs</Button>
+            <Button x:Name="sauvgarde" Margin="20 0 10 0" Click="sauvgarde_Click">Sauvgarde</Button>
+            <Button x:Name="restauration" Margin="20 0 10 0" Click="restauration_Click">Restauration</Button>
+            <Button x:Name="aide" Margin="20 0 10 0" Click="aide_Click">Aide</Button>
         </StackPanel>
     </Grid>
 </UserControl>

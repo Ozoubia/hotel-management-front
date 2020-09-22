@@ -8,11 +8,11 @@
              d:DesignHeight="85" d:DesignWidth="600">
     <Grid>
         <StackPanel Orientation="Horizontal">
-            <Button Margin="20 0 10 0">Reservation</Button>
-            <Button Margin="10 0 10 0">Client</Button>
-            <Button Margin="10 0 10 0">Arrivee</Button>
-            <Button Margin="10 0 10 0">Recherche</Button>
-            <Button Margin="10 0 10 0">Chambre</Button>
+            <Button x:Name="reservation" Margin="20 0 10 0" Click="reservation_Click">Reservation</Button>
+            <Button x:Name="client" Margin="10 0 10 0" Click="client_Click">Client</Button>
+            <Button x:Name="arrivee" Margin="10 0 10 0" Click="arrivee_Click">Arrivee</Button>
+            <Button x:Name="recherche" Margin="10 0 10 0" Click="recherche_Click">Recherche</Button>
+            <Button x:Name="chambre" Margin="10 0 10 0" Click="chambre_Click">Chambre</Button>
         </StackPanel>
     </Grid>
 </UserControl>

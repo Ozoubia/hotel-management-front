@@ -1,4 +1,6 @@
-﻿using System;
+﻿using hotel_management_front.classes;
+using hotel_management_front.tabsUserControl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,23 @@ namespace hotel_management_front.toolboxUserControl
         public PersonnelUserControl()
         {
             InitializeComponent();
+        }
+
+        private void employes_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Reservation",
+            };
+
+            GlobalVariable.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            employesUserControl UC1 = new employesUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
         }
     }
 }
