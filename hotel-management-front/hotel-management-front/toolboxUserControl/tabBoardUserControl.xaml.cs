@@ -30,9 +30,6 @@ namespace hotel_management_front.toolboxUserControl
 
         private void planingBtn_Click(object sender, RoutedEventArgs e)
         {
-                
-
-
                 Grid tabGrid = new Grid();
 
                 TabItem newTabItem = new TabItem
@@ -46,9 +43,7 @@ namespace hotel_management_front.toolboxUserControl
                 planiningTabUserControl UC1 = new planiningTabUserControl();
                 tabGrid.Children.Add(UC1);
                 newTabItem.IsSelected = true;
-
-            
-            
+  
         }
 
         private void statBtn_Click(object sender, RoutedEventArgs e)
@@ -69,8 +64,6 @@ namespace hotel_management_front.toolboxUserControl
                 tabGrid.Children.Add(UC1);
                 newTabItem.IsSelected = true;
 
-            
-            
         }
     }
 }
