@@ -26,15 +26,15 @@ namespace hotel_management_front
         {
             InitializeComponent();
         }
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-7JO0IDO\\SQLEXPRESS;Initial Catalog=test2;Integrated Security=True");
+        SqlConnection con = new SqlConnection(classes.GlobalVariable.databasePath);
 
 
-        private void login(object sender, RoutedEventArgs e)
+        private void LoginBtn(object sender, RoutedEventArgs e)
         {
             
             string user = usernameField.Text;
             string pass = passwordField.Password;
-            string query = "SELECT * FROM userTable WHERE username=@name AND password=@pass";
+            string query = "SELECT * FROM users WHERE username=@name AND password=@pass";
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
             //query parameters 
