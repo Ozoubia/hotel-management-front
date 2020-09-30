@@ -5,8 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:hotel_management_front.tabsUserControl"
              mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Rectangle Fill="Salmon"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <!--add user--> 
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            <TextBlock Text="Add a user" Width="200" FontWeight="bold" FontSize="18"></TextBlock>
+            <TextBox x:Name="usernameField" Width="200" Margin="0 10 0 0"  materialDesign:HintAssist.Hint="Username" Background="white" Height="30" ></TextBox>
+            <PasswordBox x:Name="passwordField" Width="200" Margin="0 10 0 0" materialDesign:HintAssist.Hint="password" Background="white" Height="30" ></PasswordBox>
+            <Button x:Name="addUserBtn" Margin="0 10 0 0" Click="addUserBtn_Click" Width="100">Add</Button>
+        </StackPanel>
     </Grid>
 </UserControl>
