@@ -1,5 +1,4 @@
-﻿using hotel_management_front.dialog_windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,18 +16,13 @@ using System.Windows.Shapes;
 namespace hotel_management_front.tabsUserControl
 {
     /// <summary>
-    /// Logique d'interaction pour employesUserControl.xaml
+    /// Logique d'interaction pour présenceUserControl1.xaml
     /// </summary>
-    public partial class employesUserControl : UserControl
+    public partial class présenceUserControl1 : UserControl
     {
-        public employesUserControl()
+        public présenceUserControl1()
         {
             InitializeComponent();
-        }
-
-        private void AjouterEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            new addEmployeeWindow().Show();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using hotel_management_front.dialog_windows;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace hotel_management_front.tabsUserControl
+namespace hotel_management_front.dialog_windows
 {
     /// <summary>
-    /// Logique d'interaction pour employesUserControl.xaml
+    /// Logique d'interaction pour modifyEmployeeWindow.xaml
     /// </summary>
-    public partial class employesUserControl : UserControl
+    public partial class modifyEmployeeWindow : Window
     {
-        public employesUserControl()
+        public modifyEmployeeWindow()
         {
             InitializeComponent();
-        }
-
-        private void AjouterEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            new addEmployeeWindow().Show();
         }
     }
 }

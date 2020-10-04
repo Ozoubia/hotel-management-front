@@ -66,6 +66,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="classes\GlobalVariable.cs" />
+    <Compile Include="dialog windows\addEmployeeWindow.xaml.cs">
+      <DependentUpon>addEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\modifyEmployeeWindow.xaml.cs">
+      <DependentUpon>modifyEmployeeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\aideUserControl.xaml.cs">
       <DependentUpon>aideUserControl.xaml</DependentUpon>
     </Compile>
@@ -86,6 +92,9 @@
     </Compile>
     <Compile Include="tabsUserControl\planiningTabUserControl.xaml.cs">
       <DependentUpon>planiningTabUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\présenceUserControl1.xaml.cs">
+      <DependentUpon>présenceUserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\rechercheUserControl.xaml.cs">
       <DependentUpon>rechercheUserControl.xaml</DependentUpon>
@@ -130,6 +139,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="dialog windows\addEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\modifyEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\planiningTabUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\présenceUserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

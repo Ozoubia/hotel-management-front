@@ -9,6 +9,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <Button x:Name="employes" Margin="20 0 10 0" Click="employes_Click">Employees</Button>
+            <Button x:Name="présence" Margin="20 0 10 0 " Click="présence_Click" >Présence</Button>
         </StackPanel>
     </Grid>
 </UserControl>
