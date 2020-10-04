@@ -25,6 +25,7 @@ namespace hotel_management_front
             InitializeComponent();
             gridMenu.Children.Clear();
             gridMenu.Children.Add(new tabBoardUserControl());
+           
         }
 
         #region menu button

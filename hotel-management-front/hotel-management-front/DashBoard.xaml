@@ -17,11 +17,13 @@
         </Grid.RowDefinitions>
         <!--menu-->
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="dashboardBtn" Click="dashboardBtn_Click">Tableau de bord</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="hotelBtn" Click="hotelBtn_Click">Hotel</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="stockBtn" Click="stockBtn_Click">Stock</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="personnelBtn" Click="personnelBtn_Click">Personnel</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="parametresBtn" Click="parametresBtn_Click">Parametres</Button>
+
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="dashboardBtn" Click="dashboardBtn_Click">Tableau de bord</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="hotelBtn" Click="hotelBtn_Click">Hotel</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="stockBtn" Click="stockBtn_Click">Stock</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="personnelBtn" Click="personnelBtn_Click">Personnel</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="parametresBtn" Click="parametresBtn_Click">Parametres</Button>
+            
         </StackPanel>
         
         <!--menu items-->
@@ -32,7 +34,18 @@
             <!--tab control-->
             <dragablz:TabablzControl Loaded="tabControlDragable_Loaded" FixedHeaderCount="1" ShowDefaultCloseButton="True" x:Name="tabControlDragable">
                 <TabItem Header="Tableau de bord">
-                    <Rectangle Fill="red" Width="200" Height="300"></Rectangle>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                    </Grid>
                 </TabItem>
                 
             </dragablz:TabablzControl>
