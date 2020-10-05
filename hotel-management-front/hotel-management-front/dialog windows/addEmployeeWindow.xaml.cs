@@ -27,12 +27,38 @@ namespace hotel_management_front.dialog_windows
         
         private void ajouterEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
+            string name = nomField.Text;
+            string lname = PrenomField.Text;
+            string sex = sexField.Text;
+            DateTime birthDate = DateTime.Parse(dateNaissanceField.SelectedDate.Value.Date.ToShortDateString());
+            string city = vailleField.Text;
+            string country = payField.Text;
+            int phoneNumber = int.Parse(telephoneField.Text);
+            int CIN = int.Parse(CINField.Text);
+            string status = statusField.Text;
+            int NbrKids = int.Parse(enfantsField.Text);
+            int CNSS = int.Parse(CNSSField.Text);
+            string departement = departementField.Text;
+            string jobTitle = fonctionField.Text;
+            int baseSalary = int.Parse(salaireField.Text);
+            DateTime startDate = DateTime.Parse(dateEntreeField.SelectedDate.Value.Date.ToShortDateString());
+            DateTime endDate = DateTime.Parse(dateSortieField.SelectedDate.Value.Date.ToShortDateString());
 
+            //MessageBox.Show(dateNaissanceField.SelectedDate.Value.Date.ToShortDateString());
+            classes.employee employeeObj = new classes.employee(name, lname, sex, birthDate, city, country, phoneNumber, CIN, status, NbrKids, CNSS, 
+                                                                departement, jobTitle, baseSalary, startDate, endDate);
+
+            string result = employeeObj.addEmployee();
+            MessageBox.Show(result);
+        
         }
+
 
         private void annulerBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
     }
+
+    
 }

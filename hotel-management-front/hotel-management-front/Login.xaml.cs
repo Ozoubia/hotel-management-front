@@ -1,19 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using System.Data.SqlClient;
-using System.Data;
+using System.Diagnostics.Eventing.Reader;
 
 namespace hotel_management_front
 {
@@ -26,25 +13,18 @@ namespace hotel_management_front
         {
             InitializeComponent();
         }
-        SqlConnection con = new SqlConnection(classes.GlobalVariable.databasePath);
 
-
+        //login button click event 
         private void LoginBtn(object sender, RoutedEventArgs e)
         {
-            
             string user = usernameField.Text;
             string pass = passwordField.Password;
-            string query = "SELECT * FROM users WHERE username=@name AND password=@pass";
-            SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
-            //query parameters 
-            ada.SelectCommand.Parameters.AddWithValue("@name", user);
-            ada.SelectCommand.Parameters.AddWithValue("@pass", pass);
+            classes.user userOjb = new classes.user(user, pass);
+            bool result = userOjb.login();
 
-            // command result 
-            DataTable dtbl = new DataTable();
-            ada.Fill(dtbl);
-            if (dtbl.Rows.Count == 1)
+            //if successful do this 
+            if (result)
             {
                 new DashBoard().Show();
                 this.Close();
