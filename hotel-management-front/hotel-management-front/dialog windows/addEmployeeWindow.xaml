@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:hotel_management_front.dialog_windows"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="addEmployeeWindow" Height="700" Width="600">
+        Title="Ajouter un employee" Height="700" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -29,11 +29,14 @@
             <TextBox Text="" x:Name="PrenomField" materialDesign:HintAssist.Hint="Prenom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <TextBox Text="" x:Name="sexField" materialDesign:HintAssist.Hint="Sex"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-            <TextBox Text="" x:Name="dateNaissanceField" materialDesign:HintAssist.Hint="Date de naissance"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="167"/>
+            <ComboBox x:Name="sexField" materialDesign:HintAssist.Hint="Sex" Margin="30,0,5,2" Width="137" FontFamily="Algerian" FontSize="18">
+                <ComboBoxItem Content="Male"/>
+                <ComboBoxItem Content="Female"/>
+            </ComboBox>
+            <DatePicker  x:Name="dateNaissanceField" materialDesign:HintAssist.Hint="Date de naissance"  Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="167"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <TextBox Text="" x:Name="vailleField" materialDesign:HintAssist.Hint="vaille"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <TextBox Text="" x:Name="vailleField" materialDesign:HintAssist.Hint="ville"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
             <TextBox Text="" x:Name="payField" materialDesign:HintAssist.Hint="pay"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="4">
@@ -46,7 +49,6 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="6">
             <TextBox Text="" x:Name="CNSSField" materialDesign:HintAssist.Hint="cnss"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-            <TextBox Text="" x:Name="photoField" materialDesign:HintAssist.Hint="photo"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="7">
             <TextBox Text="" x:Name="departementField" materialDesign:HintAssist.Hint="departement"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
@@ -54,13 +56,13 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="8">
             <TextBox Text="" x:Name="salaireField" materialDesign:HintAssist.Hint="salaire de base"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="147"/>
-            <TextBox Text="" x:Name="dateEntreeField" materialDesign:HintAssist.Hint="date entree"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <DatePicker  x:Name="dateEntreeField" materialDesign:HintAssist.Hint="date entree"  Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="9">
-            <TextBox Text="" x:Name="dateSortieField" materialDesign:HintAssist.Hint="date sortie"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <DatePicker  x:Name="dateSortieField" materialDesign:HintAssist.Hint="date sortie"  Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="10">
-            <Button x:Name="ajouterEmployeeBtn"  Click="ajouterEmployeeBtn_Click">confirme</Button>
+            <Button x:Name="ajouterEmployeeBtn"  Click="ajouterEmployeeBtn_Click">confirmer</Button>
             <Button x:Name="annulerBtn"  Click="annulerBtn_Click">Annuler</Button>
             
         </StackPanel>
