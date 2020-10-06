@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="classes\employee.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
+    <Compile Include="classes\presence.cs" />
     <Compile Include="classes\user.cs" />
     <Compile Include="dialog windows\addEmployeeWindow.xaml.cs">
       <DependentUpon>addEmployeeWindow.xaml</DependentUpon>
