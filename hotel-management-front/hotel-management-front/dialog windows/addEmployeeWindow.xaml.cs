@@ -44,7 +44,6 @@ namespace hotel_management_front.dialog_windows
             DateTime startDate = DateTime.Parse(dateEntreeField.SelectedDate.Value.Date.ToShortDateString());
             DateTime endDate = DateTime.Parse(dateSortieField.SelectedDate.Value.Date.ToShortDateString());
 
-            //MessageBox.Show(dateNaissanceField.SelectedDate.Value.Date.ToShortDateString());
             classes.employee employeeObj = new classes.employee(name, lname, sex, birthDate, city, country, phoneNumber, CIN, status, NbrKids, CNSS, 
                                                                 departement, jobTitle, baseSalary, startDate, endDate);
 
