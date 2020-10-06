@@ -11,7 +11,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <DatePicker Grid.Row="0" x:Name="todayDateField" Width="120"></DatePicker>
+        <DatePicker Grid.Row="0" x:Name="todayDateField" Width="120" ></DatePicker>
         
     </Grid>
 </UserControl>

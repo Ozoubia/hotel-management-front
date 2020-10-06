@@ -23,6 +23,7 @@ namespace hotel_management_front.tabsUserControl
         public présenceUserControl1()
         {
             InitializeComponent();
+            todayDateField.SelectedDate = DateTime.Today;
         }
     }
 }
