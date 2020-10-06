@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Data;
 
 namespace hotel_management_front.tabsUserControl
 {
@@ -28,13 +29,29 @@ namespace hotel_management_front.tabsUserControl
         //function to fill the employee list
         public void showEmployeeList()
         {
-            string query = "SELECT * FROM employee";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
-            DataTable data = new DataTable();
-            adapt.Fill(data);
+            classes.employee employeeObj = new classes.employee();
+            DataTable data = employeeObj.showAllEmployees();
+
             employeeListGrid.ItemsSource = data.DefaultView;
+            ((DataGridTextColumn)employeeListGrid.Columns[0]).Binding = new Binding("id_employee");
+            ((DataGridTextColumn)employeeListGrid.Columns[1]).Binding = new Binding("name");
+            ((DataGridTextColumn)employeeListGrid.Columns[2]).Binding = new Binding("lname");
+            ((DataGridTextColumn)employeeListGrid.Columns[3]).Binding = new Binding("sex");
+            ((DataGridTextColumn)employeeListGrid.Columns[4]).Binding = new Binding("birth_date");
+            ((DataGridTextColumn)employeeListGrid.Columns[5]).Binding = new Binding("city");
+            ((DataGridTextColumn)employeeListGrid.Columns[6]).Binding = new Binding("country");
+            ((DataGridTextColumn)employeeListGrid.Columns[7]).Binding = new Binding("telephone");
+            ((DataGridTextColumn)employeeListGrid.Columns[8]).Binding = new Binding("CIN");
+            ((DataGridTextColumn)employeeListGrid.Columns[9]).Binding = new Binding("status");
+            ((DataGridTextColumn)employeeListGrid.Columns[10]).Binding = new Binding("nbr_kids");
+            ((DataGridTextColumn)employeeListGrid.Columns[11]).Binding = new Binding("CNSS");
+            ((DataGridTextColumn)employeeListGrid.Columns[12]).Binding = new Binding("departement");
+            ((DataGridTextColumn)employeeListGrid.Columns[13]).Binding = new Binding("job_title");
+            ((DataGridTextColumn)employeeListGrid.Columns[14]).Binding = new Binding("base_salary");
+            ((DataGridTextColumn)employeeListGrid.Columns[15]).Binding = new Binding("starting_date");
+            ((DataGridTextColumn)employeeListGrid.Columns[15]).Binding = new Binding("ending_date");
+
+
             con.Close();
         }
 
@@ -49,11 +66,8 @@ namespace hotel_management_front.tabsUserControl
             // saving the index of the row in the datarowview var
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
-            string query = "DELETE FROM employee WHERE id_employee = '" + classes.GlobalVariable.dataRowView[0] + "'";
-            SqlCommand cmd2 = new SqlCommand(query, con);
-            con.Open();
-            cmd2.ExecuteNonQuery();
-            con.Close();
+            classes.employee employeeObj = new classes.employee();
+            employeeObj.deleteEmployee(int.Parse(classes.GlobalVariable.dataRowView[0].ToString()));
 
             //update dataGrid after deletion            
             showEmployeeList();
@@ -64,7 +78,7 @@ namespace hotel_management_front.tabsUserControl
         {
             // saving the index of the row in the datarowview var
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            
+
             // opening the modify page
             new modifyEmployeeWindow().Show();
         }
@@ -72,12 +86,8 @@ namespace hotel_management_front.tabsUserControl
         // used for filtering
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            string query = "SELECT * FROM employee WHERE name Like '%" + searchBar.Text + "%' OR lname LIKE'%" + searchBar.Text + "%'";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
-            DataTable data = new DataTable();
-            adapt.Fill(data);
+            classes.employee employeeObj = new classes.employee();
+            DataTable data = employeeObj.searchEmployee(searchBar.Text);
             employeeListGrid.ItemsSource = data.DefaultView;
             con.Close();
         }

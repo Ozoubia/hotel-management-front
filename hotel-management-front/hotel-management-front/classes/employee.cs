@@ -127,6 +127,7 @@ namespace hotel_management_front.classes
             return dtbl;
         }
 
+        // function that takes an employee ID and modifier it
         public void modiftyEmployee(int employeeID)
         {
             string query = "UPDATE employee SET name=@fname, lname=@lname, sex=@sex, birth_date=@birthDate, city=@city, country=@country," +
@@ -157,5 +158,43 @@ namespace hotel_management_front.classes
             com.ExecuteNonQuery();
             con.Close();
         }
+        
+        // function that takes an employee ID and deletes it
+        public void deleteEmployee(int employeeID)
+        {
+            string query = "DELETE FROM employee WHERE id_employee =@ID";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            cmd.Parameters.AddWithValue("@ID", employeeID);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+        // function that returns all the employees as a datatable
+        public DataTable showAllEmployees()
+        {
+            string query = "SELECT * FROM employee";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            return data;
+        }
+
+        // function that returns a database of a result of search (searching by name and last name)
+        public DataTable searchEmployee(string EmployeeSearch)
+        {
+            string query = "SELECT * FROM employee WHERE name Like '%" + EmployeeSearch + "%' OR lname LIKE'%" + EmployeeSearch + "%'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            return data;
+        }
     }
+
 }
