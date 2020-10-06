@@ -29,6 +29,11 @@ namespace hotel_management_front.classes
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
 
+        //empty constructor 
+        public employee()
+        {
+        }
+
         //Constructor
         public employee(string fname, string lname, string sex, DateTime birth_date, string city, string country, int phone, int CIN, string status, 
                         int kidsNbr, int CNSS, string department, string jobTitle, int baseSalary, DateTime startDate, DateTime endDate)
@@ -103,6 +108,54 @@ namespace hotel_management_front.classes
                 return "Employee added successfuly";
                 
             }
+        }
+
+        // function that takes an employee ID and return all its information as a datatable
+        public DataTable getEmployee(int employeeID)
+        {
+            // checking if an employee exists
+            string query = "SELECT * FROM employee WHERE id_employee=@id";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@id", employeeID);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
+
+        public void modiftyEmployee(int employeeID)
+        {
+            string query = "UPDATE employee SET name=@fname, lname=@lname, sex=@sex, birth_date=@birthDate, city=@city, country=@country," +
+                "telephone=@phone, CIN=@CIN, status=@status, nbr_kids=@nbrKids, CNSS=@CNSS, departement=@departement, job_title=@jobTitle, base_salary=@baseSalary, starting_date=@startingDate, ending_date=@endingDate WHERE id_employee=@ID";
+
+            SqlCommand com = new SqlCommand(query, con);
+
+            // params
+            com.Parameters.AddWithValue("@fname", this.firstName);
+            com.Parameters.AddWithValue("@lname", this.lastName);
+            com.Parameters.AddWithValue("@sex", this.sex);
+            com.Parameters.AddWithValue("@birthDate", this.birthDate);
+            com.Parameters.AddWithValue("@city", this.city);
+            com.Parameters.AddWithValue("@country", this.country);
+            com.Parameters.AddWithValue("@phone", this.phoneNumber);
+            com.Parameters.AddWithValue("@CIN", this.CIN);
+            com.Parameters.AddWithValue("@status", this.status);
+            com.Parameters.AddWithValue("@nbrKids", this.kidsNbr);
+            com.Parameters.AddWithValue("@CNSS", this.CNSS);
+            com.Parameters.AddWithValue("@departement", this.department);
+            com.Parameters.AddWithValue("@jobTitle", this.jobTitle);
+            com.Parameters.AddWithValue("@baseSalary", this.baseSalary);
+            com.Parameters.AddWithValue("@startingDate", this.startDate);
+            com.Parameters.AddWithValue("@endingDate", this.endDate); 
+            com.Parameters.AddWithValue("@ID", employeeID);
+
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
         }
     }
 }

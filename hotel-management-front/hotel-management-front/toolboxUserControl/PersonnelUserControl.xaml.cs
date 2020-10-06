@@ -60,6 +60,23 @@ namespace hotel_management_front.toolboxUserControl
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
+
+        private void Archive_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Archive",
+            };
+
+            GlobalVariable.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            presenceArchiveUserControl UC1 = new presenceArchiveUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
+        }
     }
 
         

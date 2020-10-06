@@ -95,6 +95,9 @@
     <Compile Include="tabsUserControl\planiningTabUserControl.xaml.cs">
       <DependentUpon>planiningTabUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\presenceArchiveUserControl.xaml.cs">
+      <DependentUpon>presenceArchiveUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\présenceUserControl1.xaml.cs">
       <DependentUpon>présenceUserControl1.xaml</DependentUpon>
     </Compile>
@@ -189,6 +192,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\planiningTabUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\presenceArchiveUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

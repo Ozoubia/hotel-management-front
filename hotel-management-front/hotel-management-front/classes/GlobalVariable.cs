@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Windows.Controls;
 
 namespace hotel_management_front.classes
@@ -11,6 +7,8 @@ namespace hotel_management_front.classes
     {
         //used for tabs functionality
         public static TabControl tbControl;
+        //
+        public static DataRowView dataRowView;
         //zinou 
         //public static string databasePath = "Data Source=DESKTOP-BI9TF77\\SQLEXPRESS;Initial Catalog=hotel_db;Integrated Security=True";
 
