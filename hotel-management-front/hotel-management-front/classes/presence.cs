@@ -9,21 +9,24 @@ namespace hotel_management_front.classes
 {
     class presence
     {
-        int Id;
-        int idEmployee;
-        int idPresence;
+
+        string name;
+        string lname;
         DateTime date;
         DateTime start_hour;
         DateTime end_hour;
+
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
+
         //empty constructor 
         public presence()
         {
         }
-        public presence(int idpes, DateTime date, DateTime stHour, DateTime endHour)
+        public presence(string name, string lname, DateTime date, DateTime stHour, DateTime endHour)
         {
-            this.idPresence = idpes;
+            this.name = name;
+            this.lname = lname;
             this.date = date;
             this.start_hour = stHour;
             this.end_hour = endHour;
@@ -39,26 +42,28 @@ namespace hotel_management_front.classes
             adapt.Fill(data);
             return data;
         }
-        public string addPresence(string nom , string prenom  , int employeeID)
+        public string addPresence()
         {
-            //pour récupérer id 
-            string query = "SELECT * FROM employee WHERE name=@nom AND lname=@prenom";
+            int idEmployee;
+
+            //to get the employee id
+            string query = "SELECT * FROM employee WHERE name=@name AND lname=@lname";
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
             //query parameters 
-            ada.SelectCommand.Parameters.AddWithValue("@name", nom);
-            ada.SelectCommand.Parameters.AddWithValue("@pass", prenom);
+            ada.SelectCommand.Parameters.AddWithValue("@name", this.name);
+            ada.SelectCommand.Parameters.AddWithValue("@lname", this.lname);
 
             // command result 
-           DataTable dtbl = new DataTable();
+            DataTable dtbl = new DataTable();
             ada.Fill(dtbl);
-             Id = int.Parse((string)dtbl.Rows[employeeID][idEmployee]);
+            idEmployee = int.Parse(dtbl.Rows[0]["id_employee"].ToString());
 
-            string query1 = "SELECT * FROM presence WHERE id_presence=@idpresence; AND id_employee=@idemployee";
+            string query1 = "SELECT * FROM presence WHERE id_employee=@idemployee AND date=@date";
             SqlDataAdapter ada1 = new SqlDataAdapter(query1, con);
 
             //query parameters 
-            ada.SelectCommand.Parameters.AddWithValue("@idPresence", idPresence);
+            ada.SelectCommand.Parameters.AddWithValue("@date", this.date);
             ada.SelectCommand.Parameters.AddWithValue("@idemploye", idEmployee);
 
 
@@ -68,23 +73,27 @@ namespace hotel_management_front.classes
             //user already exists 
             if (dtb2.Rows.Count == 1)
             {
-                return "Employee already exists";
+                return "Presence already exists";
             }
             else
             {
-               // string query2 = "INSERT INTO presence (id_presence , id_employee , date  , start_hour , end_hour) " + "VALUES (@idpres , @idemp , @date , @starhour , @endhour)";
+                string query2 = "INSERT INTO presence (id_employee , date  , start_hour , end_hour) " + "VALUES (@idemp , @date , @starhour , @endhour)";
+                SqlCommand com = new SqlCommand(query2, con);
 
+                //params             
+                com.Parameters.AddWithValue("@idemp", idEmployee);
+                com.Parameters.AddWithValue("@date", this.date);
+                com.Parameters.AddWithValue("@starhour", this.start_hour);
+                com.Parameters.AddWithValue("@endhour", this.end_hour);
+
+                con.Open();
+                com.ExecuteNonQuery();
+                con.Close();
+
+                return "Presence inserted";
             }
-               // SqlCommand com = new SqlCommand(query2, con);
 
-            // params
-           // com.Parameters.AddWithValue("@idpres", this.idPresence);
-           // com.Parameters.AddWithValue("@idemp", this.Id);
-           // com.Parameters.AddWithValue("@date", this.date);
-           // com.Parameters.AddWithValue("@starhour",this.start_hour);
-           // com.Parameters.AddWithValue("@endhour",this.end_hour);
             
-            return "";
         }
         public DataTable searchEmployee(string EmployeeSearch)
         {
@@ -94,6 +103,20 @@ namespace hotel_management_front.classes
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
             DataTable data = new DataTable();
             adapt.Fill(data);
+            return data;
+        }
+
+        public DataTable showPresenceList()
+        {
+            string query = "SELECT presence.date, employee.name, employee.lname, presence.start_hour, presence.end_hour FROM presence INNER JOIN employee ON presence.id_employee = employee.id_employee";
+
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+
             return data;
         }
     }
