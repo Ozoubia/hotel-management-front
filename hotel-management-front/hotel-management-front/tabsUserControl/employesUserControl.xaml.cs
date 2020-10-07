@@ -1,12 +1,6 @@
 ﻿using hotel_management_front.dialog_windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Data;
 
@@ -22,9 +16,6 @@ namespace hotel_management_front.tabsUserControl
             InitializeComponent();
             showEmployeeList();
         }
-
-        SqlConnection con = new SqlConnection(classes.GlobalVariable.databasePath);
-
 
         //function to fill the employee list
         public void showEmployeeList()
@@ -51,8 +42,6 @@ namespace hotel_management_front.tabsUserControl
             ((DataGridTextColumn)employeeListGrid.Columns[15]).Binding = new Binding("starting_date");
             ((DataGridTextColumn)employeeListGrid.Columns[15]).Binding = new Binding("ending_date");
 
-
-            con.Close();
         }
 
         private void AjouterEmployee_Click(object sender, RoutedEventArgs e)
@@ -89,7 +78,7 @@ namespace hotel_management_front.tabsUserControl
             classes.employee employeeObj = new classes.employee();
             DataTable data = employeeObj.searchEmployee(searchBar.Text);
             employeeListGrid.ItemsSource = data.DefaultView;
-            con.Close();
+            
         }
     }
 }
