@@ -25,15 +25,21 @@ namespace hotel_management_front.tabsUserControl
     {
         public présenceUserControl1()
         {
+            
+
             InitializeComponent();
             todayDateField.SelectedDate = DateTime.Today;
-            showEmployeeList();
+            showEmployeePresenceList();
+
+            TimeSpan startHour;
+            TimeSpan endHour;
         }
         SqlConnection con = new SqlConnection(classes.GlobalVariable.databasePath);
 
-        public void showEmployeeList()
+        // to fill the data presence grid
+        public void showEmployeePresenceList()
         {
-            classes.presence presenceObj = new classes.presence();
+            presence presenceObj = new presence();
             DataTable data = presenceObj.showAllEmployees1();
 
             presenceListGrid.ItemsSource = data.DefaultView;
@@ -44,7 +50,7 @@ namespace hotel_management_front.tabsUserControl
         }
         private void searchBar1_TextChanged(object sender, TextChangedEventArgs e)
         {
-            classes.presence pesenceObj = new classes.presence();
+            presence pesenceObj = new presence();
             DataTable data = pesenceObj.searchEmployee(searchBar1.Text);
             presenceListGrid.ItemsSource = data.DefaultView;
             con.Close();
@@ -52,7 +58,21 @@ namespace hotel_management_front.tabsUserControl
 
         private void ValiderBtn_Click(object sender, RoutedEventArgs e)
         {
+            //// saving the index of the row in the datarowview var
+            //GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
+            //// getting fields content
+            //string name = GlobalVariable.dataRowView[0].ToString();
+            //string lname = GlobalVariable.dataRowView[1].ToString();
+            //DateTime date = DateTime.Parse(todayDateField.SelectedDate.Value.Date.ToShortDateString());
+            
+
+            //presence presenceObj = new presence(name, lname, date, );
+
+            //string result = presenceObj.addPresence();
+            //MessageBox.Show(result);
         }
+
+        
     }
 }

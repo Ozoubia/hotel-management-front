@@ -23,17 +23,9 @@ namespace hotel_management_front.tabsUserControl
         //function to fill the employee list
         public void showArchiveEmployeeList()
         {
+            classes.presence presenceObj = new classes.presence();
+            DataTable data = presenceObj.showPresenceList();
             
-            string query = "SELECT presence.date, employee.name, employee.lname, presence.start_hour, presence.end_hour FROM presence INNER JOIN employee ON presence.id_employee = employee.id_employee";
-            
-            con.Open();
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
-            
-            DataTable data = new DataTable();
-            adapt.Fill(data);
-
-
             PresenceListGrid.ItemsSource = data.DefaultView;
             //((DataGridTextColumn)PresenceListGrid.Columns[0]).Binding = new Binding("date");
             //((DataGridTextColumn)PresenceListGrid.Columns[1]).Binding = new Binding("name");
@@ -47,7 +39,14 @@ namespace hotel_management_front.tabsUserControl
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            // saving the index of the row in the datarowview var
+            //classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
+            //classes.employee employeeObj = new classes.employee();
+            //employeeObj.deleteEmployee(int.Parse(classes.GlobalVariable.dataRowView[0].ToString()));
+
+            ////update dataGrid after deletion            
+            //showArchiveEmployeeList();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)

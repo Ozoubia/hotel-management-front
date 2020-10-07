@@ -27,8 +27,8 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <TextBox Text="" x:Name="start_hourield" materialDesign:HintAssist.Hint="houre de entre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,10" FontFamily="Algerian" FontSize="18"/>
-                                <TextBox Text="" x:Name="end_hourield" materialDesign:HintAssist.Hint="houre de fin" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,10" FontFamily="Algerian" FontSize="18"/>
+                                <TextBox Text="" x:Name="start_hourField" materialDesign:HintAssist.Hint="houre de entre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,10" FontFamily="Algerian" FontSize="18"/>
+                                <TextBox Text="" x:Name="end_hourField" materialDesign:HintAssist.Hint="houre de fin" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,10" FontFamily="Algerian" FontSize="18"/>
                                 <Button  ToolTip="Modifier" x:Name="ValiderBtn" Click="ValiderBtn_Click">
                                     Valide</Button>
                             </StackPanel>
