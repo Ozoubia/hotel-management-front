@@ -72,6 +72,9 @@
     <Compile Include="dialog windows\addEmployeeWindow.xaml.cs">
       <DependentUpon>addEmployeeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialog windows\addPresenceWindow.xaml.cs">
+      <DependentUpon>addPresenceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialog windows\modifyEmployeeWindow.xaml.cs">
       <DependentUpon>modifyEmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -80,6 +83,15 @@
     </Compile>
     <Compile Include="tabsUserControl\arriveeUserControl.xaml.cs">
       <DependentUpon>arriveeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\bonqueUserControl.xaml.cs">
+      <DependentUpon>bonqueUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\caissePersonnelUserControl.xaml.cs">
+      <DependentUpon>caissePersonnelUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\caissePrincipaleUserControl.xaml.cs">
+      <DependentUpon>caissePrincipaleUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\chambreUserControl.xaml.cs">
       <DependentUpon>chambreUserControl.xaml</DependentUpon>
@@ -126,6 +138,9 @@
     <Compile Include="tabsUserControl\utilisateurUserControl.xaml.cs">
       <DependentUpon>utilisateurUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="toolboxUserControl\caisseUserControl.xaml.cs">
+      <DependentUpon>caisseUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="toolboxUserControl\hotelUserControl.xaml.cs">
       <DependentUpon>hotelUserControl.xaml</DependentUpon>
     </Compile>
@@ -146,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\addEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\addPresenceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -173,6 +192,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\arriveeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\bonqueUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\caissePersonnelUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\caissePrincipaleUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,6 +264,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\utilisateurUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="toolboxUserControl\caisseUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -58,7 +58,11 @@ namespace hotel_management_front
             gridMenu.Children.Clear();
             gridMenu.Children.Add(new parametresUserControl());
         }
-
+        private void caisseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new caisseUserControl());
+        }
         #endregion
 
         #region tab settup
@@ -66,6 +70,16 @@ namespace hotel_management_front
         {
             classes.GlobalVariable.tbControl = (sender as TabControl);
         }
+
+
+
+
         #endregion
+
+        private void chargeBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
-}
+    }
+
