@@ -23,7 +23,10 @@
                 <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="stockBtn" Click="stockBtn_Click">Stock</Button>
                 <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="personnelBtn" Click="personnelBtn_Click">Personnel</Button>
                 <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="parametresBtn" Click="parametresBtn_Click">Parametres</Button>
-            
+               <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="caisseBtn"   Click="caisseBtn_Click" >Caisse </Button>
+            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="chargeBtn"   Click="chargeBtn_Click" >Charge</Button>
+
+
         </StackPanel>
         
         <!--menu items-->

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
 using hotel_management_front.classes;
+using hotel_management_front.dialog_windows;
 
 namespace hotel_management_front.tabsUserControl
 {
@@ -25,10 +26,10 @@ namespace hotel_management_front.tabsUserControl
     {
         public présenceUserControl1()
         {
-            
+
 
             InitializeComponent();
-            todayDateField.SelectedDate = DateTime.Today;
+           
             showEmployeePresenceList();
 
             TimeSpan startHour;
@@ -46,7 +47,7 @@ namespace hotel_management_front.tabsUserControl
             ((DataGridTextColumn)presenceListGrid.Columns[0]).Binding = new Binding("name");
             ((DataGridTextColumn)presenceListGrid.Columns[1]).Binding = new Binding("lname");
             ((DataGridTextColumn)presenceListGrid.Columns[2]).Binding = new Binding("departement");
-           con.Close();
+            con.Close();
         }
         private void searchBar1_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -58,21 +59,10 @@ namespace hotel_management_front.tabsUserControl
 
         private void ValiderBtn_Click(object sender, RoutedEventArgs e)
         {
-            //// saving the index of the row in the datarowview var
-            //GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            new addPresenceWindow().Show();
 
-            //// getting fields content
-            //string name = GlobalVariable.dataRowView[0].ToString();
-            //string lname = GlobalVariable.dataRowView[1].ToString();
-            //DateTime date = DateTime.Parse(todayDateField.SelectedDate.Value.Date.ToShortDateString());
-            
 
-            //presence presenceObj = new presence(name, lname, date, );
-
-            //string result = presenceObj.addPresence();
-            //MessageBox.Show(result);
         }
-
-        
     }
 }
+

@@ -13,7 +13,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-             <DatePicker Grid.Row="0" x:Name="todayDateField" Width="120" ></DatePicker>
             <TextBox Margin="10 0 50 0"  TextChanged="searchBar1_TextChanged" x:Name="searchBar1" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
         </StackPanel>
         <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="presenceListGrid" Background="White" AutoGenerateColumns="False" Margin="10,36,10,-16" Height="auto">
@@ -22,13 +21,14 @@
                 <DataGridTextColumn Header="Nom" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Prenom" ></DataGridTextColumn>
                 <DataGridTextColumn Header="departement" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Heure de début" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Heure de fin" ></DataGridTextColumn>
                 <!--button-->
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <TextBox Text="" x:Name="start_hourField" materialDesign:HintAssist.Hint="houre de entre" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,10" FontFamily="Algerian" FontSize="18"/>
-                                <TextBox Text="" x:Name="end_hourField" materialDesign:HintAssist.Hint="houre de fin" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="20,10" FontFamily="Algerian" FontSize="18"/>
+                                
                                 <Button  ToolTip="Modifier" x:Name="ValiderBtn" Click="ValiderBtn_Click">
                                     Valide</Button>
                             </StackPanel>
