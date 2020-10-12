@@ -16,15 +16,15 @@
             <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="PresenceListGrid" Background="White" AutoGenerateColumns="True" Margin="10" Height="auto">
+        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="PresenceArchiveGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
             <DataGrid.Columns>
                 <!--columns-->
-                <!--<DataGridTextColumn Header="Date" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Nom" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Prenom" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Heure d'entree" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Heure Sortie" ></DataGridTextColumn>-->
-
+                <DataGridTextColumn Header="Heure Sortie" ></DataGridTextColumn>
+                
                 <!--button-->
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -43,4 +43,5 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
+    
 </UserControl>

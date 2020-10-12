@@ -42,6 +42,7 @@ namespace hotel_management_front.classes
             adapt.Fill(data);
             return data;
         }
+
         public string addPresence()
         {
             int idEmployee;
@@ -93,8 +94,9 @@ namespace hotel_management_front.classes
                 return "Presence inserted";
             }
 
-            
+
         }
+
         public DataTable searchEmployee(string EmployeeSearch)
         {
             string query = "SELECT * FROM employee WHERE name Like '%" + EmployeeSearch + "%' OR lname LIKE'%" + EmployeeSearch + "%'";
@@ -118,6 +120,39 @@ namespace hotel_management_front.classes
             adapt.Fill(data);
 
             return data;
+        }
+
+        public void deletePresence(DateTime date, string name, string lname)
+        {
+            string id_employee;
+
+            // getting employee id
+            string query = "SELECT id_employee FROM employee WHERE name=@name AND lname=@lname";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@name", name);
+            ada.SelectCommand.Parameters.AddWithValue("@lname", lname);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+            //user already exists 
+            
+            id_employee = dtbl.Rows[0]["id_employee"].ToString();
+
+
+
+            string query1 = "DELETE FROM presence WHERE id_employee=@ID AND date=@date";
+            SqlCommand cmd = new SqlCommand(query1, con);
+
+            cmd.Parameters.AddWithValue("@ID", id_employee);
+            cmd.Parameters.AddWithValue("@date", date);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+
         }
     }
     

@@ -75,6 +75,9 @@
     <Compile Include="dialog windows\addPresenceWindow.xaml.cs">
       <DependentUpon>addPresenceWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialog windows\modifyArchiveWindow.xaml.cs">
+      <DependentUpon>modifyArchiveWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialog windows\modifyEmployeeWindow.xaml.cs">
       <DependentUpon>modifyEmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\addPresenceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\modifyArchiveWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
