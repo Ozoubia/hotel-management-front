@@ -8,62 +8,15 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="Modifier Archive " Height="700" Width="600">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <TextBlock Text="Modifier Archive" HorizontalAlignment="Center"   VerticalAlignment="Top" Margin="180,0,5,2" Foreground="Gray" FontSize="25" Width="240" RenderTransformOrigin="0.879,0.545"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <TextBox Text="" x:Name="nomField" materialDesign:HintAssist.Hint="Nom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-            <TextBox Text="" x:Name="PrenomField" materialDesign:HintAssist.Hint="Prenom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <ComboBox x:Name="sexField" materialDesign:HintAssist.Hint="Sex" Margin="30,0,5,2" Width="137" FontFamily="Algerian" FontSize="18">
-                <ComboBoxItem Content="Male"/>
-                <ComboBoxItem Content="Female"/>
-            </ComboBox>
-            <DatePicker  x:Name="dateNaissanceField" materialDesign:HintAssist.Hint="Date de naissance"  Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="167"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <TextBox Text="" x:Name="villeField" materialDesign:HintAssist.Hint="ville"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-            <TextBox Text="" x:Name="payField" materialDesign:HintAssist.Hint="pay"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="4">
-            <TextBox Text="" x:Name="telephoneField" materialDesign:HintAssist.Hint="telephone"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-            <TextBox Text="" x:Name="CINField" materialDesign:HintAssist.Hint="cin"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="5">
-            <TextBox Text="" x:Name="statusField" materialDesign:HintAssist.Hint="status"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-            <TextBox Text="" x:Name="enfantsField" materialDesign:HintAssist.Hint="enfants"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="6">
-            <TextBox Text="" x:Name="CNSSField" materialDesign:HintAssist.Hint="cnss"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="7">
-            <TextBox Text="" x:Name="departementField" materialDesign:HintAssist.Hint="departement"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-            <TextBox Text="" x:Name="fonctionField" materialDesign:HintAssist.Hint="fonction"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="8">
-            <TextBox Text="" x:Name="salaireField" materialDesign:HintAssist.Hint="salaire de base"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="147"/>
-            <DatePicker x:Name="dateEntreeField" materialDesign:HintAssist.Hint="date entree"  Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="9">
-            <DatePicker  x:Name="dateSortieField" materialDesign:HintAssist.Hint="date sortie"  Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="10">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Modifier Archive" HorizontalAlignment="Center"   VerticalAlignment="Top"  Foreground="Gray" FontSize="25" Width="240" RenderTransformOrigin="0.879,0.545"/>
+            <TextBox Text="" x:Name="nomField" materialDesign:HintAssist.Hint="Nom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontFamily="Algerian" FontSize="18" Width="137"/>
+            <TextBox Text="" x:Name="PrenomField" materialDesign:HintAssist.Hint="Prenom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  FontFamily="Algerian" FontSize="18" Width="137"/>
+            <DatePicker x:Name="datePicker" materialDesign:HintAssist.Hint="Date" Width="120" ></DatePicker>
+            <materialDesign:TimePicker x:Name="startHour" materialDesign:HintAssist.Hint="Start hour" Width="120" ></materialDesign:TimePicker>
+            <materialDesign:TimePicker x:Name="endHour" materialDesign:HintAssist.Hint="End hour" Width="120" ></materialDesign:TimePicker>
             <Button x:Name="confirmeBtn" >confirmer</Button>
-            <Button x:Name="cancelBtn" Content="ANNULER"  Margin="0,14,0,15"/>
+            <Button x:Name="cancelBtn" Content="ANNULER" Click="cancelBtn_Click"/>
         </StackPanel>
 
     </Grid>
