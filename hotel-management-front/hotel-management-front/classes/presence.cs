@@ -94,7 +94,7 @@ namespace hotel_management_front.classes
                 return "Presence inserted";
             }
 
-
+            
         }
 
         public DataTable searchEmployee(string EmployeeSearch)
@@ -154,8 +154,11 @@ namespace hotel_management_front.classes
             con.Close();
 
         }
-    }
     
-  }
+
+
+
+    }
+}
 
     

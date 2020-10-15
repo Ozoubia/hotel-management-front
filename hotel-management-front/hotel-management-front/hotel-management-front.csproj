@@ -65,10 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="classes\client.cs" />
     <Compile Include="classes\employee.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\user.cs" />
+    <Compile Include="dialog windows\addClientWindow.xaml.cs">
+      <DependentUpon>addClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialog windows\addEmployeeWindow.xaml.cs">
       <DependentUpon>addEmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -160,6 +164,10 @@
       <DependentUpon>tabBoardUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="DashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\addClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,9 +19,15 @@ namespace hotel_management_front.dialog_windows
     /// </summary>
     public partial class modifyArchiveWindow : Window
     {
+
         public modifyArchiveWindow()
         {
             InitializeComponent();
+        }
+
+        private void cancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

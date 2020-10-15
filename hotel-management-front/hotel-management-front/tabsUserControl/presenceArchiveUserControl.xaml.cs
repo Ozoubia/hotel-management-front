@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hotel_management_front.dialog_windows;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
@@ -54,7 +55,12 @@ namespace hotel_management_front.tabsUserControl
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
+            // saving the index of the row in the datarowview var
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
+
+            // opening the modify page
+            new modifyArchiveWindow().Show();
         }
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
