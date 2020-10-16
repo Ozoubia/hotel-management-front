@@ -28,7 +28,7 @@ namespace hotel_management_front.tabsUserControl
 
         private void AjouterPrise_Click(object sender, RoutedEventArgs e)
         {
-            new addTakingWindow().Show();
+            
         }
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
