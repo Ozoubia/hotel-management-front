@@ -28,9 +28,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                
-                                <Button  ToolTip="Modifier" x:Name="ValiderBtn" Click="ValiderBtn_Click">
-                                    Valide</Button>
+                                <Button  ToolTip="Modifier" x:Name="ValiderBtn" Click="ValiderBtn_Click">Valide</Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

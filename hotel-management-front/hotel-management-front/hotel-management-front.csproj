@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="classes\client.cs" />
     <Compile Include="classes\employee.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
     <Compile Include="classes\Material.cs" />
@@ -72,8 +73,13 @@
     <Compile Include="classes\Produit.cs" />
     <Compile Include="classes\Secour.cs" />
     <Compile Include="classes\user.cs" />
+
     <Compile Include="dialog windows\addemergencyEquipmentWindow.xaml.cs">
       <DependentUpon>addemergencyEquipmentWindow.xaml</DependentUpon>
+
+    <Compile Include="dialog windows\addClientWindow.xaml.cs">
+      <DependentUpon>addClientWindow.xaml</DependentUpon>
+
     </Compile>
     <Compile Include="dialog windows\addEmployeeWindow.xaml.cs">
       <DependentUpon>addEmployeeWindow.xaml</DependentUpon>
@@ -84,6 +90,7 @@
     <Compile Include="dialog windows\addPresenceWindow.xaml.cs">
       <DependentUpon>addPresenceWindow.xaml</DependentUpon>
     </Compile>
+
     <Compile Include="dialog windows\addProductWindow.xaml.cs">
       <DependentUpon>addProductWindow.xaml</DependentUpon>
     </Compile>
@@ -92,6 +99,10 @@
     </Compile>
     <Compile Include="dialog windows\modifyEmergencyEquipmentWindow.xaml.cs">
       <DependentUpon>modifyEmergencyEquipmentWindow.xaml</DependentUpon>
+
+    <Compile Include="dialog windows\modifyArchiveWindow.xaml.cs">
+      <DependentUpon>modifyArchiveWindow.xaml</DependentUpon>
+
     </Compile>
     <Compile Include="dialog windows\modifyEmployeeWindow.xaml.cs">
       <DependentUpon>modifyEmployeeWindow.xaml</DependentUpon>
@@ -187,7 +198,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="dialog windows\addemergencyEquipmentWindow.xaml">
+
+    <Page Include="dialog windows\addClientWindow.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +218,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
     <Page Include="dialog windows\addProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -212,6 +228,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\modifyEmergencyEquipmentWindow.xaml">
+
+    <Page Include="dialog windows\modifyArchiveWindow.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
