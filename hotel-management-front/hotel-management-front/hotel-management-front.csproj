@@ -68,22 +68,50 @@
     <Compile Include="classes\client.cs" />
     <Compile Include="classes\employee.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
+    <Compile Include="classes\Material.cs" />
     <Compile Include="classes\presence.cs" />
+    <Compile Include="classes\Produit.cs" />
+    <Compile Include="classes\Secour.cs" />
     <Compile Include="classes\user.cs" />
+
+    <Compile Include="dialog windows\addemergencyEquipmentWindow.xaml.cs">
+      <DependentUpon>addemergencyEquipmentWindow.xaml</DependentUpon>
+
     <Compile Include="dialog windows\addClientWindow.xaml.cs">
       <DependentUpon>addClientWindow.xaml</DependentUpon>
+
     </Compile>
     <Compile Include="dialog windows\addEmployeeWindow.xaml.cs">
       <DependentUpon>addEmployeeWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialog windows\addMaterialWindow.xaml.cs">
+      <DependentUpon>addMaterialWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialog windows\addPresenceWindow.xaml.cs">
       <DependentUpon>addPresenceWindow.xaml</DependentUpon>
     </Compile>
+
+    <Compile Include="dialog windows\addProductWindow.xaml.cs">
+      <DependentUpon>addProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\addTakingWindow.xaml.cs">
+      <DependentUpon>addTakingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\modifyEmergencyEquipmentWindow.xaml.cs">
+      <DependentUpon>modifyEmergencyEquipmentWindow.xaml</DependentUpon>
+
     <Compile Include="dialog windows\modifyArchiveWindow.xaml.cs">
       <DependentUpon>modifyArchiveWindow.xaml</DependentUpon>
+
     </Compile>
     <Compile Include="dialog windows\modifyEmployeeWindow.xaml.cs">
       <DependentUpon>modifyEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\modifyMaterialWindow.xaml.cs">
+      <DependentUpon>modifyMaterialWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\modifyProductWindow.xaml.cs">
+      <DependentUpon>modifyProductWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\aideUserControl.xaml.cs">
       <DependentUpon>aideUserControl.xaml</DependentUpon>
@@ -117,6 +145,9 @@
     </Compile>
     <Compile Include="tabsUserControl\presenceArchiveUserControl.xaml.cs">
       <DependentUpon>presenceArchiveUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\PriseProduitUserControl.xaml.cs">
+      <DependentUpon>PriseProduitUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\présenceUserControl1.xaml.cs">
       <DependentUpon>présenceUserControl1.xaml</DependentUpon>
@@ -167,7 +198,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
+    <Page Include="dialog windows\addemergencyEquipmentWindow.xaml">
+
     <Page Include="dialog windows\addClientWindow.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -175,15 +210,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="dialog windows\addMaterialWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="dialog windows\addPresenceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+
+    <Page Include="dialog windows\addProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\addTakingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\modifyEmergencyEquipmentWindow.xaml">
+
     <Page Include="dialog windows\modifyArchiveWindow.xaml">
+
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\modifyEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\modifyMaterialWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\modifyProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,6 +302,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\presenceArchiveUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\PriseProduitUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
