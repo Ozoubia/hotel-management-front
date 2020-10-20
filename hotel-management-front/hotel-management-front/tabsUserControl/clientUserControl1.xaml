@@ -25,9 +25,8 @@
                 <DataGridTextColumn Header="Prenom" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Sex" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Date Naissance" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Nationalitee" ></DataGridTextColumn>
+                <DataGridTextColumn Header="ville" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Pays" ></DataGridTextColumn>
-                <DataGridTextColumn Header="address" ></DataGridTextColumn>
                 <DataGridTextColumn Header="telephone" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Status" ></DataGridTextColumn>
                 <DataGridTextColumn Header="CIN" ></DataGridTextColumn>

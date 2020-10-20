@@ -39,13 +39,14 @@ namespace hotel_management_front.dialog_windows
             string country = paysField.Text;
             int phoneNumber = int.Parse(telephoneField.Text);
             int CIN = int.Parse(CINField.Text);
-            string status = statusField.Text;                   
+            string status = statusField.Text;
             DateTime startDate = DateTime.Parse(dateDebutField.SelectedDate.Value.Date.ToShortDateString());
             DateTime endDate = DateTime.Parse(dateDepartField.SelectedDate.Value.Date.ToShortDateString());
 
             classes.client clientObj = new classes.client(name, lname, sex, birthDate, city, country, phoneNumber, status, CIN, startDate, endDate);
             string result = clientObj.addClient();
             MessageBox.Show(result);
+
         }
     }
 }

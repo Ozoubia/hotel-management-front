@@ -19,7 +19,8 @@
         
         <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="employeeListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
             <DataGrid.Columns>
-                <!--columns-->               
+                <!--columns-->
+                <DataGridTextColumn Header="ID Employee" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Nom" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Prenom" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Sex" ></DataGridTextColumn>
@@ -27,10 +28,16 @@
                 <DataGridTextColumn Header="Ville" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Pays" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Mobile" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Status" ></DataGridTextColumn>
                 <DataGridTextColumn Header="CIN" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Date arrivee" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Date depart" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Status" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Nombre Enfans" ></DataGridTextColumn>
+                <DataGridTextColumn Header="CNSS" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Departement" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Fonction" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Salaire de Base" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date entree" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date Sortie" ></DataGridTextColumn>
+
                 <!--button--> 
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

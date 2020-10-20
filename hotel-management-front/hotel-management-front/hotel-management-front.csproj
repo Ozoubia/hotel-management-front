@@ -68,10 +68,18 @@
     <Compile Include="classes\client.cs" />
     <Compile Include="classes\employee.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
+
+    <Compile Include="classes\histoArrivee.cs" />
+    <Compile Include="classes\presence.cs" />
+    <Compile Include="classes\reservation.cs" />
+    <Compile Include="classes\room.cs" />
+    <Compile Include="classes\sejour.cs" />
+
     <Compile Include="classes\Material.cs" />
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\Produit.cs" />
     <Compile Include="classes\Secour.cs" />
+
     <Compile Include="classes\user.cs" />
 
     <Compile Include="dialog windows\addemergencyEquipmentWindow.xaml.cs">
@@ -91,6 +99,14 @@
       <DependentUpon>addPresenceWindow.xaml</DependentUpon>
     </Compile>
 
+    <Compile Include="dialog windows\addReservationWindow.xaml.cs">
+      <DependentUpon>addReservationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\addRoomWindow.xaml.cs">
+      <DependentUpon>addRoomWindow.xaml</DependentUpon>
+    </Compile>
+
+
     <Compile Include="dialog windows\addProductWindow.xaml.cs">
       <DependentUpon>addProductWindow.xaml</DependentUpon>
     </Compile>
@@ -99,6 +115,7 @@
     </Compile>
     <Compile Include="dialog windows\modifyEmergencyEquipmentWindow.xaml.cs">
       <DependentUpon>modifyEmergencyEquipmentWindow.xaml</DependentUpon>
+
 
     <Compile Include="dialog windows\modifyArchiveWindow.xaml.cs">
       <DependentUpon>modifyArchiveWindow.xaml</DependentUpon>
@@ -115,9 +132,6 @@
     </Compile>
     <Compile Include="tabsUserControl\aideUserControl.xaml.cs">
       <DependentUpon>aideUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="tabsUserControl\arriveeUserControl.xaml.cs">
-      <DependentUpon>arriveeUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\bonqueUserControl.xaml.cs">
       <DependentUpon>bonqueUserControl.xaml</DependentUpon>
@@ -137,6 +151,9 @@
     <Compile Include="tabsUserControl\employesUserControl.xaml.cs">
       <DependentUpon>employesUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\histoArriUserControl.xaml.cs">
+      <DependentUpon>histoArriUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\materialUserControl.xaml.cs">
       <DependentUpon>materialUserControl.xaml</DependentUpon>
     </Compile>
@@ -152,9 +169,6 @@
     <Compile Include="tabsUserControl\présenceUserControl1.xaml.cs">
       <DependentUpon>présenceUserControl1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tabsUserControl\rechercheUserControl.xaml.cs">
-      <DependentUpon>rechercheUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="tabsUserControl\reservationUserControl.xaml.cs">
       <DependentUpon>reservationUserControl.xaml</DependentUpon>
     </Compile>
@@ -166,6 +180,9 @@
     </Compile>
     <Compile Include="tabsUserControl\sauvgardeUserControl.xaml.cs">
       <DependentUpon>sauvgardeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\sejourUserControl.xaml.cs">
+      <DependentUpon>sejourUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\StatTabUserControl.xaml.cs">
       <DependentUpon>StatTabUserControl.xaml</DependentUpon>
@@ -218,6 +235,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="dialog windows\addReservationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\addRoomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+
 
     <Page Include="dialog windows\addProductWindow.xaml">
       <SubType>Designer</SubType>
@@ -228,6 +254,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\modifyEmergencyEquipmentWindow.xaml">
+
 
     <Page Include="dialog windows\modifyArchiveWindow.xaml">
 
@@ -265,10 +292,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tabsUserControl\arriveeUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="tabsUserControl\bonqueUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -293,6 +316,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="tabsUserControl\histoArriUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\materialUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -313,10 +340,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tabsUserControl\rechercheUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="tabsUserControl\reservationUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -330,6 +353,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\sauvgardeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\sejourUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

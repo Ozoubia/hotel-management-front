@@ -10,8 +10,8 @@
         <StackPanel Orientation="Horizontal">
             <Button x:Name="reservation" Margin="20 0 10 0" Click="reservation_Click">Reservation</Button>
             <Button x:Name="client" Margin="10 0 10 0" Click="client_Click">Client</Button>
-            <Button x:Name="arrivee" Margin="10 0 10 0" Click="arrivee_Click">Arrivee</Button>
-            <Button x:Name="recherche" Margin="10 0 10 0" Click="recherche_Click">Recherche</Button>
+            <Button x:Name="Sejour" Margin="10 0 10 0" Click="sejour_Click">Sejour</Button>
+            <Button x:Name="Historique_arrivee" Margin="10 0 10 0" Click="histoArrivee_Click">Historique Arrivee</Button>
             <Button x:Name="chambre" Margin="10 0 10 0" Click="chambre_Click">Chambre</Button>
         </StackPanel>
     </Grid>
