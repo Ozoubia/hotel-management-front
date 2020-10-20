@@ -1,5 +1,7 @@
-﻿using System;
+﻿using hotel_management_front.dialog_windows;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +25,42 @@ namespace hotel_management_front.tabsUserControl
         public chambreUserControl()
         {
             InitializeComponent();
+            showRoomList();
+        }
+
+        //function to fill the employee list
+        public void showRoomList()
+        {
+            classes.room roomObj = new classes.room();
+            DataTable data = roomObj.showAllRooms();
+
+            roomListGrid.ItemsSource = data.DefaultView;
+            ((DataGridTextColumn)roomListGrid.Columns[0]).Binding = new Binding("name");
+            ((DataGridTextColumn)roomListGrid.Columns[1]).Binding = new Binding("type");
+            ((DataGridTextColumn)roomListGrid.Columns[2]).Binding = new Binding("base_price");
+            ((DataGridTextColumn)roomListGrid.Columns[3]).Binding = new Binding("status");
+            ((DataGridTextColumn)roomListGrid.Columns[4]).Binding = new Binding("isCleaned");
+
+        }
+
+        private void addRoom_Click(object sender, RoutedEventArgs e)
+        {
+            new addRoomWindow().Show();
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

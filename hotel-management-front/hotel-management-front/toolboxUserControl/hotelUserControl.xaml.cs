@@ -68,38 +68,38 @@ namespace hotel_management_front.toolboxUserControl
             newTabItem.IsSelected = true;
         }
 
-        private void arrivee_Click(object sender, RoutedEventArgs e)
+        private void sejour_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
             {
-                Header = "Arrivee",
+                Header = "Sejour",
             };
 
 
             GlobalVariable.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
-            arriveeUserControl UC1 = new arriveeUserControl();
+            sejourUserControl UC1 = new sejourUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
 
-        private void recherche_Click(object sender, RoutedEventArgs e)
+        private void histoArrivee_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
             {
-                Header = "Recherche",
+                Header = "Historique Arrivee",
             };
 
 
             GlobalVariable.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
-            rechercheUserControl UC1 = new rechercheUserControl();
+            histoArriUserControl UC1 = new histoArriUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }

@@ -33,7 +33,7 @@ namespace hotel_management_front.toolboxUserControl
 
             TabItem newTabItem = new TabItem
             {
-                Header = "Reservation",
+                Header = "Employee",
             };
 
             GlobalVariable.tbControl.Items.Add(newTabItem);
