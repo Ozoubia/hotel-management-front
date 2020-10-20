@@ -11,6 +11,7 @@
             <Button x:Name="restauration" Margin="20 0 10 0" Click="restauration_Click">Restauration</Button>
             <Button x:Name="material"  Margin="10 0 10 0" Click="material_Click">Material</Button>
             <Button x:Name="stockSecours" Margin="10 0 10 0" Click="stockSecours_Click">Stock secours</Button>
+            <Button x:Name="PriseProduit" Margin="10 0 10 0" Click="PriseProduit_Click">Prise Produit </Button>
         </StackPanel>
     </Grid>
 </UserControl>

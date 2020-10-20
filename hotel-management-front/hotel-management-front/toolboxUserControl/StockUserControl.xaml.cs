@@ -80,5 +80,23 @@ namespace hotel_management_front.toolboxUserControl
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
+
+        private void PriseProduit_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Prise Produit",
+            };
+
+
+            GlobalVariable.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            PriseProduitUserControl UC1 = new PriseProduitUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
+        }
     }
 }

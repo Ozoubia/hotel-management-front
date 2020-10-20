@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="hotel_management_front.tabsUserControl.stockSecoursUserControl"
+﻿<UserControl x:Class="hotel_management_front.tabsUserControl.PriseProduitUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -9,26 +9,28 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="65"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
-            <Button Grid.Row="0" x:Name="AjouterMaterial" Click="AjouterMaterial_Click" HorizontalAlignment="Center">Ajouter un employee</Button>
+            <Button Grid.Row="0" x:Name="AjouterPrise" Click="AjouterPrise_Click" HorizontalAlignment="Center">Ajouter une Prise</Button>
         </StackPanel>
-        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="MaterialSListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
+        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="ProduitListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
             <DataGrid.Columns>
                 <!--columns-->
-                <DataGridTextColumn Header="ID Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Nom Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Quantité Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Prix Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Nom Fournisseur" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Date Achat" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Emplacement" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Etat Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" ></DataGridTextColumn>
-                <!--button-->
+                <DataGridTextColumn Header="ID Prise" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Nom Produit" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Categorie" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantité Produit" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Nom Employee" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Prenom Employee" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date_Prise" ></DataGridTextColumn>
+                <DataGridTextColumn Header="type" ></DataGridTextColumn>
+                
+                
+
+                    <!--button-->
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
