@@ -84,7 +84,8 @@
 
     <Compile Include="dialog windows\addemergencyEquipmentWindow.xaml.cs">
       <DependentUpon>addemergencyEquipmentWindow.xaml</DependentUpon>
-
+    </Compile>
+     
     <Compile Include="dialog windows\addClientWindow.xaml.cs">
       <DependentUpon>addClientWindow.xaml</DependentUpon>
 
@@ -115,7 +116,7 @@
     </Compile>
     <Compile Include="dialog windows\modifyEmergencyEquipmentWindow.xaml.cs">
       <DependentUpon>modifyEmergencyEquipmentWindow.xaml</DependentUpon>
-
+    </Compile>
 
     <Compile Include="dialog windows\modifyArchiveWindow.xaml.cs">
       <DependentUpon>modifyArchiveWindow.xaml</DependentUpon>
@@ -217,7 +218,10 @@
     </Page>
 
     <Page Include="dialog windows\addemergencyEquipmentWindow.xaml">
-
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    
     <Page Include="dialog windows\addClientWindow.xaml">
 
       <SubType>Designer</SubType>
@@ -254,7 +258,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\modifyEmergencyEquipmentWindow.xaml">
-
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
 
     <Page Include="dialog windows\modifyArchiveWindow.xaml">
 
