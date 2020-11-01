@@ -18,66 +18,43 @@ using System.Windows.Shapes;
 namespace hotel_management_front.toolboxUserControl
 {
     /// <summary>
-    /// Interaction logic for StockUserControl.xaml
+    /// Interaction logic for fournisseurUserControl.xaml
     /// </summary>
-    public partial class StockUserControl : UserControl
+    public partial class fournisseurUserControl : UserControl
     {
-        public StockUserControl()
+        public fournisseurUserControl()
         {
             InitializeComponent();
         }
 
-
-        private void stockSecours_Click(object sender, RoutedEventArgs e)
+        private void arrivageBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
             {
-                Header = "Stock secours",
+                Header = "Nouvelle Arrivage",
             };
-
-
             GlobalVariable.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
-            stockSecoursUserControl UC1 = new stockSecoursUserControl();
+            arrivageUserControl UC1 = new arrivageUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
 
-        private void StockGenerale_Click(object sender, RoutedEventArgs e)
+        private void fournisseurListBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
             {
-                Header = "Stock General",
+                Header = "List des fournisseurs",
             };
-
-
             GlobalVariable.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
-            stockGeneralUserControl UC1 = new stockGeneralUserControl();
-            tabGrid.Children.Add(UC1);
-            newTabItem.IsSelected = true;
-        }
-
-        private void Cuisine_Click(object sender, RoutedEventArgs e)
-        {
-            Grid tabGrid = new Grid();
-
-            TabItem newTabItem = new TabItem
-            {
-                Header = "Cuisine",
-            };
-
-
-            GlobalVariable.tbControl.Items.Add(newTabItem);
-            newTabItem.Content = tabGrid;
-            tabGrid.Children.Clear();
-            cuisineUserControl UC1 = new cuisineUserControl();
+            listFournisseurUserControl UC1 = new listFournisseurUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }

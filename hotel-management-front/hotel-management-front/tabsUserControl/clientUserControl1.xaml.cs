@@ -34,18 +34,18 @@ namespace hotel_management_front.tabsUserControl
             classes.client clientObj = new classes.client();
             DataTable data = clientObj.showAllClients();
 
-            employeeListGrid.ItemsSource = data.DefaultView;
-            ((DataGridTextColumn)employeeListGrid.Columns[0]).Binding = new Binding("name");
-            ((DataGridTextColumn)employeeListGrid.Columns[1]).Binding = new Binding("lname");
-            ((DataGridTextColumn)employeeListGrid.Columns[2]).Binding = new Binding("sex");
-            ((DataGridTextColumn)employeeListGrid.Columns[3]).Binding = new Binding("birth_date");
-            ((DataGridTextColumn)employeeListGrid.Columns[4]).Binding = new Binding("city");
-            ((DataGridTextColumn)employeeListGrid.Columns[5]).Binding = new Binding("country");
-            ((DataGridTextColumn)employeeListGrid.Columns[6]).Binding = new Binding("phone");
-            ((DataGridTextColumn)employeeListGrid.Columns[7]).Binding = new Binding("status");
-            ((DataGridTextColumn)employeeListGrid.Columns[8]).Binding = new Binding("CIN");
-            ((DataGridTextColumn)employeeListGrid.Columns[9]).Binding = new Binding("arrival_date");
-            ((DataGridTextColumn)employeeListGrid.Columns[10]).Binding = new Binding("departure_date");
+            ClientListGrid.ItemsSource = data.DefaultView;
+            ((DataGridTextColumn)ClientListGrid.Columns[0]).Binding = new Binding("name");
+            ((DataGridTextColumn)ClientListGrid.Columns[1]).Binding = new Binding("lname");
+            ((DataGridTextColumn)ClientListGrid.Columns[2]).Binding = new Binding("sex");
+            ((DataGridTextColumn)ClientListGrid.Columns[3]).Binding = new Binding("birth_date");
+            ((DataGridTextColumn)ClientListGrid.Columns[4]).Binding = new Binding("city");
+            ((DataGridTextColumn)ClientListGrid.Columns[5]).Binding = new Binding("country");
+            ((DataGridTextColumn)ClientListGrid.Columns[6]).Binding = new Binding("phone");
+            ((DataGridTextColumn)ClientListGrid.Columns[7]).Binding = new Binding("status");
+            ((DataGridTextColumn)ClientListGrid.Columns[8]).Binding = new Binding("CIN");
+            ((DataGridTextColumn)ClientListGrid.Columns[9]).Binding = new Binding("arrival_date");
+            ((DataGridTextColumn)ClientListGrid.Columns[10]).Binding = new Binding("departure_date");
 
         }
 

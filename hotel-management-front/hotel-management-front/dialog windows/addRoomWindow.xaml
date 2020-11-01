@@ -26,10 +26,14 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
             <TextBox Text="" x:Name="prixField" materialDesign:HintAssist.Hint="Prix de base"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
-            <TextBox Text="" x:Name="statusField" materialDesign:HintAssist.Hint="Status"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <!--add image button--> 
+            <StackPanel Orientation="Vertical" Margin="200 50 0 0">
+                <Button x:Name="addRoomImg" Click="addRoomImg_Click">ajouter image</Button>
+                <TextBlock x:Name="addStatus" HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3">
-            <ComboBox Text="" x:Name="isCleanedField" materialDesign:HintAssist.Hint="netoyee" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137">
+            <ComboBox Text="" x:Name="isWorkingField" materialDesign:HintAssist.Hint="Marche" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137">
                 <ComboBoxItem Content="Oui"/>
                 <ComboBoxItem Content="Non"/>
             </ComboBox>

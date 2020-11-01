@@ -65,33 +65,32 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="classes\article.cs" />
     <Compile Include="classes\client.cs" />
     <Compile Include="classes\employee.cs" />
+    <Compile Include="classes\fournisseur.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
-
     <Compile Include="classes\histoArrivee.cs" />
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\reservation.cs" />
     <Compile Include="classes\room.cs" />
     <Compile Include="classes\sejour.cs" />
-
     <Compile Include="classes\Material.cs" />
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\Produit.cs" />
     <Compile Include="classes\Secour.cs" />
-
     <Compile Include="classes\user.cs" />
-
     <Compile Include="dialog windows\addemergencyEquipmentWindow.xaml.cs">
       <DependentUpon>addemergencyEquipmentWindow.xaml</DependentUpon>
     </Compile>
-     
     <Compile Include="dialog windows\addClientWindow.xaml.cs">
       <DependentUpon>addClientWindow.xaml</DependentUpon>
-
     </Compile>
     <Compile Include="dialog windows\addEmployeeWindow.xaml.cs">
       <DependentUpon>addEmployeeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\AddFournisseur.xaml.cs">
+      <DependentUpon>AddFournisseur.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialog windows\addMaterialWindow.xaml.cs">
       <DependentUpon>addMaterialWindow.xaml</DependentUpon>
@@ -99,15 +98,12 @@
     <Compile Include="dialog windows\addPresenceWindow.xaml.cs">
       <DependentUpon>addPresenceWindow.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="dialog windows\addReservationWindow.xaml.cs">
       <DependentUpon>addReservationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialog windows\addRoomWindow.xaml.cs">
       <DependentUpon>addRoomWindow.xaml</DependentUpon>
     </Compile>
-
-
     <Compile Include="dialog windows\addProductWindow.xaml.cs">
       <DependentUpon>addProductWindow.xaml</DependentUpon>
     </Compile>
@@ -117,10 +113,8 @@
     <Compile Include="dialog windows\modifyEmergencyEquipmentWindow.xaml.cs">
       <DependentUpon>modifyEmergencyEquipmentWindow.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="dialog windows\modifyArchiveWindow.xaml.cs">
       <DependentUpon>modifyArchiveWindow.xaml</DependentUpon>
-
     </Compile>
     <Compile Include="dialog windows\modifyEmployeeWindow.xaml.cs">
       <DependentUpon>modifyEmployeeWindow.xaml</DependentUpon>
@@ -131,8 +125,14 @@
     <Compile Include="dialog windows\modifyProductWindow.xaml.cs">
       <DependentUpon>modifyProductWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialog windows\nouvelleArrivageWindow.xaml.cs">
+      <DependentUpon>nouvelleArrivageWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\aideUserControl.xaml.cs">
       <DependentUpon>aideUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\arrivageUserControl.xaml.cs">
+      <DependentUpon>arrivageUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\bonqueUserControl.xaml.cs">
       <DependentUpon>bonqueUserControl.xaml</DependentUpon>
@@ -149,11 +149,23 @@
     <Compile Include="tabsUserControl\clientUserControl1.xaml.cs">
       <DependentUpon>clientUserControl1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\cuisineUserControl.xaml.cs">
+      <DependentUpon>cuisineUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\employesUserControl.xaml.cs">
       <DependentUpon>employesUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\etatLieuChambreUserControl.xaml.cs">
+      <DependentUpon>etatLieuChambreUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\eventHistUserControl.xaml.cs">
+      <DependentUpon>eventHistUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\histoArriUserControl.xaml.cs">
       <DependentUpon>histoArriUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\listFournisseurUserControl.xaml.cs">
+      <DependentUpon>listFournisseurUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\materialUserControl.xaml.cs">
       <DependentUpon>materialUserControl.xaml</DependentUpon>
@@ -164,17 +176,11 @@
     <Compile Include="tabsUserControl\presenceArchiveUserControl.xaml.cs">
       <DependentUpon>presenceArchiveUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tabsUserControl\PriseProduitUserControl.xaml.cs">
-      <DependentUpon>PriseProduitUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="tabsUserControl\présenceUserControl1.xaml.cs">
       <DependentUpon>présenceUserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\reservationUserControl.xaml.cs">
       <DependentUpon>reservationUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="tabsUserControl\restaurationUserControl.xaml.cs">
-      <DependentUpon>restaurationUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\restaurationUserControl1.xaml.cs">
       <DependentUpon>restaurationUserControl1.xaml</DependentUpon>
@@ -188,6 +194,9 @@
     <Compile Include="tabsUserControl\StatTabUserControl.xaml.cs">
       <DependentUpon>StatTabUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\stockGeneralUserControl.xaml.cs">
+      <DependentUpon>stockGeneralUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\stockSecoursUserControl.xaml.cs">
       <DependentUpon>stockSecoursUserControl.xaml</DependentUpon>
     </Compile>
@@ -196,6 +205,9 @@
     </Compile>
     <Compile Include="toolboxUserControl\caisseUserControl.xaml.cs">
       <DependentUpon>caisseUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="toolboxUserControl\fournisseurUserControl.xaml.cs">
+      <DependentUpon>fournisseurUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="toolboxUserControl\hotelUserControl.xaml.cs">
       <DependentUpon>hotelUserControl.xaml</DependentUpon>
@@ -216,18 +228,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="dialog windows\addemergencyEquipmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    
     <Page Include="dialog windows\addClientWindow.xaml">
-
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\addEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\AddFournisseur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,8 +260,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
-
     <Page Include="dialog windows\addProductWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -261,9 +272,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="dialog windows\modifyArchiveWindow.xaml">
-
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -276,6 +285,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\modifyProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\nouvelleArrivageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -295,6 +308,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="tabsUserControl\aideUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\arrivageUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -318,11 +335,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="tabsUserControl\cuisineUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\employesUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="tabsUserControl\etatLieuChambreUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\eventHistUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\histoArriUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\listFournisseurUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -338,19 +371,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tabsUserControl\PriseProduitUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="tabsUserControl\présenceUserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\reservationUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="tabsUserControl\restaurationUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -370,6 +395,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="tabsUserControl\stockGeneralUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\stockSecoursUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -379,6 +408,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="toolboxUserControl\caisseUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="toolboxUserControl\fournisseurUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

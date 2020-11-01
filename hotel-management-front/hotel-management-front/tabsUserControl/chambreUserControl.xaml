@@ -24,7 +24,7 @@
                 <DataGridTextColumn Header="Type" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Prix de base" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Status" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Netoyee" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Marche" ></DataGridTextColumn>
                 
                 <!--button-->
                 <DataGridTemplateColumn>

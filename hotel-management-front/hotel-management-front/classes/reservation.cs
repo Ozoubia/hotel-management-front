@@ -14,6 +14,8 @@ namespace hotel_management_front.classes
         DateTime checkout;
         int totalAmount;
         string payementStatus;
+        int verse;
+        DateTime confirmDate;
 
         // empty constructor
         public reservation()
@@ -24,7 +26,7 @@ namespace hotel_management_front.classes
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
 
         //filled constructor 
-        public reservation(string fullname, string roomname, DateTime checkin, DateTime checkout, int totalAmount, string payStatus)
+        public reservation(string fullname, string roomname, DateTime checkin, DateTime checkout, int totalAmount, string payStatus, int versement, DateTime confirmation_date)
         {
             this.Client_fullname = fullname;
             this.roomName = roomname;
@@ -32,6 +34,8 @@ namespace hotel_management_front.classes
             this.checkout = checkout;
             this.totalAmount = totalAmount;
             this.payementStatus = payStatus;
+            this.verse = versement;
+            this.confirmDate = confirmation_date;
         }
 
 
@@ -76,8 +80,8 @@ namespace hotel_management_front.classes
             }
             else
             {
-                string query3 = "INSERT INTO reservation (id_client, id_room, check_in, check_out, total_amount, payement_status)" +
-                            "VALUES (@clientID, @roomID, @checkin, @checkout, @totalamount, @payementStatus)";
+                string query3 = "INSERT INTO reservation (id_client, id_room, check_in, check_out, total_amount, payement_status, versement, confirmation_date)" +
+                            "VALUES (@clientID, @roomID, @checkin, @checkout, @totalamount, @payementStatus, @versement, @confirmDate)";
 
                 SqlCommand com = new SqlCommand(query3, con);
 
@@ -88,6 +92,8 @@ namespace hotel_management_front.classes
                 com.Parameters.AddWithValue("@checkout", this.checkout);
                 com.Parameters.AddWithValue("@totalamount", this.totalAmount);
                 com.Parameters.AddWithValue("@payementStatus", this.payementStatus);
+                com.Parameters.AddWithValue("@versement", this.verse);
+                com.Parameters.AddWithValue("@confirmDate", this.confirmDate);
 
                 con.Open();
                 com.ExecuteNonQuery();
@@ -95,7 +101,7 @@ namespace hotel_management_front.classes
 
                 // updating the room status in rooms table
 
-                string query4 = "UPDATE room SET status='reservee' WHERE id_room=@roomID";
+                string query4 = "UPDATE room SET status='Reservee' WHERE id_room=@roomID";
                 // params
                 SqlCommand com2 = new SqlCommand(query4, con);
                 com2.Parameters.AddWithValue("@roomID", roomID);
@@ -114,7 +120,7 @@ namespace hotel_management_front.classes
         // function that returns all the reservations as a datatable
         public DataTable showAllReservations()
         {
-            string query = "SELECT client.name, client.lname, room.name AS rname, room.type, reservation.check_in, reservation.check_out, reservation.total_amount, reservation.payement_status FROM reservation" +
+            string query = "SELECT client.name, client.lname, room.name AS rname, room.type, reservation.check_in, reservation.check_out, reservation.total_amount, reservation.payement_status, reservation.versement FROM reservation" +
                 " INNER JOIN client ON reservation.id_client = client.id_client" +
                 " INNER JOIN room ON reservation.id_room = room.id_room ";
 
