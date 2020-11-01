@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 
 namespace hotel_management_front
 {
@@ -12,6 +13,16 @@ namespace hotel_management_front
         public MainWindow()
         {
             InitializeComponent();
+            createRoomImg();
+        }
+
+        // if folders doesn't exist create it 
+        public void createRoomImg()
+        {
+            bool photo_exists = Directory.Exists("images");
+
+            if (!photo_exists)
+                Directory.CreateDirectory("images");
         }
 
         //login button click event 

@@ -121,5 +121,23 @@ namespace hotel_management_front.toolboxUserControl
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
+
+        private void etatLieuChambre_Click(object sender, RoutedEventArgs e)
+        {
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Etat Lieu Chambre",
+            };
+
+
+            GlobalVariable.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            etatLieuChambreUserControl UC1 = new etatLieuChambreUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
+        }
     }
 }

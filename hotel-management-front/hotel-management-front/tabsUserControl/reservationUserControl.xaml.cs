@@ -43,7 +43,8 @@ namespace hotel_management_front.tabsUserControl
             ((DataGridTextColumn)reservationListGrid.Columns[5]).Binding = new Binding("check_out");
             ((DataGridTextColumn)reservationListGrid.Columns[6]).Binding = new Binding("total_amount");
             ((DataGridTextColumn)reservationListGrid.Columns[7]).Binding = new Binding("payement_status");
-            
+            ((DataGridTextColumn)reservationListGrid.Columns[8]).Binding = new Binding("versement");
+
 
         }
 

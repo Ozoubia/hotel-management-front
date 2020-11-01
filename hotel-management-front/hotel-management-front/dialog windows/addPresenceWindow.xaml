@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:hotel_management_front.dialog_windows"
         mc:Ignorable="d"
-        Title="addPresenceWindow" Height="320" Width="6000">
+        Title="addPresenceWindow" Height="320" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="99*"/>

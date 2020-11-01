@@ -1,0 +1,50 @@
+﻿<Window x:Class="hotel_management_front.dialog_windows.AddFournisseur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hotel_management_front.dialog_windows"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="AddFournisseur" Height="700" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock Text="AJOUTER UN FOURNISSEUR" HorizontalAlignment="Center"   VerticalAlignment="Top" Margin="180,0,5,2" Foreground="Gray" FontSize="25" Width="240" RenderTransformOrigin="0.879,0.545"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBox Text="" x:Name="nomField" materialDesign:HintAssist.Hint="Nom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <TextBox Text="" x:Name="PrenomField" materialDesign:HintAssist.Hint="Prenom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBox Text="" x:Name="villeField" materialDesign:HintAssist.Hint="ville"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <TextBox Text="" x:Name="paysField" materialDesign:HintAssist.Hint="pays"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <TextBox Text="" x:Name="telephoneField" materialDesign:HintAssist.Hint="telephone"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <TextBox Text="" x:Name="addressField" materialDesign:HintAssist.Hint="Adress"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <TextBox Text="" x:Name="emailField" materialDesign:HintAssist.Hint="Email"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <TextBox Text="0" x:Name="creditField" materialDesign:HintAssist.Hint="Credit"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+        </StackPanel>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5">
+            <Button x:Name="ajouterClientBtn" Click="ajouterClientBtn_Click" >confirmer</Button>
+            <Button x:Name="annulerBtn" Click="annulerBtn_Click">Annuler</Button>
+        </StackPanel>
+
+
+    </Grid>
+</Window>

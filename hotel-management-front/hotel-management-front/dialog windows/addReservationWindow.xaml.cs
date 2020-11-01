@@ -27,7 +27,6 @@ namespace hotel_management_front.dialog_windows
         {
             InitializeComponent();
             fillClientCombo();
-            fillRoomCombo();
         }
 
         // function to fill the client bombo box
@@ -49,10 +48,10 @@ namespace hotel_management_front.dialog_windows
         }
 
         // function to fill the client bombo box
-        public void fillRoomCombo()
+        public void fillRoomCombo(DateTime dateArrive, DateTime dateDepart)
         {
             classes.room roomObj = new classes.room();
-            DataTable data = roomObj.showAllAvailableRooms();
+            DataTable data = roomObj.showAllAvailableRooms(dateArrive, dateDepart);
             int data_length = data.Rows.Count;
 
             // looping through the client list
@@ -77,13 +76,17 @@ namespace hotel_management_front.dialog_windows
         private void confirmBtn_Click(object sender, RoutedEventArgs e)
         {
             string clientFullName = clientComboBox.Text;
-            string roomName = roomComboBox.Text;          
-            DateTime startDate = DateTime.Parse(dateArriveeField.SelectedDate.Value.Date.ToShortDateString());         
+            string roomName = roomComboBox.Text;
+            DateTime startDate = DateTime.Parse(dateArriveeField.SelectedDate.Value.Date.ToShortDateString());
             DateTime endDate = DateTime.Parse(dateDepartField.SelectedDate.Value.Date.ToShortDateString());
             int totalAmount = int.Parse(montalTotalField.Text);
             string payementStatus = payementStatusComboBox.Text;
+            int versement = int.Parse(versementField.Text);
+            // confirmation date
+            int nbrDayBeforeConfirm = int.Parse(confirmationDate.Text);
+            DateTime confirmDate = endDate.AddDays(-nbrDayBeforeConfirm);
 
-            classes.reservation reservObj = new classes.reservation(clientFullName, roomName, startDate, endDate, totalAmount, payementStatus);
+            classes.reservation reservObj = new classes.reservation(clientFullName, roomName, startDate, endDate, totalAmount, payementStatus, versement, confirmDate);
 
             string result = reservObj.AddReservation();
             MessageBox.Show(result);
@@ -131,6 +134,10 @@ namespace hotel_management_front.dialog_windows
                 DateTime end = dateDepartField.SelectedDate.Value.Date;
                 var nbrDays = (end - start).TotalDays;
                 montalTotalField.Text = ((nbrDays + 1) * roomPrice).ToString();
+
+                //update room combobox
+                roomComboBox.Items.Clear();
+                fillRoomCombo(start, end);
             }
         }
 
@@ -144,6 +151,23 @@ namespace hotel_management_front.dialog_windows
                 DateTime end = dateDepartField.SelectedDate.Value.Date;
                 var nbrDays = (end - start).TotalDays;
                 montalTotalField.Text = ((nbrDays + 1) * roomPrice).ToString();
+
+                //update room combobox
+                roomComboBox.Items.Clear();
+                fillRoomCombo(start, end);
+            }
+        }
+
+        // showing or hidding the versement field
+        private void payementStatusComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (payementStatusComboBox.Text == "versee")
+            {
+                versementField.Visibility = Visibility.Visible;
+
+            }else if (payementStatusComboBox.Text == "payee")
+            {
+                versementField.Visibility = Visibility.Hidden;
             }
         }
     }

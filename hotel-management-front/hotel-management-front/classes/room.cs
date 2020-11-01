@@ -12,20 +12,20 @@ namespace hotel_management_front.classes
         string room_name;
         string type;
         int base_price;
-        string status;
-        bool isCleaned;
+        bool isWorking;
+        string imgPath;
 
         //empty constructor
         public room() { }
 
         //constructor 
-        public room(string name, string type, int price, string status, bool isCleaned)
+        public room(string name, string type, int price, bool isworking, string path)
         {
             this.room_name = name;
             this.type = type;
             this.base_price = price;
-            this.status = status;
-            this.isCleaned = isCleaned;
+            this.isWorking = isworking;
+            this.imgPath = path;
         }
 
         // connection variable
@@ -50,8 +50,8 @@ namespace hotel_management_front.classes
             }
             else
             {
-                string query1 = "INSERT INTO room (name, type, base_price, status, isCleaned) " +
-                    "VALUES (@name, @type, @price, @status, @isCleaned)";
+                string query1 = "INSERT INTO room (name, type, base_price, status, works, photo) " +
+                    "VALUES (@name, @type, @price, 'Libre', @isworking, @photoPath)";
 
                 SqlCommand com = new SqlCommand(query1, con);
 
@@ -59,8 +59,8 @@ namespace hotel_management_front.classes
                 com.Parameters.AddWithValue("@name", this.room_name);
                 com.Parameters.AddWithValue("@type", this.type);
                 com.Parameters.AddWithValue("@price", this.base_price);
-                com.Parameters.AddWithValue("@status", this.status);
-                com.Parameters.AddWithValue("@isCleaned", this.isCleaned);
+                com.Parameters.AddWithValue("@isworking", this.isWorking);
+                com.Parameters.AddWithValue("@photoPath", this.imgPath);               
 
                 con.Open();
                 com.ExecuteNonQuery();
@@ -84,14 +84,23 @@ namespace hotel_management_front.classes
         }
 
         // function that returns all the available rooms as a datatable
-        public DataTable showAllAvailableRooms()
+        public DataTable showAllAvailableRooms(DateTime dateArrive, DateTime dateDepart)
         {
-            string query = "SELECT * FROM room WHERE status='libre'";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(query, con);
-            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            string query = "SELECT * FROM room WHERE id_room NOT IN " +
+                "(SELECT id_room FROM reservation WHERE " +
+                "(@dateArrive < check_in AND(@dateDepart BETWEEN check_in AND check_out)) OR" +
+                "((@dateArrive BETWEEN check_in AND check_out) AND(@dateDepart BETWEEN check_in AND check_out)) OR " +
+                "((@dateArrive BETWEEN check_in AND check_out) AND(@dateDepart > check_out)) OR" +
+                "((@dateArrive < check_in) AND(@dateDepart > check_out))) ";
+
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@dateArrive", dateArrive);
+            ada.SelectCommand.Parameters.AddWithValue("@dateDepart", dateDepart);
+
             DataTable data = new DataTable();
-            adapt.Fill(data);
+            ada.Fill(data);
             return data;
         }
 

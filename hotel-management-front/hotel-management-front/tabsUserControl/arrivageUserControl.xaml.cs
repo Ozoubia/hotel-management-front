@@ -17,23 +17,23 @@ using System.Windows.Shapes;
 namespace hotel_management_front.tabsUserControl
 {
     /// <summary>
-    /// Logique d'interaction pour PriseProduitUserControl.xaml
+    /// Interaction logic for arrivageUserControl.xaml
     /// </summary>
-    public partial class PriseProduitUserControl : UserControl
+    public partial class arrivageUserControl : UserControl
     {
-        public PriseProduitUserControl()
+        public arrivageUserControl()
         {
             InitializeComponent();
-        }
-
-        private void AjouterPrise_Click(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void addArrivageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new nouvelleArrivageWindow().Show();
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,24 +25,28 @@ namespace hotel_management_front.dialog_windows
             InitializeComponent();
         }
 
+        public string imgPath;
+
         private void ajouterRoomBtn_Click(object sender, RoutedEventArgs e)
         {
             string name = nomField.Text;
             string type = typeField.Text;
             int price = int.Parse(prixField.Text);
-            string status = statusField.Text;
-            bool isCleaned;
-            if (isCleanedField.Text == "Oui")
+            bool isWorking;
+            if (isWorkingField.Text == "Oui")
             {
-                isCleaned = true;
+                isWorking = true;
             }
             else
             {
-                isCleaned = false;
+                isWorking = false;
             }
-             
 
-            classes.room roomOjb = new classes.room(name, type, price, status, isCleaned);
+            string dest_path = "images/" + name + ".jpg";
+            //copying image to the image folders
+            System.IO.File.Move(imgPath, dest_path);
+
+            classes.room roomOjb = new classes.room(name, type, price, isWorking, dest_path);
             string result = roomOjb.addRoom();
             MessageBox.Show(result);
         }
@@ -49,6 +54,27 @@ namespace hotel_management_front.dialog_windows
         private void annulerBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void addRoomImg_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Title = "Selectionner image";
+                dialog.Filter = "Image files (*.png;*.jpeg,*.jpg)|*.png;*.jpeg;*.jpg";
+                if (dialog.ShowDialog() == true)
+                {
+                    addStatus.Text = "image ajoutee";
+                    string rawPath = new Uri(dialog.FileName, UriKind.Absolute).ToString();
+                    imgPath = rawPath.Substring(8);
+                    
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Veuillez selectionner une image");
+            }
         }
     }
 }

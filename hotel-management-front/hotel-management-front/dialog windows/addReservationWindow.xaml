@@ -18,6 +18,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <!--title--> 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="AJOUTER Reservation" HorizontalAlignment="Center" Margin="0 10 0 0" VerticalAlignment="Top" Foreground="Gray" FontSize="25" Width="240" RenderTransformOrigin="0.879,0.545"/>
@@ -46,10 +47,20 @@
 
         <DatePicker Grid.Column="1" Grid.Row="2" x:Name="dateDepartField" materialDesign:HintAssist.Hint="Date depart" FontFamily="Algerian" FontSize="18" Width="137" SelectedDateChanged="dateDepartField_SelectedDateChanged"/>
 
-        <ComboBox x:Name="payementStatusComboBox"  Grid.Column="1" Grid.Row="3" materialDesign:HintAssist.Hint="Payement status"  Width="180" FontFamily="Algerian" FontSize="18">
-            <ComboBoxItem Content="reservee"/>
-            <ComboBoxItem Content="payee"/>
-        </ComboBox>
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="3">
+            <ComboBox x:Name="payementStatusComboBox" DropDownClosed="payementStatusComboBox_DropDownClosed" materialDesign:HintAssist.Hint="Status payement"  Width="180" FontFamily="Algerian" FontSize="18" >
+                <ComboBoxItem Content="payee"/>
+                <ComboBoxItem Content="versee"/>
+            </ComboBox>
+            <TextBox x:Name="versementField" Width="100" Margin="15" Visibility="Hidden" Text="0"></TextBox>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="4" VerticalAlignment="Center">
+            <TextBlock FontSize="18" Margin="10 0 0 0">Confirmer avant</TextBlock>
+            <TextBox Margin="30 0 30 0" FontSize="18" x:Name="confirmationDate">1</TextBox>
+            <TextBlock Margin="10 0 0 0" FontSize="18">jour</TextBlock>
+        </StackPanel>
+        
         
         <!--buttons-->
         <StackPanel Orientation="Horizontal" Grid.Row="5" HorizontalAlignment="Center">

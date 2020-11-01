@@ -39,7 +39,7 @@ namespace hotel_management_front.tabsUserControl
             ((DataGridTextColumn)roomListGrid.Columns[1]).Binding = new Binding("type");
             ((DataGridTextColumn)roomListGrid.Columns[2]).Binding = new Binding("base_price");
             ((DataGridTextColumn)roomListGrid.Columns[3]).Binding = new Binding("status");
-            ((DataGridTextColumn)roomListGrid.Columns[4]).Binding = new Binding("isCleaned");
+            ((DataGridTextColumn)roomListGrid.Columns[4]).Binding = new Binding("works");
 
         }
 

@@ -18,8 +18,7 @@ namespace hotel_management_front.classes
         }
 
         public bool login()
-        {
-            
+        {            
             string query = "SELECT * FROM users WHERE username=@name AND password=@pass";
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 

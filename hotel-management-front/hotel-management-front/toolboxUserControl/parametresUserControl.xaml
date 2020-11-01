@@ -5,12 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:hotel_management_front.toolboxUserControl"
              mc:Ignorable="d" 
-             d:DesignHeight="85" d:DesignWidth="600">
+             d:DesignHeight="85" d:DesignWidth="800">
     <Grid>
         <StackPanel Orientation="Horizontal">
             <Button x:Name="utilisateur" Margin="20 0 10 0" Click="utilisateur_Click" >Utilisateurs</Button>
             <Button x:Name="sauvgarde" Margin="20 0 10 0" Click="sauvgarde_Click">Sauvgarde</Button>
             <Button x:Name="restauration" Margin="20 0 10 0" Click="restauration_Click">Restauration</Button>
+            <Button x:Name="eventHistory" Margin="20 0 10 0" Click="eventHistory_Click">Journal des evenement</Button>
             <Button x:Name="aide" Margin="20 0 10 0" Click="aide_Click">Aide</Button>
         </StackPanel>
     </Grid>
