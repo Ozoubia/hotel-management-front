@@ -47,6 +47,8 @@ namespace hotel_management_front.dialog_windows
             string result = clientObj.addClient();
             MessageBox.Show(result);
 
+            // updating the client grid
+
         }
     }
 }

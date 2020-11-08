@@ -105,7 +105,6 @@ namespace hotel_management_front.classes
         }
 
         // used for the reservation price calculating
-
         public DataTable showRoomPrice(string roomName)
         {
             // checking if an employee exists
@@ -121,5 +120,23 @@ namespace hotel_management_front.classes
 
             return dtbl;
         }
+
+        // used for the room etat lieu
+        public DataTable showRoomIDByName(string roomName)
+        {
+            // checking if an employee exists
+            string query = "SELECT id_room FROM room WHERE name=@name";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@name", roomName);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
+
     }
 }

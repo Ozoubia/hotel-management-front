@@ -69,17 +69,17 @@ namespace hotel_management_front.classes
                 string[] fullname = this.fournisseurName.Split(' ');
 
                 // getting client id 
-                string query1 = "SELECT id_founisseur FROM fournisseur WHERE name=@name AND lname=@lname";
+                string query1 = "SELECT id_fournisseur FROM fournisseur WHERE name=@name AND lname=@lname";
                 SqlDataAdapter ada1 = new SqlDataAdapter(query1, con);
                 ada1.SelectCommand.Parameters.AddWithValue("@name", fullname[0]);
                 ada1.SelectCommand.Parameters.AddWithValue("@lname", fullname[1]);
                 DataTable dtbl1 = new DataTable();
                 ada1.Fill(dtbl1);
-                int idFournisseur = int.Parse(dtbl1.Rows[0]["id_founisseur"].ToString());
+                int idFournisseur = int.Parse(dtbl1.Rows[0]["id_fournisseur"].ToString());
 
 
                 // inseting into the general stock
-                string query2 = "INSERT INTO article (reference, designation, famille, quantity, stock_alert, quantity_utilisee, date_expiration, id_founisseur, prix_achat, prix_vente, localisation, date_arrivage) " +
+                string query2 = "INSERT INTO article (reference, designation, famille, quantity, stock_alert, quantity_utilisee, date_expiration, id_fournisseur, prix_achat, prix_vente, localisation, date_arrivage) " +
                     "VALUES (@reference, @designation, @famille, @quantity, @stockAlert, 0, @dateExp, @idFournisseur, @prixAchat, @prixVente, @localisation, @dateArrivage)";
 
                 SqlCommand com = new SqlCommand(query2, con);
@@ -102,6 +102,22 @@ namespace hotel_management_front.classes
                 com.ExecuteNonQuery();
                 con.Close();
 
+                // add attribute to room
+                if (this.localisation == "Material")
+                {
+                    string query3 = "ALTER TABLE etat_lieu_room ADD " + this.designation + " int NULL" ;
+                    SqlCommand com3 = new SqlCommand(query3, con);
+
+                    con.Open();
+                    com3.ExecuteNonQuery();
+                    con.Close();
+                }
+
+                // add attribute to cuisine
+
+
+                // add attribute to hotel
+
                 return "Article added successfuly";
             }
         }
@@ -118,6 +134,24 @@ namespace hotel_management_front.classes
             DataTable data = new DataTable();
             adapt.Fill(data);
             return data;
+        }
+
+
+        // function that takes a type and returns the name 
+        public DataTable FilterByLocalisation(string localisation)
+        {
+            string query = "SELECT designation FROM article WHERE localisation=@loca";
+            
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@loca", localisation);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
         }
     }
 }
