@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="classes\article.cs" />
     <Compile Include="classes\client.cs" />
+    <Compile Include="classes\ELRoom.cs" />
     <Compile Include="classes\employee.cs" />
     <Compile Include="classes\fournisseur.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
@@ -166,6 +167,9 @@
     </Compile>
     <Compile Include="tabsUserControl\listFournisseurUserControl.xaml.cs">
       <DependentUpon>listFournisseurUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\materialRoomUserControl.xaml.cs">
+      <DependentUpon>materialRoomUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\materialUserControl.xaml.cs">
       <DependentUpon>materialUserControl.xaml</DependentUpon>
@@ -356,6 +360,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\listFournisseurUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\materialRoomUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

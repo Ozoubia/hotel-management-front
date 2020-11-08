@@ -7,6 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Rectangle Fill="Brown"></Rectangle>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--right grid--> 
+        <UniformGrid  x:Name="mainGrid" Margin="30" Grid.Column="0">
+            
+        </UniformGrid>
+        
+        <!--left grid-->
+        <StackPanel x:Name="rightGrid" Orientation="Vertical" Grid.Column="1"/>
     </Grid>
 </UserControl>
