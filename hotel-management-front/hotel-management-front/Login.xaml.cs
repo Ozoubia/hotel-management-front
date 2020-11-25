@@ -2,6 +2,9 @@
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
+using hotel_management_front.classes;
+using System;
+using System.Data;
 
 namespace hotel_management_front
 {
@@ -10,6 +13,8 @@ namespace hotel_management_front
     /// </summary>
     public partial class MainWindow : Window
     {
+        // connection variable
+        SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
         public MainWindow()
         {
             InitializeComponent();
@@ -39,12 +44,22 @@ namespace hotel_management_front
             {
                 new DashBoard().Show();
                 this.Close();
+                classes.GlobalVariable.username = user;
+                //historique
+                string par = "Login";
+               string nom = classes.GlobalVariable.username;
+                DateTime dateAction = DateTime.Today;
+                classes.client clientObj = new classes.client();
+                clientObj.ajouterHistorique(nom, par, dateAction);
+              
             }
             else
             {
                 MessageBox.Show("Username or password incorrect");
             }
-
+            
         }
+        
+        
     }
 }

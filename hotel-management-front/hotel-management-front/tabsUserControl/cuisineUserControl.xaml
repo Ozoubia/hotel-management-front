@@ -5,8 +5,58 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:hotel_management_front.tabsUserControl"
              mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <!--right grid-->
+        <Grid  x:Name="mainGrid" Margin="30" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
+                <Button Grid.Row="0" x:Name="alimenterCuisine" Click="alimenterCuisine_Click" HorizontalAlignment="Center">Alimenter</Button>
+            </StackPanel>
+
+            <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="CuisineListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
+                <DataGrid.Columns>
+                    <!--columns-->
+                    <DataGridTextColumn Header="ID cuisine" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="reference" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="designation" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="quantity" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="stock alert" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="prix achat" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="prix vente" ></DataGridTextColumn>
+
+
+                    <!--button-->
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button Height="25" Margin="0 0 10 0" ToolTip="Modifier" x:Name="EditBtn" Click="EditBtn_Click">
+                                        <materialDesign:PackIcon Kind="PencilOutline" ></materialDesign:PackIcon>
+                                    </Button>
+                                    <Button Height="25" ToolTip="Supprimer" x:Name="deleteBtn" Click="deleteBtn_Click" >
+                                        <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        
+    </Grid>
+
+        <!--left grid-->
+        <StackPanel x:Name="rightGrid" Orientation="Vertical" Grid.Column="1"/>
+        <Button Margin="1,200" Grid.Column="1" Name="cumpleterAlimenter" Click="cumpleterAlimenter_Click">Cumpleter Alimenter</Button>
     </Grid>
 </UserControl>

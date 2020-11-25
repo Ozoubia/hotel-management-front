@@ -58,16 +58,29 @@ namespace hotel_management_front.dialog_windows
             int prixAchat = int.Parse(prixAchatField.Text);
             int prixVente = int.Parse(prixVenteField.Text);     
             string localisation = localisationField.Text;
+            
             DateTime dateArrivage = DateTime.Parse(dateArrivageField.SelectedDate.Value.Date.ToShortDateString()); ;
-
+            classes.Cuisine cuisineObj = new classes.Cuisine(quantity, designation, reference, stockAlert, prixAchat, prixVente);
             classes.article articleObj = new classes.article(reference, designation, famille, quantity, stockAlert, dateExpi, fournisseurName, prixAchat,
                                             prixVente, localisation, dateArrivage);
-
+            if (localisation == "Cuisine")
+            {
+                cuisineObj.addCuisine();
+                
+            }
             string result = articleObj.addArticle();
             MessageBox.Show(result);
+            // add action to history log
+            string par = "Ajouter Arrivage ";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
+
+
         }
 
-        private void annulerBtn_Click(object sender, RoutedEventArgs e)
+    private void annulerBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

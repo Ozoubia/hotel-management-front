@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,17 @@ namespace hotel_management_front.tabsUserControl
         public StatTabUserControl()
         {
             InitializeComponent();
+            classes.stats statsObj = new classes.stats();
+            
+            DataTable data = statsObj.countProduct("Cuisine");
+            int cunt = (int)data.Rows[0]["ct"];
+            produitsCuisine.Text = cunt.ToString();
+            DataTable data1 = statsObj.countProduct("Material");
+            int cunt1 = (int)data1.Rows[0]["ct"];
+            materiel.Text = cunt1.ToString();
+            DataTable data2 = statsObj.countProduct("Generale");
+            int cunt2 = (int)data2.Rows[0]["ct"];
+            produitsGeneral.Text = cunt2.ToString();
         }
     }
 }

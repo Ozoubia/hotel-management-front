@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hotel_management_front.tabsUserControl;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -87,6 +88,17 @@ namespace hotel_management_front.dialog_windows
 
             employeeObj.modiftyEmployee(rowIndex);
             MessageBox.Show("Employee modifiee");
+
+            // add action to history log
+            string par = "Modifier Employee ";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
+
+           
+           
+
         }
     }
 }
