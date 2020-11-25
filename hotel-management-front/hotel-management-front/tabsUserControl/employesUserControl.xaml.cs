@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using System.Windows.Data;
+using System;
 
 namespace hotel_management_front.tabsUserControl
 {
@@ -60,6 +61,12 @@ namespace hotel_management_front.tabsUserControl
 
             //update dataGrid after deletion            
             showEmployeeList();
+            // add action to history log
+            string par = "supprimer employée";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
         }
 
         // edit btn event

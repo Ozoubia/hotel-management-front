@@ -39,6 +39,12 @@ namespace hotel_management_front.dialog_windows
 
             string result = fourniObj.AddFournisseur();
             MessageBox.Show(result);
+            // add action to history log
+            string par = "Ajouter Fournisseur";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
 
         }
 

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:hotel_management_front"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-             StartupUri="DashBoard.xaml">
+             StartupUri="login.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />
