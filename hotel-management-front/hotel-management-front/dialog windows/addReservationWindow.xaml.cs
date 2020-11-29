@@ -86,7 +86,12 @@ namespace hotel_management_front.dialog_windows
             int nbrDayBeforeConfirm = int.Parse(confirmationDate.Text);
             DateTime confirmDate = endDate.AddDays(-nbrDayBeforeConfirm);
 
-            classes.reservation reservObj = new classes.reservation(clientFullName, roomName, startDate, endDate, totalAmount, payementStatus, versement, confirmDate);
+            //number of days
+            DateTime start = startDate.Date;
+            DateTime end = endDate.Date;
+            var nbrDays = ((end - start).TotalDays + 1);
+
+            classes.reservation reservObj = new classes.reservation(clientFullName, roomName, startDate, endDate, int.Parse(nbrDays.ToString()), totalAmount, payementStatus, versement, confirmDate);
 
             string result = reservObj.AddReservation();
             MessageBox.Show(result);
