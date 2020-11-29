@@ -84,13 +84,18 @@ namespace hotel_management_front.classes
 
         public DataTable showAllArticleCuisine()
         {
-            string query = "SELECT * FROM cuisine  WHERE quantity_cuisine>0 ";
+
+
+            string query = "SELECT * FROM cuisine  WHERE quantity_cuisine > 0 ";
             con.Open();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
             DataTable data = new DataTable();
             adapt.Fill(data);
+            
             return data;
+         
+
         }
         // function that takes an ArticleCuisine ID and deletes it
         public void deleteArticleCuisine(int cuisineID)

@@ -73,6 +73,7 @@
     <Compile Include="classes\fournisseur.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
     <Compile Include="classes\histoArrivee.cs" />
+    <Compile Include="classes\Notification.cs" />
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\reservation.cs" />
     <Compile Include="classes\room.cs" />
@@ -178,6 +179,9 @@
     </Compile>
     <Compile Include="tabsUserControl\materialUserControl.xaml.cs">
       <DependentUpon>materialUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\notificationUserControl.xaml.cs">
+      <DependentUpon>notificationUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\planiningTabUserControl.xaml.cs">
       <DependentUpon>planiningTabUserControl.xaml</DependentUpon>
@@ -377,6 +381,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\materialUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\notificationUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

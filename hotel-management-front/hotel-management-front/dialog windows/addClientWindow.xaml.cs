@@ -27,6 +27,7 @@ namespace hotel_management_front.dialog_windows
         private void annulerBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            
         }
 
         private void ajouterClientBtn_Click(object sender, RoutedEventArgs e)

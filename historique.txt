@@ -1,0 +1,9 @@
+1: login
+2 : Ajouter Client
+3: Ajouter Employee
+4:Ajouter Fournisseur
+5:Ajouter Reservation
+6:Ajouter Chambre
+7:Modifier Employee
+8:Ajouter Arrivage
+9:

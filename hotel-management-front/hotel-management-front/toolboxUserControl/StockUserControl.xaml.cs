@@ -73,13 +73,13 @@ namespace hotel_management_front.toolboxUserControl
                 Header = "Cuisine",
             };
 
-
             GlobalVariable.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
             cuisineUserControl UC1 = new cuisineUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
+
         }
     }
 }
