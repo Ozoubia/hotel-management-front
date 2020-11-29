@@ -136,7 +136,9 @@ namespace hotel_management_front.tabsUserControl
             // command result 
             DataTable dtbl = new DataTable();
             ada.Fill(dtbl);
+            int qunantityAlert = (int)dtbl.Rows[0]["stock_alert"];
             int qun = (int)dtbl.Rows[0]["quantity"];
+            
             int quantityArticl = int.Parse(materialInfo.Text);
             if (qun < quantityArticl)
             {
@@ -151,13 +153,15 @@ namespace hotel_management_front.tabsUserControl
               MessageBox.Show(rslt);
               string rslt1 = modiftyQuantityArticle();
               MessageBox.Show(rslt1);
+                //ajouter dans l'historique
                 string par = "modifier quantité dans cuisine ";
                 string nom = classes.GlobalVariable.username;
                 DateTime dateAction = DateTime.Today;
                 classes.client clientObj1 = new classes.client();
                 clientObj1.ajouterHistorique(nom, par, dateAction);
-               // classes.GlobalVariable.tast = false;
+                //
 
+              //  MessageBox.Show(qunantityAlert.ToString());
             }   
            }
         }

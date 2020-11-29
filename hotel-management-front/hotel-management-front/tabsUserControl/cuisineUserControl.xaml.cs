@@ -28,12 +28,11 @@ namespace hotel_management_front.tabsUserControl
         public cuisineUserControl()
         {
             InitializeComponent();
-            while (classes.GlobalVariable.tast == false)
-            {
 
 
-                showArticlCuisineList();
-           } 
+
+            showArticlCuisineList();
+           
 
         }
         // right grid
@@ -67,7 +66,7 @@ namespace hotel_management_front.tabsUserControl
                 rightGrid.Children.Add(new materialCuisineUserControl(design));
                
             }
-            
+           
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)

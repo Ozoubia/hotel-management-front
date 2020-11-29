@@ -9,23 +9,53 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="DashBoard" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="45"/>
             <RowDefinition Height="85"/>
             <RowDefinition/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
         <!--menu-->
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="dashboardBtn" Click="dashboardBtn_Click">Tableau de bord</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="hotelBtn" Click="hotelBtn_Click">Hotel</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="stockBtn" Click="stockBtn_Click">Stock</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="fournisseurBtn" Click="fournisseurBtn_Click">Fournisseur</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="personnelBtn" Click="personnelBtn_Click">Personnel</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="caisseBtn"   Click="caisseBtn_Click" >Caisse </Button>
-            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="chargeBtn"   Click="chargeBtn_Click" >Charge</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="parametresBtn" Click="parametresBtn_Click">Parametres</Button>
+        <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Grid.Row="0">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="75" />
+                </Grid.ColumnDefinitions >
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="dashboardBtn" Click="dashboardBtn_Click">Tableau de bord</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="hotelBtn" Click="hotelBtn_Click">Hotel</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="stockBtn" Click="stockBtn_Click">Stock</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="fournisseurBtn" Click="fournisseurBtn_Click">Fournisseur</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="personnelBtn" Click="personnelBtn_Click">Personnel</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="caisseBtn"   Click="caisseBtn_Click" >Caisse </Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="chargeBtn"   Click="chargeBtn_Click" >Charge</Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="parametresBtn" Click="parametresBtn_Click">Parametres</Button>
+                </StackPanel>
+                <StackPanel  HorizontalAlignment="Stretch" Orientation="Horizontal"  Grid.Column="1">
+                    <materialDesign:Badged  HorizontalAlignment="Right"  Margin="5,9,0,0"  BadgeColorZoneMode="Accent"  Background="Red" x:Name="compteur" Badge=""></materialDesign:Badged>
+                    <materialDesign:PopupBox IsEnabled="True" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                        <materialDesign:PopupBox.ToggleContent>
+                            <TextBlock Width="25" Height="25" ToolTip="MaterialDesignFloatingActionMiniLightButton">
+                                <materialDesign:PackIcon Kind="Alarm" Height="24" Width="24" />
+                            </TextBlock>
+                        </materialDesign:PopupBox.ToggleContent>
+
+                        <Grid >
+                            <ScrollViewer VerticalScrollBarVisibility="Visible">
+                                <StackPanel x:Name="gridNotification" Orientation="Vertical"/>
+                            </ScrollViewer>
+                        </Grid>
+                    </materialDesign:PopupBox>
+                </StackPanel>
+
+
+
+
+
+
+            </Grid>
+
         </StackPanel>
         
         <!--menu items-->
@@ -54,7 +84,9 @@
         </Grid>
         <StackPanel Grid.Row="4" Orientation="Horizontal" >
             <TextBlock x:Name="utilisateur" Text="hhhhh" Foreground="Black" FontSize="14" Margin="50,0,0,5"  Width="80"/>
-            <Button x:Name="déconnecter" Background="White" Click="déconnecter_Click"></Button>
+            <Button x:Name="déconnecter"  Click="déconnecter_Click" Background="{x:Null}" BorderBrush="{x:Null}">
+                <materialDesign:PackIcon Kind="Power" Foreground="Black" Width="25" Height="25" />
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

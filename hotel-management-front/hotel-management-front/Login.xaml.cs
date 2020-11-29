@@ -42,9 +42,11 @@ namespace hotel_management_front
             //if successful do this 
             if (result)
             {
-                new DashBoard().Show();
-                this.Close();
                 classes.GlobalVariable.username = user;
+                new DashBoard(classes.GlobalVariable.username).Show();
+                this.Close();
+                
+               
                 //historique
                 string par = "Login";
                string nom = classes.GlobalVariable.username;
