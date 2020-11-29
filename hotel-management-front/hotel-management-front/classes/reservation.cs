@@ -12,6 +12,7 @@ namespace hotel_management_front.classes
         string roomName;
         DateTime checkin;
         DateTime checkout;
+        int nbrDays;
         int totalAmount;
         string payementStatus;
         int verse;
@@ -26,12 +27,13 @@ namespace hotel_management_front.classes
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
 
         //filled constructor 
-        public reservation(string fullname, string roomname, DateTime checkin, DateTime checkout, int totalAmount, string payStatus, int versement, DateTime confirmation_date)
+        public reservation(string fullname, string roomname, DateTime checkin, DateTime checkout, int nbrOfDays, int totalAmount, string payStatus, int versement, DateTime confirmation_date)
         {
             this.Client_fullname = fullname;
             this.roomName = roomname;
             this.checkin = checkin;
             this.checkout = checkout;
+            this.nbrDays = nbrOfDays;
             this.totalAmount = totalAmount;
             this.payementStatus = payStatus;
             this.verse = versement;
@@ -80,8 +82,8 @@ namespace hotel_management_front.classes
             }
             else
             {
-                string query3 = "INSERT INTO reservation (id_client, id_room, check_in, check_out, total_amount, payement_status, versement, confirmation_date)" +
-                            "VALUES (@clientID, @roomID, @checkin, @checkout, @totalamount, @payementStatus, @versement, @confirmDate)";
+                string query3 = "INSERT INTO reservation (id_client, id_room, check_in, check_out, nbr_days, total_amount, payement_status, versement, confirmation_date)" +
+                            "VALUES (@clientID, @roomID, @checkin, @checkout, @nbrDays, @totalamount, @payementStatus, @versement, @confirmDate)";
 
                 SqlCommand com = new SqlCommand(query3, con);
 
@@ -90,6 +92,7 @@ namespace hotel_management_front.classes
                 com.Parameters.AddWithValue("@roomID", roomID);
                 com.Parameters.AddWithValue("@checkin", this.checkin);
                 com.Parameters.AddWithValue("@checkout", this.checkout);
+                com.Parameters.AddWithValue("@nbrDays", this.nbrDays);
                 com.Parameters.AddWithValue("@totalamount", this.totalAmount);
                 com.Parameters.AddWithValue("@payementStatus", this.payementStatus);
                 com.Parameters.AddWithValue("@versement", this.verse);
@@ -112,9 +115,6 @@ namespace hotel_management_front.classes
                 return "Reservation added successfuly";
             }
 
-
-                
-
         }
 
         // function that returns all the reservations as a datatable
@@ -130,6 +130,22 @@ namespace hotel_management_front.classes
             DataTable data = new DataTable();
             adapt.Fill(data);
             return data;
+        }
+
+
+        // used for the planning grid (takes a room name, and returns its info
+        public DataTable showReservationByRoomName(string roomName)
+        {
+            string query = "SELECT client.name, client.lname, room.name AS rname, room.type, reservation.check_in, reservation.check_out, reservation.nbr_days,  reservation.total_amount, reservation.payement_status, reservation.versement FROM reservation " +               
+                " INNER JOIN client ON reservation.id_client = client.id_client" +
+                " INNER JOIN room ON reservation.id_room = room.id_room " +
+                "WHERE room.name = @rname";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+            ada.SelectCommand.Parameters.AddWithValue("@rname", roomName);
+            
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+            return dtbl;
         }
 
 
@@ -204,5 +220,6 @@ namespace hotel_management_front.classes
                 return "reservation validated";
             }
         }
+    
     }
 }

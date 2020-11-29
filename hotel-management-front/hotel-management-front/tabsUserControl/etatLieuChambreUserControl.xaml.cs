@@ -39,7 +39,7 @@ namespace hotel_management_front.tabsUserControl
 
             // left grid -------------------------------------------
             //fill the grid with the rooms buttons
-            classes.room roomObj = new classes.room();
+            room roomObj = new room();
             DataTable result = roomObj.showAllRooms();
 
             int nbrRooms = result.Rows.Count;
@@ -92,11 +92,9 @@ namespace hotel_management_front.tabsUserControl
             ELRoom ELroomObj = new ELRoom();
             DataTable result = ELroomObj.showRoomInELRoom(roomID);
 
-            // testing if the room exists in etat de lieu 
-            if (result.Rows.Count != 1)
+            // testing if the room exists in etat de lieu (init the room in EL if it doesn't exist)
+            if (result.Rows.Count == 0)
             {
-
-                // for each room
                 for (int i = 0; i < nbrMat; i++)
                 {
                     design = articles.Rows[i]["designation"].ToString();              
@@ -108,24 +106,46 @@ namespace hotel_management_front.tabsUserControl
             }
             else
             {
-                // storing the designation items in a list to be used later for init
-                List<string> materialList1 = new List<string>();
-                // for each room
-                for (int i = 0; i < nbrMat; i++)
-                {
-                    design = articles.Rows[i]["designation"].ToString();
-                    
-                    materialList1.Add(design);
-                }
+                //// below code is used for 
+                //ELRoom ELroomObj2 = new ELRoom();
+                //DataTable result2 = ELroomObj2.showRoomInELRoom(roomID);
+
+                //List<string> materialList1 = new List<string>();
+                //// for each room
+                //for (int i = 0; i < nbrMat; i++)
+                //{
+                //    design = articles.Rows[i]["designation"].ToString();
+
+                //    materialList1.Add(design);
+                //}
+
+                //// for each material, get its value
+                //for (int i = 0; i < nbrMat; i++)
+                //{
+                //    int value = int.Parse(result2.Rows[0][materialList1[i]].ToString());
+                //    rightGrid.Children.Add(new materialRoomUserControl(design, roomID, 1));
+
+                //}
 
 
-                // for each material, get its value
-                for (int i = 0; i < nbrMat; i++)
-                {
-                    int value = int.Parse(result.Rows[0][materialList1[i]].ToString());
-                    rightGrid.Children.Add(new materialRoomUserControl(design, roomID, 1));
+                //// storing the designation items in a list to be used later for init
+                //List<string> materialList1 = new List<string>();
+                //// for each room
+                //for (int i = 0; i < nbrMat; i++)
+                //{
+                //    design = articles.Rows[i]["designation"].ToString();
 
-                }
+                //    materialList1.Add(design);
+                //}
+
+
+                //// for each material, get its value
+                //for (int i = 0; i < nbrMat; i++)
+                //{
+                //    int value = int.Parse(result.Rows[0][materialList1[i]].ToString());
+                //    rightGrid.Children.Add(new materialRoomUserControl(design, roomID, 1));
+
+                //}
             }
 
         }
@@ -168,9 +188,7 @@ namespace hotel_management_front.tabsUserControl
                 com.ExecuteNonQuery();
                 con.Close();
             }
-            
-
-            
+                
         }
 
     }
