@@ -18,14 +18,14 @@
         </Grid.RowDefinitions>
         <!--menu-->
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="dashboardBtn" Click="dashboardBtn_Click">Tableau de bord</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="hotelBtn" Click="hotelBtn_Click">Hotel</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="stockBtn" Click="stockBtn_Click">Stock</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="fournisseurBtn" Click="fournisseurBtn_Click">Fournisseur</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="personnelBtn" Click="personnelBtn_Click">Personnel</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="caisseBtn"   Click="caisseBtn_Click" >Caisse </Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="chargeBtn"   Click="chargeBtn_Click" >Charge</Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Foreground="black" x:Name="parametresBtn" Click="parametresBtn_Click">Parametres</Button>
+            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="dashboardBtn" Click="dashboardBtn_Click">Tableau de bord</Button>
+            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="hotelBtn" Click="hotelBtn_Click">Hotel</Button>
+            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="stockBtn" Click="stockBtn_Click">Stock</Button>
+            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="fournisseurBtn" Click="fournisseurBtn_Click">Fournisseur</Button>
+            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="personnelBtn" Click="personnelBtn_Click">Personnel</Button>
+            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="caisseBtn"   Click="caisseBtn_Click" >Caisse </Button>
+            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="chargeBtn"   Click="chargeBtn_Click" >Charge</Button>
+            <Button Background="Transparent" BorderBrush="Transparent" FontWeight="Light" Foreground="black" x:Name="parametresBtn" Click="parametresBtn_Click">Parametres</Button>
         </StackPanel>
         
         <!--menu items-->

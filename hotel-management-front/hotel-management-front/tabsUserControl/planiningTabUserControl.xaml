@@ -5,8 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:hotel_management_front.tabsUserControl"
              mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 10 0 0">
+            <Button x:Name="leftArrowBtn" Click="leftArrowBtn_Click"></Button>
+            <TextBlock Margin="20 0 10 0" VerticalAlignment="Center" x:Name="monthField"/>
+            <TextBlock Margin="0 0 20 0" VerticalAlignment="Center" x:Name="yearField"/>
+            <Button x:Name="rightArrowBtn" Click="rightArrowBtn_Click"></Button>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Visible" CanContentScroll="True" VerticalScrollBarVisibility="Visible">
+            <WrapPanel Margin="0 0 0 120">
+                <UniformGrid x:Name="planingGrid" Margin="10" FlowDirection="LeftToRight">
 
+                </UniformGrid>
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

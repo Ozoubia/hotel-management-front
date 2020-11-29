@@ -11,13 +11,13 @@
         <Rectangle Height="200" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF2281D1"/>
-                    <GradientStop Color="#FF34268A" Offset="1"/>
-                    <GradientStop Color="#FF33288B" Offset="0.5"/>
+                    <GradientStop Color="#25A0DA"/>
+                    <GradientStop Color="#25A0DA" Offset="1"/>
+                    <GradientStop Color="#25A0DA" Offset="0.5"/>
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Image Source="resources/Home.png" Width="100" Height="100" VerticalAlignment="Top" Margin="8"/>
+        <Image Source="resources/hotel.png" Width="150" Height="130" VerticalAlignment="Top" Margin="8"/>
         <Rectangle Width="280" Height="240" Fill="White" VerticalAlignment="Bottom" Margin="0,100">
             <Rectangle.Effect>
                 <DropShadowEffect Color="#FFBBBBBB" BlurRadius="15" Direction="0" RenderingBias="Quality" ShadowDepth="1"/>
@@ -26,10 +26,10 @@
         <Grid Width="280" Height="240" VerticalAlignment="Bottom" Margin="0,100">
             <TextBlock Text="LOGIN" HorizontalAlignment="Center"  VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
             <StackPanel VerticalAlignment="Center" Margin="10">
-                <TextBox Text="admin" x:Name="usernameField" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" FontFamily="Algerian" FontSize="18"/>
-                <PasswordBox Password="admin" x:Name="passwordField" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10" FontFamily="Algerian" FontSize="18"/>
+                <TextBox Text="admin" x:Name="usernameField" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,10" FontSize="18"/>
+                <PasswordBox Password="admin" x:Name="passwordField" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="0,10" FontSize="18"/>
             </StackPanel>
         </Grid>
-        <Button VerticalAlignment="Bottom" Margin="0,85" Width="150" Click="LoginBtn" Content="LOGIN"/>
+        <Button VerticalAlignment="Bottom" Background="#25A0DA" BorderThickness="0" Margin="0,85" Width="150" Click="LoginBtn" Content="LOGIN"/>
     </Grid>
 </Window>
