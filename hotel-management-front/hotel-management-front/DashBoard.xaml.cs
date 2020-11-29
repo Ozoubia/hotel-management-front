@@ -22,17 +22,24 @@ namespace hotel_management_front
     {
         public DashBoard()
         {
+            
             InitializeComponent();
             gridMenu.Children.Clear();
             gridMenu.Children.Add(new tabBoardUserControl());
            
         }
-
+              
+       
+        
         #region menu button
         private void dashboardBtn_Click(object sender, RoutedEventArgs e)
         {
             gridMenu.Children.Clear();
             gridMenu.Children.Add(new tabBoardUserControl());
+
+            string nom = classes.GlobalVariable.username;
+            utilisateur.Text = nom;
+
         }
 
         private void hotelBtn_Click(object sender, RoutedEventArgs e)
@@ -75,7 +82,7 @@ namespace hotel_management_front
             gridMenu.Children.Add(new fournisseurUserControl());
         }
         #endregion
-
+        
         #region tab settup
         private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
         {
@@ -85,9 +92,18 @@ namespace hotel_management_front
 
 
 
+
         #endregion
 
+        private void déconnecter_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+
+            
+
+        }
         
+
     }
     }
 

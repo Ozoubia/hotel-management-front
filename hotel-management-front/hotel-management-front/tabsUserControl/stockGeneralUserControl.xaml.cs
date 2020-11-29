@@ -63,6 +63,27 @@ namespace hotel_management_front.tabsUserControl
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            classes.Cuisine cuisineObj = new classes.Cuisine();
+            classes.article articleObj = new classes.article();
+            string reference = classes.GlobalVariable.dataRowView[0].ToString();
+            cuisineObj.deleteCuisine(reference);
+            articleObj.deleteActicle(reference);
+            showArticleList();
+            // add action to history log
+            string par = "supprimer  le produit de la cuisine";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
+
+            string par1 = "supprimer  le produit de le stock général ";
+            string nom1 = classes.GlobalVariable.username;
+            DateTime dateAction1 = DateTime.Today;
+            classes.client clientObj2 = new classes.client();
+            clientObj1.ajouterHistorique(nom1, par1, dateAction1);
+
+
 
         }
     }

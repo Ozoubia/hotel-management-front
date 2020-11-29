@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:hotel_management_front"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              StartupUri="Login.xaml">
+
     <Application.Resources>
         <ResourceDictionary>
             <Style TargetType="{x:Type dragablz:TabablzControl}" BasedOn="{StaticResource MaterialDesignTabablzControlStyle}" />

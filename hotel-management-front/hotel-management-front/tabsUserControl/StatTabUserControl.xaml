@@ -7,6 +7,95 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Rectangle Fill="blue"></Rectangle>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="chambre" Grid.Row="0" Grid.Column="0"  Grid.RowSpan="2">
+            <Rectangle Fill="LightSkyBlue"></Rectangle>
+            <Image Source="../resources/room.png" Width="100" Height="80" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="10" ></Image>
+            <StackPanel>
+                <TextBlock Text=" Statistiques des chambres  "   Foreground="Black" FontSize="30" Margin="118,20,0,80"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Nombre de chambres libre"   Foreground="Black" FontSize="18" Margin="10,70,0,80"/>
+                <TextBlock Text="0" x:Name="chambreLibre" Foreground="Black" FontSize="18" Margin="5,70,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Nombre de chambres reservee"   Foreground="Black" FontSize="18" Margin="11,90,0,80"/>
+                <TextBlock Text="0" x:Name="chambreReservee" Foreground="Black" FontSize="18" Margin="5,90,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Nombre de chambres sejour"   Foreground="Black" FontSize="18" Margin="11,110,0,80"/>
+                <TextBlock Text="0" x:Name="chambreSejour" Foreground="Black" FontSize="18" Margin="5,110,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Nombre de chambres en panne"   Foreground="Black" FontSize="18" Margin="11,130,0,80"/>
+                <TextBlock Text="0" x:Name="chambrePanne" Foreground="Black"  FontSize="18" Margin="5,130,0,0"/>
+            </StackPanel>
+
+        </Grid>
+        <Grid x:Name="client" Grid.Row="0" Grid.Column="1">
+            <Rectangle Fill="LightGreen"></Rectangle>
+            <StackPanel>
+                <TextBlock Text=" Statistiques des Produits "   Foreground="Black" FontSize="30" Margin="118,20,0,80"/>
+            </StackPanel>
+            <Image Source="../resources/produit.png" Width="70" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="10" ></Image>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Nombre des produits chambres"   Foreground="Black" FontSize="18" Margin="10,70,0,80"/>
+                <TextBlock Text="0" x:Name="materiel" Foreground="Black" FontSize="18" Margin="5,70,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Nombre des produits cuisine "   Foreground="Black" FontSize="18" Margin="10,90,0,80"/>
+                <TextBlock Text="0" x:Name="produitsCuisine" Foreground="Black" FontSize="18" Margin="5,90,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Nombre des produits général"   Foreground="Black" FontSize="18" Margin="10,110,0,80"/>
+                <TextBlock Text="0" x:Name="produitsGeneral" Foreground="Black" FontSize="18" Margin="5,110,0,0"/>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="produit" Grid.Row="1" Grid.Column="0">
+            <Rectangle Fill="LightGray"/>
+            <StackPanel>
+                <TextBlock Text=" Statistiques des Client "   Foreground="Black" FontSize="30" Margin="118,20,0,80"/>
+            </StackPanel>
+            <Image Source="../resources/client.png" Width="70" Height="70" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="10" ></Image>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Nombre des Client "   Foreground="Black" FontSize="18" Margin="10,70,0,80"/>
+                <TextBlock Text="0" x:Name="nbrClient" Foreground="Black" FontSize="18" Margin="5,70,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Nombre des Client Adult "   Foreground="Black" FontSize="18" Margin="10,90,0,80"/>
+                <TextBlock Text="0" x:Name="nbrClientAdult" Foreground="Black" FontSize="18" Margin="5,90,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text=" Nombre des Client jeune"   Foreground="Black" FontSize="18" Margin="10,110,0,80"/>
+                <TextBlock Text="0" x:Name="nbrClientjeune" Foreground="Black" FontSize="18" Margin="5,110,0,0"/>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="caisse" Grid.Row="1" Grid.Column="1">
+            <Rectangle Fill="White"/>
+            <TextBlock Text=" Statistiques des Caisses "   Foreground="Black" FontSize="30" Margin="118,20,0,80"/>
+            <Image Source="../resources/caisse.png" Width="70" Height="70" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="10" ></Image>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Caisse Principale "   Foreground="Black" FontSize="18" Margin="10,90,0,80"/>
+                <TextBlock Text="0" x:Name="caissePrincipale" Foreground="Black" FontSize="18" Margin="5,90,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text=" Caisse personnel"   Foreground="Black" FontSize="18" Margin="10,110,0,80"/>
+                <TextBlock Text="0" x:Name="caissePersonnl" Foreground="Black" FontSize="18" Margin="5,110,0,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <TextBlock Text="Bonque "   Foreground="Black" FontSize="18" Margin="10,70,0,80"/>
+                <TextBlock Text="0" Name="bonque" Foreground="Black" FontSize="18" Margin="5,70,0,0"/>
+            </StackPanel>
+        </Grid>
+
+
+
     </Grid>
 </UserControl>

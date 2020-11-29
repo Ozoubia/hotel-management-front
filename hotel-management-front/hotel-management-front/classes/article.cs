@@ -153,5 +153,31 @@ namespace hotel_management_front.classes
 
             return dtbl;
         }
+        public DataTable showIDArticle(string desig)
+        {
+            // checking if an employee exists
+            string query = "SELECT id_article FROM article WHERE designation=@Desig";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Desig", desig);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
+        public void deleteActicle(string reference)
+        {
+            string query = "DELETE FROM article WHERE reference=@ID";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            cmd.Parameters.AddWithValue("@ID", reference);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }
