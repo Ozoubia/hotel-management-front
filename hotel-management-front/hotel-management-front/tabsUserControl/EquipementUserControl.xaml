@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="hotel_management_front.tabsUserControl.stockSecoursUserControl"
+﻿<UserControl x:Class="hotel_management_front.tabsUserControl.EquipementUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,20 +14,18 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
-            <Button Grid.Row="0" x:Name="AjouterMaterial" Click="AjouterMaterial_Click" HorizontalAlignment="Center">Ajouter un employee</Button>
         </StackPanel>
-        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="MaterialSListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
+
+        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="equipementListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
             <DataGrid.Columns>
                 <!--columns-->
-                <DataGridTextColumn Header="ID Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Nom Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Quantité Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Prix Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Nom Fournisseur" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Date Achat" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Emplacement" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Etat Material" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Description" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Reference" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Designation" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantitee" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Stock Alert" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Prix achat" ></DataGridTextColumn>
+                <DataGridTextColumn Header="type_Equipement" ></DataGridTextColumn>
+
                 <!--button-->
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -39,6 +37,19 @@
                                 <Button Height="25" ToolTip="Supprimer" x:Name="deleteBtn" Click="deleteBtn_Click" >
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
                                 </Button>
+                                <!--button  pour choisir le type de équipement-->
+                                <materialDesign:PopupBox IsEnabled="True" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                                    <materialDesign:PopupBox.ToggleContent >
+                                        <TextBlock  Background="#633DB4" Height="25" Width="40" Padding="5, 5" Foreground="White" Margin="7" >
+                                            <materialDesign:PackIcon Kind="Check" ></materialDesign:PackIcon>
+                                        </TextBlock>
+                                    </materialDesign:PopupBox.ToggleContent>
+                                    <StackPanel Orientation="Vertical">
+                                        <Button x:Name="équipementChambrer" Click="équipementChambrer_Click">équipement chambre</Button>
+                                        <Button x:Name="équipementCuisine" Click="équipementCuisine_Click" >équipement cuisine</Button>
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -46,4 +57,5 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
+
 </UserControl>

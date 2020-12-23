@@ -81,6 +81,43 @@ namespace hotel_management_front.classes
             }
 
         }
+        public void addCuisine1( string type)
+        {
+            {
+                // checking if an employee exists
+                string query = "SELECT * FROM cuisine WHERE reference_C=@reference";
+                SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+                //query parameters 
+                ada.SelectCommand.Parameters.AddWithValue("@reference", this.reference_C);
+
+                // command result 
+                DataTable dtbl = new DataTable();
+                ada.Fill(dtbl);
+                //user already exists 
+                if (dtbl.Rows.Count < 1)
+                {
+                    // inseting into the general stock
+                    string query2 = "INSERT INTO cuisine (quantity_cuisine, designation_C, stock_alert_C, prix_achat_C, prix_vente_C, reference_C ,type_C) " +
+                        "VALUES ( 0, @designation, @stockAlert, @prixAchat, @prixVente, @reference ,@typeC)";
+
+                    SqlCommand com = new SqlCommand(query2, con);
+
+                    // params
+                    com.Parameters.AddWithValue("@designation", this.designation_C);
+                    com.Parameters.AddWithValue("@stockAlert", this.stock_alert_C);
+                    com.Parameters.AddWithValue("@prixAchat", this.prix_achat_C);
+                    com.Parameters.AddWithValue("@prixVente", this.prix_vente_C);
+                    com.Parameters.AddWithValue("@reference", this.reference_C);
+                    com.Parameters.AddWithValue("@typeC", type);
+
+                    con.Open();
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+            }
+
+        }
 
         public DataTable showAllArticleCuisine()
         {
@@ -95,6 +132,22 @@ namespace hotel_management_front.classes
             
             return data;
          
+
+        }
+
+        public DataTable showAllArticleCuisineNull()
+        {
+
+
+            string query = "SELECT * FROM cuisine  WHERE quantity_cuisine = 0 ";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+
+            return data;
+
 
         }
         // function that takes an ArticleCuisine ID and deletes it
@@ -122,6 +175,26 @@ namespace hotel_management_front.classes
             con.Close();
         }
 
+        public DataTable showAllArticleCuisineBytype(string type)
+        {
+
+
+            string query = "SELECT * FROM cuisine  WHERE type_C =@type ";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@type", type);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+
+            
+
+
+        }
     }
     }
 

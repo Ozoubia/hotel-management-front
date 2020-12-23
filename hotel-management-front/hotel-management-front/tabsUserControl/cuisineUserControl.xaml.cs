@@ -32,7 +32,7 @@ namespace hotel_management_front.tabsUserControl
 
 
             showArticlCuisineList();
-           
+
 
         }
         // right grid
@@ -49,39 +49,53 @@ namespace hotel_management_front.tabsUserControl
             ((DataGridTextColumn)CuisineListGrid.Columns[5]).Binding = new Binding("prix_achat_C");
             ((DataGridTextColumn)CuisineListGrid.Columns[6]).Binding = new Binding("prix_vente_C");
         }
+        public void showArticlCuisineList0()
+        {
+            classes.Cuisine cuisineObj1 = new classes.Cuisine();
+            DataTable da = cuisineObj1.showAllArticleCuisineNull();
+            CuisineListGrid.ItemsSource = da.DefaultView;
+            ((DataGridTextColumn)CuisineListGrid.Columns[0]).Binding = new Binding("ID_cuisine");
+            ((DataGridTextColumn)CuisineListGrid.Columns[1]).Binding = new Binding("reference_C");
+            ((DataGridTextColumn)CuisineListGrid.Columns[2]).Binding = new Binding("designation_C");
+            ((DataGridTextColumn)CuisineListGrid.Columns[3]).Binding = new Binding("quantity_cuisine");
+            ((DataGridTextColumn)CuisineListGrid.Columns[4]).Binding = new Binding("stock_alert_C");
+            ((DataGridTextColumn)CuisineListGrid.Columns[5]).Binding = new Binding("prix_achat_C");
+            ((DataGridTextColumn)CuisineListGrid.Columns[6]).Binding = new Binding("prix_vente_C");
+        }
+        public void showArticlCuisineListBytype(string typeC)
+        {
+            classes.Cuisine cuisineObj1 = new classes.Cuisine();
+            DataTable dat = cuisineObj1.showAllArticleCuisineBytype(typeC);
+
+            CuisineListGrid.ItemsSource = dat.DefaultView;
+            ((DataGridTextColumn)CuisineListGrid.Columns[0]).Binding = new Binding("ID_cuisine");
+            ((DataGridTextColumn)CuisineListGrid.Columns[1]).Binding = new Binding("reference_C");
+            ((DataGridTextColumn)CuisineListGrid.Columns[2]).Binding = new Binding("designation_C");
+            ((DataGridTextColumn)CuisineListGrid.Columns[3]).Binding = new Binding("quantity_cuisine");
+            ((DataGridTextColumn)CuisineListGrid.Columns[4]).Binding = new Binding("stock_alert_C");
+            ((DataGridTextColumn)CuisineListGrid.Columns[5]).Binding = new Binding("prix_achat_C");
+            ((DataGridTextColumn)CuisineListGrid.Columns[6]).Binding = new Binding("prix_vente_C");
+        }
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
 
-        private void alimenterCuisine_Click(object sender, RoutedEventArgs e)
-        {
-            rightGrid.Children.Clear();
-            article articleObj = new article();
-            DataTable articles = articleObj.FilterByLocalisation("Cuisine");
-            int nbrMat = articles.Rows.Count;
-            for (int i = 0; i < nbrMat; i++)
-            {
-                design = articles.Rows[i]["designation"].ToString();
-                rightGrid.Children.Add(new materialCuisineUserControl(design));
-               
-            }
-           
-        }
+     
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             rightGrid.Children.Clear();
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
-           string design = classes.GlobalVariable.dataRowView[2].ToString();
+            string design = classes.GlobalVariable.dataRowView[2].ToString();
             rightGrid.Children.Add(new materialCuisineUserControl(design));
-           
+
         }
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
-             classes.Cuisine cuisineObj = new classes.Cuisine();
+            classes.Cuisine cuisineObj = new classes.Cuisine();
             cuisineObj.deleteArticleCuisine(int.Parse(classes.GlobalVariable.dataRowView[0].ToString()));
             //recover quantity
             string reference = classes.GlobalVariable.dataRowView[6].ToString();
@@ -90,17 +104,17 @@ namespace hotel_management_front.tabsUserControl
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
             ada.SelectCommand.Parameters.AddWithValue("@ref", reference);
 
-              
+
             DataTable dtbl = new DataTable();
             ada.Fill(dtbl);
             int qun = (int)dtbl.Rows[0]["quantity"];
             int result = qun + quantit;
-       
+
 
             string query1 = "UPDATE article SET quantity=@quant , quantity_utilisee=0 WHERE reference=@ref";
             SqlCommand com = new SqlCommand(query1, con);
-        
-             //params
+
+            //params
             com.Parameters.AddWithValue("@quant", result);
             com.Parameters.AddWithValue("@ref", reference);
 
@@ -118,10 +132,67 @@ namespace hotel_management_front.tabsUserControl
 
         }
 
-        private void cumpleterAlimenter_Click(object sender, RoutedEventArgs e)
+        private void petitDéjeuner_Click(object sender, RoutedEventArgs e)
         {
-            showArticlCuisineList();
+            showArticlCuisineListBytype("petit Déjeuner");
+        }
+
+        private void équipementCuisine_Click(object sender, RoutedEventArgs e)
+        {
+            showArticlCuisineListBytype("équipement Cuisine");
+        }
+
+        private void chargeCuisine_Click(object sender, RoutedEventArgs e)
+        {
+            showArticlCuisineListBytype("charge Cuisine");
+        }
+
+        private void StockVide_Click(object sender, RoutedEventArgs e)
+        {
+            showArticlCuisineList0();
+        }
+
+        private void AlimenterpetitDéjeuner_Click(object sender, RoutedEventArgs e)
+        {
             rightGrid.Children.Clear();
+            article articleObj = new article();
+            DataTable articles = articleObj.FilterByLocalisation("petit Déjeuner");
+            int nbrMat = articles.Rows.Count;
+            for (int i = 0; i < nbrMat; i++)
+            {
+                design = articles.Rows[i]["designation"].ToString();
+                rightGrid.Children.Add(new materialCuisineUserControl(design));
+
+            }
+        }
+
+        private void AlimenteréquipementCuisine_Click(object sender, RoutedEventArgs e)
+        {
+            rightGrid.Children.Clear();
+            article articleObj = new article();
+            DataTable articles = articleObj.FilterByLocalisation("équipement Cuisine");
+            int nbrMat = articles.Rows.Count;
+            for (int i = 0; i < nbrMat; i++)
+            {
+                design = articles.Rows[i]["designation"].ToString();
+                rightGrid.Children.Add(new materialCuisineUserControl(design));
+
+            }
+        }
+
+        private void AlimenterchargeCuisine_Click(object sender, RoutedEventArgs e)
+        {
+            rightGrid.Children.Clear();
+            article articleObj = new article();
+            DataTable articles = articleObj.FilterByLocalisation("charge Cuisine");
+            int nbrMat = articles.Rows.Count;
+            for (int i = 0; i < nbrMat; i++)
+            {
+                design = articles.Rows[i]["designation"].ToString();
+                rightGrid.Children.Add(new materialCuisineUserControl(design));
+
+            }
         }
     }
+      
 }
