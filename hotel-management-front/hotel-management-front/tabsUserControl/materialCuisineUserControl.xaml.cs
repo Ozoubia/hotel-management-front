@@ -136,7 +136,7 @@ namespace hotel_management_front.tabsUserControl
             // command result 
             DataTable dtbl = new DataTable();
             ada.Fill(dtbl);
-            int qunantityAlert = (int)dtbl.Rows[0]["stock_alert"];
+          
             int qun = (int)dtbl.Rows[0]["quantity"];
             
             int quantityArticl = int.Parse(materialInfo.Text);
@@ -159,9 +159,7 @@ namespace hotel_management_front.tabsUserControl
                 DateTime dateAction = DateTime.Today;
                 classes.client clientObj1 = new classes.client();
                 clientObj1.ajouterHistorique(nom, par, dateAction);
-                //
-
-              //  MessageBox.Show(qunantityAlert.ToString());
+                
             }   
            }
         }

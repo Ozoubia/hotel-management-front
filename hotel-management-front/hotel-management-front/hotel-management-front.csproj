@@ -70,6 +70,7 @@
     <Compile Include="classes\Cuisine.cs" />
     <Compile Include="classes\ELRoom.cs" />
     <Compile Include="classes\employee.cs" />
+    <Compile Include="classes\EquipementClass.cs" />
     <Compile Include="classes\fournisseur.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
     <Compile Include="classes\histoArrivee.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="classes\Material.cs" />
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\Produit.cs" />
-    <Compile Include="classes\Secour.cs" />
     <Compile Include="classes\stats.cs" />
     <Compile Include="classes\user.cs" />
     <Compile Include="dialog windows\addemergencyEquipmentWindow.xaml.cs">
@@ -113,6 +113,9 @@
     </Compile>
     <Compile Include="dialog windows\addTakingWindow.xaml.cs">
       <DependentUpon>addTakingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\HistoriqueArticleWindow.xaml.cs">
+      <DependentUpon>HistoriqueArticleWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialog windows\modifyEmergencyEquipmentWindow.xaml.cs">
       <DependentUpon>modifyEmergencyEquipmentWindow.xaml</DependentUpon>
@@ -153,11 +156,17 @@
     <Compile Include="tabsUserControl\clientUserControl1.xaml.cs">
       <DependentUpon>clientUserControl1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\contenuDeCuisineUserControl.xaml.cs">
+      <DependentUpon>contenuDeCuisineUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\cuisineUserControl.xaml.cs">
       <DependentUpon>cuisineUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\employesUserControl.xaml.cs">
       <DependentUpon>employesUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\EquipementUserControl.xaml.cs">
+      <DependentUpon>EquipementUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\etatLieuChambreUserControl.xaml.cs">
       <DependentUpon>etatLieuChambreUserControl.xaml</DependentUpon>
@@ -209,9 +218,6 @@
     </Compile>
     <Compile Include="tabsUserControl\stockGeneralUserControl.xaml.cs">
       <DependentUpon>stockGeneralUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="tabsUserControl\stockSecoursUserControl.xaml.cs">
-      <DependentUpon>stockSecoursUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\utilisateurUserControl.xaml.cs">
       <DependentUpon>utilisateurUserControl.xaml</DependentUpon>
@@ -278,6 +284,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\addTakingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\HistoriqueArticleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -348,11 +358,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="tabsUserControl\contenuDeCuisineUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\cuisineUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\employesUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\EquipementUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -421,10 +439,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\stockGeneralUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="tabsUserControl\stockSecoursUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -497,7 +511,6 @@
   <ItemGroup>
     <Resource Include="resources\hotel.png" />
   </ItemGroup>
-
   <ItemGroup>
     <Resource Include="resources\room.png" />
   </ItemGroup>
@@ -510,7 +523,6 @@
   <ItemGroup>
     <Resource Include="resources\caisse.png" />
   </ItemGroup>
-  
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

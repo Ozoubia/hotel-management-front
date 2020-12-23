@@ -19,11 +19,41 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0">
-                <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
-                <Button Grid.Row="0" x:Name="alimenterCuisine" Click="alimenterCuisine_Click" HorizontalAlignment="Center">Alimenter</Button>
-            </StackPanel>
+                <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="40" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
+              
+                
+               
+                <materialDesign:PopupBox IsEnabled="True" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <TextBlock Foreground="White" Margin="3" Height="32" Padding="7" Background="#633DB4" FontWeight="DemiBold"  Text="Alimenter "></TextBlock>
+                    </materialDesign:PopupBox.ToggleContent>
+                    <StackPanel Orientation="Vertical">
+                        <Button x:Name="AlimenterpetitDéjeuner" Click="AlimenterpetitDéjeuner_Click">petit déjeuner</Button>
+                        <Button x:Name="AlimenteréquipementCuisine" Click="AlimenteréquipementCuisine_Click" >équipement cuisine</Button>
+                        <Button x:Name="AlimenterchargeCuisine" Click="AlimenterchargeCuisine_Click" >charge du Cuisine</Button>
+           
 
-            <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="CuisineListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
+                    </StackPanel>
+
+                </materialDesign:PopupBox>
+
+                <materialDesign:PopupBox IsEnabled="True" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <materialDesign:PopupBox.ToggleContent>
+                        <TextBlock Foreground="White" Margin="3" Height="32" Padding="7" Background="#633DB4" FontWeight="DemiBold"  Text="contenu "></TextBlock>
+                    </materialDesign:PopupBox.ToggleContent>
+                    <StackPanel Orientation="Vertical">
+                        <Button x:Name="petitDéjeuner" Click="petitDéjeuner_Click">petit déjeuner</Button>
+                        <Button x:Name="équipementCuisine" Click="équipementCuisine_Click" >équipement cuisine</Button>
+                        <Button x:Name="chargeCuisine" Click="chargeCuisine_Click">charge du Cuisine</Button>
+                        <Button x:Name="StockVide" Click="StockVide_Click">Stock vide</Button>
+
+                    </StackPanel>
+
+
+                </materialDesign:PopupBox>
+            </StackPanel >
+
+            <DataGrid  Grid.Row="1" IsReadOnly="True" x:Name="CuisineListGrid" Background="White" AutoGenerateColumns="False"  Height="auto">
                 <DataGrid.Columns>
                     <!--columns-->
                     <DataGridTextColumn Header="ID cuisine" ></DataGridTextColumn>
@@ -52,11 +82,11 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
-        
-    </Grid>
+
+        </Grid>
 
         <!--left grid-->
         <StackPanel x:Name="rightGrid" Orientation="Vertical" Grid.Column="1"/>
-        <Button Margin="1,200" Grid.Column="1" Name="cumpleterAlimenter" Click="cumpleterAlimenter_Click">Cumpleter Alimenter</Button>
+      
     </Grid>
 </UserControl>
