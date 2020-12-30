@@ -17,7 +17,7 @@
             <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="articleListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto" SelectionChanged="articleListGrid_SelectionChanged" >
+        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="articleListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto"  >
             <DataGrid.Columns>
                 <!--columns-->
                 <DataGridTextColumn Header="Reference" ></DataGridTextColumn>
@@ -41,6 +41,10 @@
                                 <Button Height="25" ToolTip="Supprimer" x:Name="deleteBtn" Click="deleteBtn_Click" >
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
                                 </Button>
+                                <Button Height="25" ToolTip="historique" Margin="10 0 10 0" x:Name="historiqueBtn" Click="historiqueBtn_Click">
+                                    <materialDesign:PackIcon Kind="HddRemove" ></materialDesign:PackIcon>
+                                </Button>
+
                                 <!--button  pour choisir le type de produit consommable-->
                                 <materialDesign:PopupBox IsEnabled="True" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                                     <materialDesign:PopupBox.ToggleContent >

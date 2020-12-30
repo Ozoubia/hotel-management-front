@@ -16,6 +16,7 @@
         <Grid  x:Name="mainGrid" Margin="30" Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0">
@@ -52,8 +53,10 @@
 
                 </materialDesign:PopupBox>
             </StackPanel >
-
-            <DataGrid  Grid.Row="1" IsReadOnly="True" x:Name="CuisineListGrid" Background="White" AutoGenerateColumns="False"  Height="auto">
+            <StackPanel  Grid.Row="1">
+                <TextBlock Text="" x:Name="titreDeTable" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" />
+            </StackPanel>
+            <DataGrid  Grid.Row="2" IsReadOnly="True" x:Name="CuisineListGrid" Background="White" AutoGenerateColumns="False"  Height="auto">
                 <DataGrid.Columns>
                     <!--columns-->
                     <DataGridTextColumn Header="ID cuisine" ></DataGridTextColumn>

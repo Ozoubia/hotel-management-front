@@ -88,7 +88,7 @@ namespace hotel_management_front.tabsUserControl
             rightGrid.Children.Clear();
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
             string design = classes.GlobalVariable.dataRowView[2].ToString();
-            rightGrid.Children.Add(new materialCuisineUserControl(design));
+            rightGrid.Children.Add(new modifierMatérielCuisineUserControl(design));
 
         }
 
@@ -135,21 +135,25 @@ namespace hotel_management_front.tabsUserControl
         private void petitDéjeuner_Click(object sender, RoutedEventArgs e)
         {
             showArticlCuisineListBytype("petit Déjeuner");
+            titreDeTable.Text = "petit Déjeuner";
         }
 
         private void équipementCuisine_Click(object sender, RoutedEventArgs e)
         {
             showArticlCuisineListBytype("équipement Cuisine");
+            titreDeTable.Text = "équipement Cuisine";
         }
 
         private void chargeCuisine_Click(object sender, RoutedEventArgs e)
         {
             showArticlCuisineListBytype("charge Cuisine");
+            titreDeTable.Text = "charge Cuisine";
         }
 
         private void StockVide_Click(object sender, RoutedEventArgs e)
         {
             showArticlCuisineList0();
+            titreDeTable.Text = "Stock Vide";
         }
 
         private void AlimenterpetitDéjeuner_Click(object sender, RoutedEventArgs e)
@@ -158,6 +162,7 @@ namespace hotel_management_front.tabsUserControl
             article articleObj = new article();
             DataTable articles = articleObj.FilterByLocalisation("petit Déjeuner");
             int nbrMat = articles.Rows.Count;
+            classes.GlobalVariable.ContenuTable = "petit Déjeuner";
             for (int i = 0; i < nbrMat; i++)
             {
                 design = articles.Rows[i]["designation"].ToString();
@@ -169,12 +174,14 @@ namespace hotel_management_front.tabsUserControl
         private void AlimenteréquipementCuisine_Click(object sender, RoutedEventArgs e)
         {
             rightGrid.Children.Clear();
-            article articleObj = new article();
-            DataTable articles = articleObj.FilterByLocalisation("équipement Cuisine");
+        
+            Cuisine cuisineObj = new Cuisine();
+            DataTable articles = cuisineObj.showAllArticleCuisineBytype1("équipement Cuisine ");
             int nbrMat = articles.Rows.Count;
+            classes.GlobalVariable.ContenuTable = "équipementCuisine";
             for (int i = 0; i < nbrMat; i++)
             {
-                design = articles.Rows[i]["designation"].ToString();
+                design = articles.Rows[i]["designation_C"].ToString();
                 rightGrid.Children.Add(new materialCuisineUserControl(design));
 
             }
@@ -186,6 +193,7 @@ namespace hotel_management_front.tabsUserControl
             article articleObj = new article();
             DataTable articles = articleObj.FilterByLocalisation("charge Cuisine");
             int nbrMat = articles.Rows.Count;
+            classes.GlobalVariable.ContenuTable = "chargeCuisine";
             for (int i = 0; i < nbrMat; i++)
             {
                 design = articles.Rows[i]["designation"].ToString();

@@ -84,5 +84,31 @@ namespace hotel_management_front.classes
 
 
         }
+        public DataTable showIDEquipement(string desig)
+        {
+            // checking if an employee exists
+            string query = "SELECT ID_Equipement FROM Equipement WHERE designation_E=@Desig";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Desig", desig);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
+        public void deleteEquipement(string reference)
+        {
+            string query = "DELETE FROM Equipement WHERE reference_E=@referenc";
+            SqlCommand cmd = new SqlCommand(query, con);
+
+            cmd.Parameters.AddWithValue("@referenc", reference);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }

@@ -107,7 +107,8 @@ namespace hotel_management_front.tabsUserControl
             com.ExecuteNonQuery();
             con.Close();
             //VAR
-            int quantity = (int)classes.GlobalVariable.dataRowView[3];
+            // int quantity = (int)classes.GlobalVariable.dataRowView[3];
+            int quantity = 0;
             string designation = classes.GlobalVariable.dataRowView[1].ToString();
             string reference1 = classes.GlobalVariable.dataRowView[0].ToString();
             int stockAlert = (int)classes.GlobalVariable.dataRowView[4];
@@ -166,13 +167,13 @@ namespace hotel_management_front.tabsUserControl
             con.Close();
         }
 
-        private void articleListGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var cellInfo = articleListGrid.SelectedCells[0];
-            var reference = (cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text;
+       
 
-           // MessageBox.Show(reference);
-              new HistoriqueArticleWindow(reference).Show();
+        private void historiqueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            string reference = classes.GlobalVariable.dataRowView[0].ToString();
+            new HistoriqueArticleWindow(reference).Show();
         }
     }
 }

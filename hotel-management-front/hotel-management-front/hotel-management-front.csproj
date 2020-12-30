@@ -189,6 +189,9 @@
     <Compile Include="tabsUserControl\materialUserControl.xaml.cs">
       <DependentUpon>materialUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\modifierMatérielCuisineUserControl.xaml.cs">
+      <DependentUpon>modifierMatérielCuisineUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\notificationUserControl.xaml.cs">
       <DependentUpon>notificationUserControl.xaml</DependentUpon>
     </Compile>
@@ -198,6 +201,7 @@
     <Compile Include="tabsUserControl\presenceArchiveUserControl.xaml.cs">
       <DependentUpon>presenceArchiveUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\protégée.cs" />
     <Compile Include="tabsUserControl\présenceUserControl1.xaml.cs">
       <DependentUpon>présenceUserControl1.xaml</DependentUpon>
     </Compile>
@@ -399,6 +403,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\materialUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\modifierMatérielCuisineUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
