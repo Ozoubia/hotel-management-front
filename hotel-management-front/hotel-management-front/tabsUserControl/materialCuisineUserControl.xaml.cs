@@ -21,11 +21,12 @@ namespace hotel_management_front.tabsUserControl
         {
             InitializeComponent();
             materialTxt.Text = material;
-         
+
         }
-      
-        string modiftyQuantity() { 
         
+        string modiftyQuantity()
+        {
+
             classes.Cuisine cuisineObj = new classes.Cuisine();
             DataTable IDcuisin = cuisineObj.showIDcuisine(materialTxt.Text);
             int IDcuisine = int.Parse(IDcuisin.Rows[0]["ID_cuisine"].ToString());
@@ -60,7 +61,7 @@ namespace hotel_management_front.tabsUserControl
             DataTable IDarticle = articleObj.showIDArticle(materialTxt.Text);
             int IDarticl = int.Parse(IDarticle.Rows[0]["id_article"].ToString());
             int quantityArticle = int.Parse(materialInfo.Text);
-           
+
             int quantity = int.Parse(materialInfo.Text);
             string query3 = "SELECT quantity_utilisee FROM article WHERE id_article=@id";
             SqlDataAdapter ada1 = new SqlDataAdapter(query3, con);
@@ -83,7 +84,7 @@ namespace hotel_management_front.tabsUserControl
             con.Open();
             com.ExecuteNonQuery();
             con.Close();
-            
+
             string query1 = "SELECT quantity FROM article WHERE id_article=@id";
             SqlDataAdapter ada = new SqlDataAdapter(query1, con);
             ada.SelectCommand.Parameters.AddWithValue("@id", IDarticl);
@@ -95,7 +96,7 @@ namespace hotel_management_front.tabsUserControl
             int result = qun - quantityArticle;
 
             string query2 = "UPDATE article SET quantity=@resul WHERE id_article=@id";
-              SqlCommand comm = new SqlCommand(query2, con);
+            SqlCommand comm = new SqlCommand(query2, con);
 
             //params
             comm.Parameters.AddWithValue("@resul", result);
@@ -105,6 +106,34 @@ namespace hotel_management_front.tabsUserControl
             comm.ExecuteNonQuery();
             con.Close();
             return "2";
+        }
+        string modiftyQuantityEquipement()
+
+        {
+            classes.EquipementClass equipementObj = new classes.EquipementClass();
+            DataTable IDarticle = equipementObj.showIDEquipement(materialTxt.Text);
+            int IDequipement = int.Parse(IDarticle.Rows[0]["ID_Equipement"].ToString());
+            string query1 = "SELECT quantity_equipement FROM Equipement WHERE ID_Equipement=@id";
+            SqlDataAdapter ada = new SqlDataAdapter(query1, con);
+            ada.SelectCommand.Parameters.AddWithValue("@id", IDequipement);
+            int quantityEquipement = int.Parse(materialInfo.Text);
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+            int qun = (int)dtbl.Rows[0]["quantity_equipement"];
+            int result = qun - quantityEquipement;
+
+            string query2 = "UPDATE Equipement SET quantity_equipement=@resul WHERE ID_Equipement=@id";
+            SqlCommand comm = new SqlCommand(query2, con);
+
+            //params
+            comm.Parameters.AddWithValue("@resul", result);
+            comm.Parameters.AddWithValue("@id", IDequipement);
+
+            con.Open();
+            comm.ExecuteNonQuery();
+            con.Close();
+            return "24";
         }
         private void btn_Click(object sender, RoutedEventArgs e)
         {
@@ -120,50 +149,87 @@ namespace hotel_management_front.tabsUserControl
                 materialInfo.Visibility = Visibility.Hidden;
                 MaterialDesignThemes.Wpf.HintAssist.SetHint(materialInfo, "Quantitee");
             }
-            
+
         }
 
 
         private void Ajoutebtn_Click(object sender, RoutedEventArgs e)
         {
-            classes.article articleObj = new classes.article();
-            DataTable IDarticle = articleObj.showIDArticle(materialTxt.Text);
-            int IDarticl = int.Parse(IDarticle.Rows[0]["id_article"].ToString());
-            string query1 = "SELECT quantity FROM article WHERE id_article=@id";
-            SqlDataAdapter ada = new SqlDataAdapter(query1, con);
-            ada.SelectCommand.Parameters.AddWithValue("@id", IDarticl);
-
-            // command result 
-            DataTable dtbl = new DataTable();
-            ada.Fill(dtbl);
-          
-            int qun = (int)dtbl.Rows[0]["quantity"];
-            
-            int quantityArticl = int.Parse(materialInfo.Text);
-            if (qun < quantityArticl)
+            if (classes.GlobalVariable.ContenuTable != "équipementCuisine")
             {
-                MessageBox.Show("quantité n'est pas suffisant ");
-               
+                classes.article articleObj = new classes.article();
+                DataTable IDarticle = articleObj.showIDArticle(materialTxt.Text);
+                int IDarticl = int.Parse(IDarticle.Rows[0]["id_article"].ToString());
+                string query1 = "SELECT quantity FROM article WHERE id_article=@id";
+                SqlDataAdapter ada = new SqlDataAdapter(query1, con);
+                ada.SelectCommand.Parameters.AddWithValue("@id", IDarticl);
 
+                // command result 
+                DataTable dtbl = new DataTable();
+                ada.Fill(dtbl);
+
+                int qun = (int)dtbl.Rows[0]["quantity"];
+
+                int quantityArticl = int.Parse(materialInfo.Text);
+                if (qun < quantityArticl)
+                {
+                    MessageBox.Show("quantité n'est pas suffisant ");
+
+
+                }
+                else
+                {
+
+                    string rslt = modiftyQuantity();
+                    MessageBox.Show(rslt);
+                    string rslt1 = modiftyQuantityArticle();
+                    MessageBox.Show(rslt1);
+                    //ajouter dans l'historique
+                    string par = "modifier quantité dans cuisine ";
+                    string nom = classes.GlobalVariable.username;
+                    DateTime dateAction = DateTime.Today;
+                    classes.client clientObj1 = new classes.client();
+                    clientObj1.ajouterHistorique(nom, par, dateAction);
+                }
             }
             else
             {
+                classes.EquipementClass equipementObj = new classes.EquipementClass();
+                DataTable IDarticle = equipementObj.showIDEquipement(materialTxt.Text);
+                int IDequipement = int.Parse(IDarticle.Rows[0]["ID_Equipement"].ToString());
+                string query1 = "SELECT quantity_equipement FROM Equipement WHERE ID_Equipement=@id";
+                SqlDataAdapter ada = new SqlDataAdapter(query1, con);
+                ada.SelectCommand.Parameters.AddWithValue("@id", IDequipement);
 
-              string rslt = modiftyQuantity();
-              MessageBox.Show(rslt);
-              string rslt1 = modiftyQuantityArticle();
-              MessageBox.Show(rslt1);
-                //ajouter dans l'historique
-                string par = "modifier quantité dans cuisine ";
-                string nom = classes.GlobalVariable.username;
-                DateTime dateAction = DateTime.Today;
-                classes.client clientObj1 = new classes.client();
-                clientObj1.ajouterHistorique(nom, par, dateAction);
-                
-            }   
-           }
+                // command result 
+                DataTable dtbl = new DataTable();
+                ada.Fill(dtbl);
+                int qun = (int)dtbl.Rows[0]["quantity_equipement"];
+                int quantityEquipement = int.Parse(materialInfo.Text);
+
+                if (qun < quantityEquipement)
+                {
+                    MessageBox.Show("quantité n'est pas suffisant ");
+
+
+                }
+                else
+                {
+                    string rslt = modiftyQuantity();
+                    MessageBox.Show(rslt);
+                    string rstl1 = modiftyQuantityEquipement();
+                    MessageBox.Show(rstl1);
+
+                }
+
+            }
+
+
         }
-        
-        
     }
+}
+        
+        
+        
+    
 

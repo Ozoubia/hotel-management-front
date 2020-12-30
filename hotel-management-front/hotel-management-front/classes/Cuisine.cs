@@ -85,6 +85,7 @@ namespace hotel_management_front.classes
         {
             {
                 // checking if an employee exists
+                // checking if an employee exists
                 string query = "SELECT * FROM cuisine WHERE reference_C=@reference";
                 SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
@@ -95,8 +96,19 @@ namespace hotel_management_front.classes
                 DataTable dtbl = new DataTable();
                 ada.Fill(dtbl);
                 //user already exists 
-                if (dtbl.Rows.Count < 1)
+                if (dtbl.Rows.Count >= 1)
                 {
+                    string query1 = "UPDATE cuisine SET type_C=@typ  WHERE reference_C=@reference";
+                    SqlCommand com1 = new SqlCommand(query1, con);
+                    com1.Parameters.AddWithValue("@reference", this.reference_C);
+                    com1.Parameters.AddWithValue("@typ" , type);
+                    con.Open();
+                    com1.ExecuteNonQuery();
+                    con.Close();
+                }
+                else if(dtbl.Rows.Count == 0)
+                {
+
                     // inseting into the general stock
                     string query2 = "INSERT INTO cuisine (quantity_cuisine, designation_C, stock_alert_C, prix_achat_C, prix_vente_C, reference_C ,type_C) " +
                         "VALUES ( 0, @designation, @stockAlert, @prixAchat, @prixVente, @reference ,@typeC)";
@@ -115,6 +127,7 @@ namespace hotel_management_front.classes
                     com.ExecuteNonQuery();
                     con.Close();
                 }
+                
             }
 
         }
@@ -179,7 +192,7 @@ namespace hotel_management_front.classes
         {
 
 
-            string query = "SELECT * FROM cuisine  WHERE type_C =@type ";
+            string query = "SELECT * FROM cuisine  WHERE type_C =@type and quantity_cuisine > 0 ";
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
             //query parameters 
@@ -192,6 +205,26 @@ namespace hotel_management_front.classes
             return dtbl;
 
             
+
+
+        }
+        public DataTable showAllArticleCuisineBytype1(string type)
+        {
+
+
+            string query = "SELECT * FROM cuisine  WHERE type_C =@type  ";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@type", type);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+
+
 
 
         }

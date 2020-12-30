@@ -55,10 +55,15 @@ namespace hotel_management_front.tabsUserControl
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            classes.EquipementClass equipementClassObj = new EquipementClass();
+            classes.Cuisine cuisineObj = new Cuisine();
+    
+            equipementClassObj.deleteEquipement(classes.GlobalVariable.dataRowView[1].ToString());
+            cuisineObj.deleteCuisine(classes.GlobalVariable.dataRowView[1].ToString());
         }
 
-       
+
 
         private void équipementChambrer_Click(object sender, RoutedEventArgs e)
         {
@@ -71,11 +76,28 @@ namespace hotel_management_front.tabsUserControl
 
             // params
             com.Parameters.AddWithValue("@ref", reference);
-            
+
 
             con.Open();
             com.ExecuteNonQuery();
             con.Close();
+            // checking if an employee exists
+            string query1 = "SELECT * FROM cuisine WHERE reference_C=@reference";
+            SqlDataAdapter ada = new SqlDataAdapter(query1, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@reference", reference);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+            //user already exists 
+            if (dtbl.Rows.Count <= 1)
+            {
+                classes.Cuisine cuisineObj = new Cuisine();
+               
+                cuisineObj.deleteCuisine(reference);
+            }
         }
 
         private void équipementCuisine_Click(object sender, RoutedEventArgs e)
