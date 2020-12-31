@@ -1,4 +1,5 @@
-﻿using hotel_management_front.toolboxUserControl;
+﻿using hotel_management_front.tabsUserControl;
+using hotel_management_front.toolboxUserControl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,19 +21,33 @@ namespace hotel_management_front
     /// </summary>
     public partial class DashBoard : Window
     {
-        public DashBoard()
+        public DashBoard(string nom )
         {
+            
             InitializeComponent();
             gridMenu.Children.Clear();
+         
+            utilisateur.Text = nom;
             gridMenu.Children.Add(new tabBoardUserControl());
+            int count = 50;
+            compteur.Badge = count;
+            for (int i = 0; i < count; i++)
+            {
+                gridNotification.Children.Add(new notificationUserControl(" notification "));
+            }
            
         }
+
+
 
         #region menu button
         private void dashboardBtn_Click(object sender, RoutedEventArgs e)
         {
             gridMenu.Children.Clear();
             gridMenu.Children.Add(new tabBoardUserControl());
+
+      
+
         }
 
         private void hotelBtn_Click(object sender, RoutedEventArgs e)
@@ -75,19 +90,28 @@ namespace hotel_management_front
             gridMenu.Children.Add(new fournisseurUserControl());
         }
         #endregion
-
+        
         #region tab settup
         private void tabControlDragable_Loaded(object sender, RoutedEventArgs e)
         {
             classes.GlobalVariable.tbControl = (sender as TabControl);
+          
         }
+
 
 
 
 
         #endregion
 
+        private void déconnecter_Click(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            this.Close();
+            
+        }
         
+
     }
     }
 

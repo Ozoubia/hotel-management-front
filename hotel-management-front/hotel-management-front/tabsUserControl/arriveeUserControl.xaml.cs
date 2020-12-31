@@ -10,30 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace hotel_management_front.dialog_windows
+namespace hotel_management_front.tabsUserControl
 {
     /// <summary>
-    /// Logique d'interaction pour addemergencyEquipmentWindow.xaml
+    /// Logique d'interaction pour arriveeUserControl.xaml
     /// </summary>
-    public partial class addemergencyEquipmentWindow : Window
+    public partial class arriveeUserControl : UserControl
     {
-        public addemergencyEquipmentWindow()
+        public arriveeUserControl()
         {
             InitializeComponent();
-        }
-
-        private void ajouterMaterialtBtn_Click(object sender, RoutedEventArgs e)
-        {
-         
-
-
-        }
-
-        private void annulerBtn_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

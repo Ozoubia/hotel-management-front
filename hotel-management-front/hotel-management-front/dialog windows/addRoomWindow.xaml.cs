@@ -49,6 +49,12 @@ namespace hotel_management_front.dialog_windows
             classes.room roomOjb = new classes.room(name, type, price, isWorking, dest_path);
             string result = roomOjb.addRoom();
             MessageBox.Show(result);
+            // add action to history log
+            string par = "Ajouter Chambre";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
         }
 
         private void annulerBtn_Click(object sender, RoutedEventArgs e)

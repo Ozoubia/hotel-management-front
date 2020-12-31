@@ -27,6 +27,7 @@ namespace hotel_management_front.dialog_windows
         private void annulerBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            
         }
 
         private void ajouterClientBtn_Click(object sender, RoutedEventArgs e)
@@ -47,7 +48,12 @@ namespace hotel_management_front.dialog_windows
             string result = clientObj.addClient();
             MessageBox.Show(result);
 
-            // updating the client grid
+            // add action to history log
+            string par = "Ajouter Client";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
 
         }
     }

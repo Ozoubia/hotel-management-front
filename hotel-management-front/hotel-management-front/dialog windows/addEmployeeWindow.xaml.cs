@@ -11,7 +11,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace hotel_management_front.dialog_windows
 {
     /// <summary>
@@ -49,9 +48,17 @@ namespace hotel_management_front.dialog_windows
 
             string result = employeeObj.addEmployee();
             MessageBox.Show(result);
-        
+            // add action to history log
+            string par = "Ajouter Employee";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
+
+
         }
 
+        
 
         private void annulerBtn_Click(object sender, RoutedEventArgs e)
         {

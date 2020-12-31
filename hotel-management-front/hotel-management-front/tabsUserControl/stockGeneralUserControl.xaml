@@ -17,7 +17,7 @@
             <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="articleListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto">
+        <DataGrid Grid.Row="1" IsReadOnly="True" x:Name="articleListGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto"  >
             <DataGrid.Columns>
                 <!--columns-->
                 <DataGridTextColumn Header="Reference" ></DataGridTextColumn>
@@ -25,14 +25,11 @@
                 <DataGridTextColumn Header="Famille" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Quantitee" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Stock Alert" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Quantitee utilisee" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Date expiration" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Nom fournisseur" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Prenom fournisseur" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Prix achat" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Prix Vente" ></DataGridTextColumn>
+                <DataGridTextColumn Header="prix Achat" ></DataGridTextColumn>
+                <DataGridTextColumn Header="prix Vente" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Localisation" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Date arrivage" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Type du Localisation" ></DataGridTextColumn>
+
                 <!--button-->
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -44,6 +41,24 @@
                                 <Button Height="25" ToolTip="Supprimer" x:Name="deleteBtn" Click="deleteBtn_Click" >
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
                                 </Button>
+                                <Button Height="25" ToolTip="historique" Margin="10 0 10 0" x:Name="historiqueBtn" Click="historiqueBtn_Click">
+                                    <materialDesign:PackIcon Kind="HddRemove" ></materialDesign:PackIcon>
+                                </Button>
+
+                                <!--button  pour choisir le type de produit consommable-->
+                                <materialDesign:PopupBox IsEnabled="True" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                                    <materialDesign:PopupBox.ToggleContent >
+                                        <TextBlock  Background="#633DB4" Height="25" Width="40" Padding="5, 5" Foreground="White" Margin="7" >
+                                            <materialDesign:PackIcon Kind="Check" ></materialDesign:PackIcon>
+                                        </TextBlock>
+                                    </materialDesign:PopupBox.ToggleContent>
+                                    <StackPanel Orientation="Vertical">
+                                        <Button x:Name="petitDéjeuner"  Click="petitDéjeuner_Click">petit déjeuner</Button>
+                                        <Button x:Name="chargeCuisine" Click="chargeCuisine_Click" >charge du cuisine</Button>
+                                        <Button x:Name="consommableChambre" Click="consommableChambre_Click" >consommables chambre</Button>
+
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

@@ -23,7 +23,7 @@
             <TextBlock Text="NOUVELLE ARRIVAGE" HorizontalAlignment="Center"   VerticalAlignment="Top" Margin="180,0,5,2" Foreground="Gray" FontSize="25" Width="240" RenderTransformOrigin="0.879,0.545"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <TextBox Text="" x:Name="referenceField" materialDesign:HintAssist.Hint="Reference"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
+            <TextBox Text="" x:Name="referenceField" TextChanged="referenceField_TextChanged"  materialDesign:HintAssist.Hint="Reference"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
             <TextBox Text="" x:Name="designationField" materialDesign:HintAssist.Hint="Designation"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="230,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
@@ -45,9 +45,9 @@
         <StackPanel Orientation="Horizontal" Grid.Row="5">
             <TextBox x:Name="prixVenteField" materialDesign:HintAssist.Hint="Prix Vente"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" Text="0" FontFamily="Algerian" FontSize="18" Width="137"/>
             <ComboBox x:Name="localisationField" materialDesign:HintAssist.Hint="Localisation" Margin="230,0,5,2" Width="137" FontFamily="Algerian" FontSize="18">
-                <ComboBoxItem Content="Cuisine"/>
-                <ComboBoxItem Content="Material"/>
-                <ComboBoxItem Content="Generale"/>
+               
+                <ComboBoxItem Content="équipement"/>
+                <ComboBoxItem Content="consommable"/>
             </ComboBox>
         </StackPanel>
 

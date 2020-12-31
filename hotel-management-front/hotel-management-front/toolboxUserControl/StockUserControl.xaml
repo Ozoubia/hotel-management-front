@@ -10,7 +10,7 @@
         <StackPanel Orientation="Horizontal">
             <Button x:Name="StockGenerale"  Margin="10 0 10 0" Click="StockGenerale_Click">Stock generale</Button>
             <Button x:Name="Cuisine" Margin="20 0 10 0" Content="Cuisine" Click="Cuisine_Click"/>
-            <Button x:Name="stockSecours" Margin="10 0 10 0" Click="stockSecours_Click">Stock secours</Button>
+            <Button x:Name="equipement" Margin="10 0 10 0" Click="equipement_Click">équipement</Button>
         </StackPanel>
     </Grid>
 </UserControl>

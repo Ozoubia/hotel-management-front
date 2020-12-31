@@ -109,5 +109,39 @@ namespace hotel_management_front.classes
             adapt.Fill(data);
             return data;
         }
+        public DataTable showAllHistorique()
+        {
+            string query = "SELECT * FROM historique";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            return data;
+        }
+        public void ajouterHistorique(string NomUtilisat, string typeAction, DateTime date)
+        {
+            string query = "INSERT INTO historique (type_action ,nom_utilisateur ,date_action)" + "VALUES (@Nom, @type, @date)";
+            SqlCommand com = new SqlCommand(query, con);
+            // params
+            com.Parameters.AddWithValue("@Nom", NomUtilisat);
+            com.Parameters.AddWithValue("@type", typeAction);
+            com.Parameters.AddWithValue("@date", date);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+
+        }
+        //search history log
+        public DataTable searchHistorique(string HistoriqueSearch)
+        {
+            string query = "SELECT * FROM historique WHERE type_action Like '%" + HistoriqueSearch + "%' OR nom_utilisateur LIKE'%" + HistoriqueSearch + "%'";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            return data;
+        }
     }
 }

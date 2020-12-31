@@ -95,6 +95,12 @@ namespace hotel_management_front.dialog_windows
 
             string result = reservObj.AddReservation();
             MessageBox.Show(result);
+            // add action to history log
+            string par = "Ajouter Reservation ";
+            string nom = classes.GlobalVariable.username;
+            DateTime dateAction = DateTime.Today;
+            classes.client clientObj1 = new classes.client();
+            clientObj1.ajouterHistorique(nom, par, dateAction);
         }
 
         // function to the change the montant total when room is changed
