@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Data;
 using System.Windows.Data;
+using System.Windows.Threading;
+using System;
 
 namespace hotel_management_front.tabsUserControl
 {
@@ -11,6 +13,10 @@ namespace hotel_management_front.tabsUserControl
     /// </summary>
     public partial class employesUserControl : UserControl
     {
+
+        // timer used for refresh
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
         public employesUserControl()
         {
             InitializeComponent();
@@ -80,5 +86,26 @@ namespace hotel_management_front.tabsUserControl
             employeeListGrid.ItemsSource = data.DefaultView;
             
         }
+
+        #region timer grid refresh part
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            this.dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            this.dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            this.dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            showEmployeeList();
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // stopping the timer
+            this.dispatcherTimer.Stop();
+        }
+        #endregion
     }
 }

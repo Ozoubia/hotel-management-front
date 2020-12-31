@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace hotel_management_front.tabsUserControl
 {
@@ -22,6 +23,10 @@ namespace hotel_management_front.tabsUserControl
     /// </summary>
     public partial class clientUserControl1 : UserControl
     {
+
+        // timer used for refresh
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
         public clientUserControl1()
         {
             InitializeComponent();
@@ -69,6 +74,24 @@ namespace hotel_management_front.tabsUserControl
 
         }
 
-       
+        #region timer grid refresh part
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            this.dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            this.dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            showClientList();
+        }
+        
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // stopping the timer
+            this.dispatcherTimer.Stop();
+        }
+        #endregion
     }
 }
