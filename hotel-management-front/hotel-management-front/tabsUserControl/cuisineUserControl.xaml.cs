@@ -24,6 +24,7 @@ namespace hotel_management_front.tabsUserControl
     public partial class cuisineUserControl : UserControl
     {
         public string design;
+        public int quntiti;
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
         public cuisineUserControl()
         {
@@ -84,11 +85,18 @@ namespace hotel_management_front.tabsUserControl
      
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
+
         {
+
             rightGrid.Children.Clear();
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
             string design = classes.GlobalVariable.dataRowView[2].ToString();
-            rightGrid.Children.Add(new modifierMatérielCuisineUserControl(design));
+            //team and product count
+            classes.article articleObj = new article();
+            DataTable data = articleObj.showQuantite(design);
+            int quantity = (int)data.Rows[0]["quantity"];
+
+            rightGrid.Children.Add(new modifierMatérielCuisineUserControl(design ));
 
         }
 
@@ -166,7 +174,9 @@ namespace hotel_management_front.tabsUserControl
             for (int i = 0; i < nbrMat; i++)
             {
                 design = articles.Rows[i]["designation"].ToString();
-                rightGrid.Children.Add(new materialCuisineUserControl(design));
+                quntiti = (int)articles.Rows[i]["quantity"];
+
+                rightGrid.Children.Add(new materialCuisineUserControl(design ,quntiti));
 
             }
         }
@@ -176,13 +186,17 @@ namespace hotel_management_front.tabsUserControl
             rightGrid.Children.Clear();
         
             Cuisine cuisineObj = new Cuisine();
+            EquipementClass equipementClassObj = new EquipementClass();
             DataTable articles = cuisineObj.showAllArticleCuisineBytype1("équipement Cuisine ");
             int nbrMat = articles.Rows.Count;
             classes.GlobalVariable.ContenuTable = "équipementCuisine";
             for (int i = 0; i < nbrMat; i++)
             {
                 design = articles.Rows[i]["designation_C"].ToString();
-                rightGrid.Children.Add(new materialCuisineUserControl(design));
+                //recover the quantity of equipment by designation
+                DataTable Quantites =  equipementClassObj.showQuantite(design);
+                quntiti = (int)Quantites.Rows[0]["quantity_equipement"];
+                rightGrid.Children.Add(new materialCuisineUserControl(design , quntiti));
 
             }
         }
@@ -197,7 +211,8 @@ namespace hotel_management_front.tabsUserControl
             for (int i = 0; i < nbrMat; i++)
             {
                 design = articles.Rows[i]["designation"].ToString();
-                rightGrid.Children.Add(new materialCuisineUserControl(design));
+                quntiti = (int)articles.Rows[i]["quantity"];
+                rightGrid.Children.Add(new materialCuisineUserControl(design , quntiti));
 
             }
         }

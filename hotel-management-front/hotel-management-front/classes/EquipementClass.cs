@@ -110,5 +110,20 @@ namespace hotel_management_front.classes
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public DataTable showQuantite(string desig)
+        {
+            // checking if an employee exists
+            string query = "SELECT quantity_equipement FROM Equipement WHERE designation_E=@Desig";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Desig", desig);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
     }
 }

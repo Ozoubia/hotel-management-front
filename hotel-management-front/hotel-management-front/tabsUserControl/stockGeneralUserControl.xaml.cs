@@ -109,13 +109,14 @@ namespace hotel_management_front.tabsUserControl
             //VAR
             // int quantity = (int)classes.GlobalVariable.dataRowView[3];
             int quantity = 0;
+          
             string designation = classes.GlobalVariable.dataRowView[1].ToString();
             string reference1 = classes.GlobalVariable.dataRowView[0].ToString();
             int stockAlert = (int)classes.GlobalVariable.dataRowView[4];
             int prixAchat = (int)classes.GlobalVariable.dataRowView[5];
             int prixVente = (int)classes.GlobalVariable.dataRowView[6];
             //alimenter table de cuisine
-            classes.Cuisine cuisineObj = new classes.Cuisine(quantity, designation, reference1, stockAlert, prixAchat, prixVente);
+            classes.Cuisine cuisineObj = new classes.Cuisine( quantity, designation, reference1, stockAlert, prixAchat, prixVente);
             cuisineObj.addCuisine1("petit Déjeuner");
         }
 
@@ -138,13 +139,14 @@ namespace hotel_management_front.tabsUserControl
             con.Close();
             //VAR
             int quantity = (int)classes.GlobalVariable.dataRowView[3];
+            int quantityEquipment = 0;
             string designation = classes.GlobalVariable.dataRowView[1].ToString();
             string reference1 = classes.GlobalVariable.dataRowView[0].ToString();
             int stockAlert = (int)classes.GlobalVariable.dataRowView[4];
             int prixAchat = (int)classes.GlobalVariable.dataRowView[5];
             int prixVente = (int)classes.GlobalVariable.dataRowView[6];
             //s alimenter table de cuisine
-            classes.Cuisine cuisineObj = new classes.Cuisine(quantity, designation, reference1, stockAlert, prixAchat, prixVente);
+            classes.Cuisine cuisineObj = new classes.Cuisine(   quantity, designation, reference1, stockAlert, prixAchat, prixVente);
             cuisineObj.addCuisine1("charge Cuisine");
         }
 

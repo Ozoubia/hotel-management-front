@@ -225,7 +225,7 @@ namespace hotel_management_front.classes
         // function that takes a type and returns the name 
         public DataTable FilterByLocalisation(string type)
         {
-            string query = "SELECT designation FROM article WHERE type_consommable=@type";
+            string query = "SELECT designation , quantity FROM article WHERE type_consommable=@type";
             
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
@@ -284,6 +284,21 @@ namespace hotel_management_front.classes
 
             //query parameters 
             ada.SelectCommand.Parameters.AddWithValue("@reference", reference);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
+        public DataTable showQuantite(string desig)
+        {
+            // checking if an employee exists
+            string query = "SELECT quantity FROM article WHERE designation=@Desig";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Desig", desig);
 
             // command result 
             DataTable dtbl = new DataTable();

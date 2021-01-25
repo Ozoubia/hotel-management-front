@@ -10,6 +10,7 @@ namespace hotel_management_front.classes
     public class Cuisine
     {
         //Var 
+       
         int quantity_cuisine;
         string designation_C;
         string reference_C;
@@ -20,7 +21,7 @@ namespace hotel_management_front.classes
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
         public Cuisine() { }
 
-        public Cuisine(int quantity, string design, string referenc, int stockAlert, int prixAchat, int prixVante)
+        public Cuisine( int quantity, string design, string referenc, int stockAlert, int prixAchat, int prixVante)
         {
             this.quantity_cuisine = quantity;
             this.designation_C = design;
@@ -28,6 +29,7 @@ namespace hotel_management_front.classes
             this.stock_alert_C = stockAlert;
             this.prix_achat_C = prixAchat;
             this.prix_vente_C = prixVante;
+           
         }
         public DataTable showIDcuisine(string desig)
         {

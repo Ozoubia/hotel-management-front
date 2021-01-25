@@ -26,7 +26,7 @@ namespace hotel_management_front.tabsUserControl
     {
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
-        public modifierMatérielCuisineUserControl(string material)
+        public modifierMatérielCuisineUserControl(string material )
         {
             InitializeComponent();
             materialTxt.Text = material;
