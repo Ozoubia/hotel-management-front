@@ -175,16 +175,6 @@ namespace hotel_management_front.classes
                 com2.ExecuteNonQuery();
                 con.Close();
 
-                // add attribute to room
-                if (this.localisation == "équipement")
-                {
-                    string query3 = "ALTER TABLE etat_lieu_room ADD " + this.designation + " int NULL" ;
-                    SqlCommand com3 = new SqlCommand(query3, con);
-
-                    con.Open();
-                    com3.ExecuteNonQuery();
-                    con.Close();
-                }
 
                 // add attribute to cuisine
 
