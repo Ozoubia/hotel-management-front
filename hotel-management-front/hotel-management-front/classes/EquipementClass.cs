@@ -111,6 +111,22 @@ namespace hotel_management_front.classes
             con.Close();
         }
 
+        public DataTable showQuantite(string desig)
+        {
+            // checking if an employee exists
+            string query = "SELECT quantity_equipement FROM Equipement WHERE designation_E=@Desig";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Desig", desig);
+             // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
+
+
         // used for the room equipement alimentation
         public DataTable filterEquipByType(string equipType)
         {
@@ -120,6 +136,7 @@ namespace hotel_management_front.classes
 
             //query parameters 
             ada.SelectCommand.Parameters.AddWithValue("@type", equipType);
+
 
             // command result 
             DataTable dtbl = new DataTable();

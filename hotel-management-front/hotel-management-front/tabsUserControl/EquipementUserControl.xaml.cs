@@ -128,6 +128,7 @@ namespace hotel_management_front.tabsUserControl
         private void équipementCuisine_Click(object sender, RoutedEventArgs e)
         {
             //modefier le type de equipement 
+
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
             string typeEquip = GlobalVariable.dataRowView[6].ToString();
@@ -137,6 +138,7 @@ namespace hotel_management_front.tabsUserControl
             {
                 return;
             }
+
 
             string reference = classes.GlobalVariable.dataRowView[1].ToString();
             string query = "UPDATE Equipement SET type_Equipement='cuisine' WHERE reference_E=@ref";
@@ -152,13 +154,15 @@ namespace hotel_management_front.tabsUserControl
             con.Close();
             //VAR
             int quantity = 0;
+           // int quantityEquipement = (int)classes.GlobalVariable.dataRowView[5];
+           // MessageBox.Show(quantityEquipement.ToString());
             string designation = classes.GlobalVariable.dataRowView[2].ToString();
             string reference1 = classes.GlobalVariable.dataRowView[1].ToString();
             int stockAlert = (int)classes.GlobalVariable.dataRowView[3];
             int prixAchat = (int)classes.GlobalVariable.dataRowView[4];
             int prixVente = 0;
             //s alimenter table de cuisine
-            classes.Cuisine cuisineObj = new classes.Cuisine(quantity, designation, reference1, stockAlert, prixAchat, prixVente);
+            classes.Cuisine cuisineObj = new classes.Cuisine( quantity, designation, reference1, stockAlert, prixAchat, prixVente);
             cuisineObj.addCuisine1("équipement Cuisine");
 
 
@@ -204,5 +208,6 @@ namespace hotel_management_front.tabsUserControl
         {
             this.isOpenedPopup = false;
         }
+  
     }
 }

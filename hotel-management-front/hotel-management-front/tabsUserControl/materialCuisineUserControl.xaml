@@ -12,6 +12,7 @@
 
             <Button Width="25" Height="25" Margin="10" x:Name="btn" Background="Blue" Click="btn_Click"></Button>
             <TextBlock x:Name="materialTxt" Margin="5" VerticalAlignment="Center" FontSize="18"></TextBlock>
+            <TextBlock x:Name="quantityTxt" Margin="5" VerticalAlignment="Center" FontSize="18"></TextBlock>
             <TextBox Margin="20 0 0 0" Width="150" x:Name="materialInfo" materialDesign:HintAssist.Hint="Quantitee" Visibility="Hidden"></TextBox>
             <Button Width="25" Height="25" Margin="1" x:Name="Ajoutebtn" Background="Yellow" Click="Ajoutebtn_Click">+</Button>
         </StackPanel>

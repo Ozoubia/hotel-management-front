@@ -17,11 +17,11 @@ namespace hotel_management_front.tabsUserControl
         string mater;
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
-        public materialCuisineUserControl(string material)
+        public materialCuisineUserControl(string material , int quantite)
         {
             InitializeComponent();
             materialTxt.Text = material;
-
+            quantityTxt.Text = quantite.ToString();
         }
         
         string modiftyQuantity()
