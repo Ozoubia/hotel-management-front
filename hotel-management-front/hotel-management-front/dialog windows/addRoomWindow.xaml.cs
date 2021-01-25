@@ -44,11 +44,21 @@ namespace hotel_management_front.dialog_windows
 
             string dest_path = "images/" + name + ".jpg";
             //copying image to the image folders
-            System.IO.File.Move(imgPath, dest_path);
+            System.IO.File.Copy(imgPath, dest_path);
 
             classes.room roomOjb = new classes.room(name, type, price, isWorking, dest_path);
             string result = roomOjb.addRoom();
             MessageBox.Show(result);
+
+            // adding room etat lieu 
+            if (result == "Room added successfuly")
+            {
+                classes.ELRoom elroomObj = new classes.ELRoom();
+                elroomObj.addRoomIDELRoom(name);
+            }
+            
+
+
             // add action to history log
             string par = "Ajouter Chambre";
             string nom = classes.GlobalVariable.username;

@@ -24,11 +24,7 @@ namespace hotel_management_front.tabsUserControl
     /// </summary>
     public partial class etatLieuChambreUserControl : UserControl
     {
-        public int roomID;
-        public string design;
-        
-        
-        
+       
 
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
@@ -59,136 +55,47 @@ namespace hotel_management_front.tabsUserControl
                 mainGrid.Children.Add(newBtn);
             }
 
+            // room button click
             void button_click(object sender, RoutedEventArgs e)
             {
                 Button B = (Button)sender;
+                string roomName = B.Name.ToString();
 
-                // getting the id of the clicked room
-                room roomObj2 = new room();
-                DataTable result2 = roomObj2.showRoomIDByName(B.Name);
+                emptyPreviousGrids();
+                showRightTopGrid(roomName);
 
-                roomID = int.Parse(result2.Rows[0]["id_room"].ToString());
-
-                // showing right grid
-                rightGrid.Children.Clear();
-                showRightGrid();
             }
-
         }
 
-        // method that display the right grid of materials
-        void showRightGrid()
+        private void showRightTopGrid(string roomName)
         {
+            EquipementClass equipObj = new EquipementClass();
+            DataTable equipements = equipObj.filterEquipByType("chambre");
 
-            // show the material user controls 
-            article articleObj = new article();
-            DataTable articles = articleObj.FilterByLocalisation("Material");
-            int nbrMat = articles.Rows.Count;
+            // number of equiprement
+            int nbrEqui = equipements.Rows.Count;
 
-            // storing the designation items in a list to be used later for init
+            // list used to store the material / equipement names
             List<string> materialList = new List<string>();
 
-            // below code is used for 
-            ELRoom ELroomObj = new ELRoom();
-            DataTable result = ELroomObj.showRoomInELRoom(roomID);
+            // getting room id from its name ( which we get from the click button)
+            room roomObj = new room();
+            DataTable result = roomObj.showRoomIDByName(roomName);
+            int roomID = int.Parse(result.Rows[0]["id_room"].ToString());
 
-            // testing if the room exists in etat de lieu (init the room in EL if it doesn't exist)
-            if (result.Rows.Count == 0)
+            // filling the equipement items
+            for (int i = 0; i < nbrEqui; i++)
             {
-                for (int i = 0; i < nbrMat; i++)
-                {
-                    design = articles.Rows[i]["designation"].ToString();              
-                    rightGrid.Children.Add(new materialRoomUserControl(design, roomID, 0));
-                    materialList.Add(design);
-                }
-
-                init_material_vars(materialList);
-            }
-            else
-            {
-                //// below code is used for 
-                //ELRoom ELroomObj2 = new ELRoom();
-                //DataTable result2 = ELroomObj2.showRoomInELRoom(roomID);
-
-                //List<string> materialList1 = new List<string>();
-                //// for each room
-                //for (int i = 0; i < nbrMat; i++)
-                //{
-                //    design = articles.Rows[i]["designation"].ToString();
-
-                //    materialList1.Add(design);
-                //}
-
-                //// for each material, get its value
-                //for (int i = 0; i < nbrMat; i++)
-                //{
-                //    int value = int.Parse(result2.Rows[0][materialList1[i]].ToString());
-                //    rightGrid.Children.Add(new materialRoomUserControl(design, roomID, 1));
-
-                //}
-
-
-                //// storing the designation items in a list to be used later for init
-                //List<string> materialList1 = new List<string>();
-                //// for each room
-                //for (int i = 0; i < nbrMat; i++)
-                //{
-                //    design = articles.Rows[i]["designation"].ToString();
-
-                //    materialList1.Add(design);
-                //}
-
-
-                //// for each material, get its value
-                //for (int i = 0; i < nbrMat; i++)
-                //{
-                //    int value = int.Parse(result.Rows[0][materialList1[i]].ToString());
-                //    rightGrid.Children.Add(new materialRoomUserControl(design, roomID, 1));
-
-                //}
+                string mater = equipements.Rows[i]["designation_E"].ToString();
+                topGrid.Children.Add(new materialRoomUserControl(mater, roomID));
+                materialList.Add(mater);
             }
 
         }
 
-        // used to initialize the etat lieu material attributes with 0 and the id room attr with the current room
-        public void init_material_vars(List<string> materialList)
+        private void emptyPreviousGrids()
         {
-
-            // checking if a room is init in etat de lieu table
-            string query = "SELECT * FROM etat_lieu_room WHERE id_room=@id_room";
-            SqlDataAdapter ada = new SqlDataAdapter(query, con);
-
-            //query parameters 
-            ada.SelectCommand.Parameters.AddWithValue("@id_room", roomID);
-
-            // command result 
-            DataTable dtbl = new DataTable();
-            ada.Fill(dtbl);
-            //room id already exists 
-            if (dtbl.Rows.Count == 0)
-            {
-                // because the query changes depending on the material element we need to create it dynamically 
-                string query_attr = "";
-                string query_vals = "";
-
-                // creating the query for all material attributes
-                for (int i = 0; i < materialList.Count; i++)
-                {
-                    query_attr += ", " + materialList[i];
-                    query_vals += ", 0";
-                }
-
-                string query1 = "INSERT INTO etat_lieu_room (id_room " + query_attr + " ) VALUES (@id_room " + query_vals + " )";
-                SqlCommand com = new SqlCommand(query1, con);
-
-                // params
-                com.Parameters.AddWithValue("@id_room", roomID);
-
-                con.Open();
-                com.ExecuteNonQuery();
-                con.Close();
-            }
-                
+            topGrid.Children.Clear();
         }
 
     }

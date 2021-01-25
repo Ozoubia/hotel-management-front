@@ -91,7 +91,7 @@ namespace hotel_management_front.dialog_windows
             this.Close();
         }
 
-        private void referenceField_TextChanged(object sender, TextChangedEventArgs e)
+    private void referenceField_TextChanged(object sender, TextChangedEventArgs e)
         {
             classes.article articleOBj = new classes.article();
             DataTable data1 = articleOBj.searchArticle(referenceField.Text);

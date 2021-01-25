@@ -110,5 +110,22 @@ namespace hotel_management_front.classes
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        // used for the room equipement alimentation
+        public DataTable filterEquipByType(string equipType)
+        {
+            // checking if an employee exists
+            string query = "SELECT * FROM Equipement WHERE type_Equipement=@type";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@type", equipType);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
     }
 }
