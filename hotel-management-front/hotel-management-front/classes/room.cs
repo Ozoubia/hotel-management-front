@@ -124,7 +124,7 @@ namespace hotel_management_front.classes
         // used for the room etat lieu
         public DataTable showRoomIDByName(string roomName)
         {
-            // checking if an employee exists
+            // checking if a room exists
             string query = "SELECT id_room FROM room WHERE name=@name";
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 

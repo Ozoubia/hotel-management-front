@@ -11,12 +11,19 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <!--right grid--> 
+        <!--left grid--> 
         <UniformGrid  x:Name="mainGrid" Margin="30" Grid.Column="0">
             
         </UniformGrid>
         
-        <!--left grid-->
-        <StackPanel x:Name="rightGrid" Orientation="Vertical" Grid.Column="1"/>
+        <!--right grid-->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" x:Name="topGrid" Grid.Row="0"></StackPanel>
+            <Grid x:Name="bottomGrid" Grid.Row="1"></Grid>
+        </Grid>
     </Grid>
 </UserControl>

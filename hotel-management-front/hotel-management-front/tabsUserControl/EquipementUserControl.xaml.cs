@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace hotel_management_front.tabsUserControl
 {
@@ -23,11 +24,17 @@ namespace hotel_management_front.tabsUserControl
     /// </summary>
     public partial class EquipementUserControl : UserControl
     {
+
+        // timer used for refresh
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        bool isOpenedPopup = false;
+
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
         public EquipementUserControl()
         {
             InitializeComponent();
             showEquipementList();
+            
         }
         public void showEquipementList()
         {
@@ -43,6 +50,7 @@ namespace hotel_management_front.tabsUserControl
 
 
         }
+
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -55,21 +63,30 @@ namespace hotel_management_front.tabsUserControl
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            classes.EquipementClass equipementClassObj = new EquipementClass();
-            classes.Cuisine cuisineObj = new Cuisine();
+            GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            EquipementClass equipementClassObj = new EquipementClass();
+            Cuisine cuisineObj = new Cuisine();
     
-            equipementClassObj.deleteEquipement(classes.GlobalVariable.dataRowView[1].ToString());
-            cuisineObj.deleteCuisine(classes.GlobalVariable.dataRowView[1].ToString());
+            equipementClassObj.deleteEquipement(GlobalVariable.dataRowView[1].ToString());
+            cuisineObj.deleteCuisine(GlobalVariable.dataRowView[1].ToString());
         }
 
 
 
         private void équipementChambrer_Click(object sender, RoutedEventArgs e)
         {
+           
             //modefier le type de equipement 
-            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            string reference = classes.GlobalVariable.dataRowView[1].ToString();
+            GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            string typeEquip = GlobalVariable.dataRowView[6].ToString();
+
+            // when chambre is already selected don't do anything
+            if (typeEquip == "chambre")
+            {
+                return;
+            }
+
+            string reference = GlobalVariable.dataRowView[1].ToString();
             string query = "UPDATE Equipement SET type_Equipement='chambre' WHERE reference_E=@ref";
 
             SqlCommand com = new SqlCommand(query, con);
@@ -94,16 +111,35 @@ namespace hotel_management_front.tabsUserControl
             //user already exists 
             if (dtbl.Rows.Count <= 1)
             {
-                classes.Cuisine cuisineObj = new Cuisine();
+                Cuisine cuisineObj = new Cuisine();
                
                 cuisineObj.deleteCuisine(reference);
             }
+
+            // adding attribute to Etat lieu class
+            string designation = GlobalVariable.dataRowView[2].ToString();
+            ELRoom elObj = new ELRoom();
+            elObj.addELAttribute(designation);
+
+            //refresh
+            showEquipementList();
         }
 
         private void équipementCuisine_Click(object sender, RoutedEventArgs e)
         {
             //modefier le type de equipement 
-           classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+
+            string typeEquip = GlobalVariable.dataRowView[6].ToString();
+
+            // when cuisine is already selected don't do anything
+            if (typeEquip == "cuisine")
+            {
+                return;
+            }
+
+
             string reference = classes.GlobalVariable.dataRowView[1].ToString();
             string query = "UPDATE Equipement SET type_Equipement='cuisine' WHERE reference_E=@ref";
 
@@ -128,7 +164,49 @@ namespace hotel_management_front.tabsUserControl
             //s alimenter table de cuisine
             classes.Cuisine cuisineObj = new classes.Cuisine( quantity, designation, reference1, stockAlert, prixAchat, prixVente);
             cuisineObj.addCuisine1("équipement Cuisine");
-          
+
+
+            // removing the column when chambre is changed
+            ELRoom elObj = new ELRoom();
+            elObj.removeELAttribute(designation);
+
+            //refresh
+            showEquipementList();
+        }
+
+        #region timer grid refresh part
+        // used for the refresh
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            this.dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            this.dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            if (!isOpenedPopup)
+            {
+                showEquipementList();
+            }
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // stopping the timer
+            this.dispatcherTimer.Stop();
+
+        }
+        #endregion
+
+        private void PopupBox_Opened(object sender, RoutedEventArgs e)
+        {
+            this.isOpenedPopup = true;
+        }
+
+        private void PopupBox_Closed(object sender, RoutedEventArgs e)
+        {
+            this.isOpenedPopup = false;
         }
   
     }
