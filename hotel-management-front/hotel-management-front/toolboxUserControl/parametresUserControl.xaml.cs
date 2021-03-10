@@ -23,6 +23,9 @@ namespace hotel_management_front.toolboxUserControl
     /// </summary>
     public partial class parametresUserControl : UserControl
     {
+
+        bool hasAccess = false;
+
         public parametresUserControl()
         {
             InitializeComponent();
@@ -30,19 +33,43 @@ namespace hotel_management_front.toolboxUserControl
 
         private void utilisateur_Click(object sender, RoutedEventArgs e)
         {
-            Grid tabGrid = new Grid();
+            List<string> permissions = GlobalVariable.permissionList;
+            // looping through the permissions list
 
-            TabItem newTabItem = new TabItem
+            foreach(string item in permissions)
             {
-                Header = "Utilisateur",
-            };
+                if(item.Contains("manage users"))
+                {
+                    this.hasAccess = true;
+                    
+                    break;
+                }
+                              
+            }
 
-            GlobalVariable.tbControl.Items.Add(newTabItem);
-            newTabItem.Content = tabGrid;
-            tabGrid.Children.Clear();
-            utilisateurUserControl UC1 = new utilisateurUserControl();
-            tabGrid.Children.Add(UC1);
-            newTabItem.IsSelected = true;
+           
+            // if the user has access
+            if (hasAccess)
+            {
+                Grid tabGrid = new Grid();
+
+                TabItem newTabItem = new TabItem
+                {
+                    Header = "Utilisateur",
+                };
+
+                GlobalVariable.tbControl.Items.Add(newTabItem);
+                newTabItem.Content = tabGrid;
+                tabGrid.Children.Clear();
+                utilisateurUserControl UC1 = new utilisateurUserControl();
+                tabGrid.Children.Add(UC1);
+                newTabItem.IsSelected = true;
+            }
+            else
+            {
+                MessageBox.Show("Vous n'avez pas l'access a cette section");
+            }
+
         }
 
         private void sauvgarde_Click(object sender, RoutedEventArgs e)
