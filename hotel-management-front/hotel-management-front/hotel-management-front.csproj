@@ -68,14 +68,18 @@
     <Compile Include="classes\article.cs" />
     <Compile Include="classes\client.cs" />
     <Compile Include="classes\Cuisine.cs" />
+    <Compile Include="classes\detailHistoriqueClass1.cs" />
     <Compile Include="classes\ELRoom.cs" />
     <Compile Include="classes\employee.cs" />
     <Compile Include="classes\EquipementClass.cs" />
     <Compile Include="classes\fournisseur.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
     <Compile Include="classes\histoArrivee.cs" />
+    <Compile Include="classes\HistoriqueArticleChambreClass.cs" />
     <Compile Include="classes\Notification.cs" />
+    <Compile Include="classes\petitDejeun.cs" />
     <Compile Include="classes\presence.cs" />
+    <Compile Include="classes\prototype.cs" />
     <Compile Include="classes\reservation.cs" />
     <Compile Include="classes\room.cs" />
     <Compile Include="classes\sejour.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\Produit.cs" />
     <Compile Include="classes\stats.cs" />
+    <Compile Include="classes\typeChambre.cs" />
     <Compile Include="classes\user.cs" />
     <Compile Include="dialog windows\addemergencyEquipmentWindow.xaml.cs">
       <DependentUpon>addemergencyEquipmentWindow.xaml</DependentUpon>
@@ -114,8 +119,17 @@
     <Compile Include="dialog windows\addTakingWindow.xaml.cs">
       <DependentUpon>addTakingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialog windows\ContientSejourWindow.xaml.cs">
+      <DependentUpon>ContientSejourWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialog windows\HistoriqueArticleWindow.xaml.cs">
       <DependentUpon>HistoriqueArticleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\HistoriqueEquipementWindowWindow.xaml.cs">
+      <DependentUpon>HistoriqueEquipementWindowWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\modiftyRoomWindow.xaml.cs">
+      <DependentUpon>modiftyRoomWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialog windows\modifyEmergencyEquipmentWindow.xaml.cs">
       <DependentUpon>modifyEmergencyEquipmentWindow.xaml</DependentUpon>
@@ -134,6 +148,9 @@
     </Compile>
     <Compile Include="dialog windows\nouvelleArrivageWindow.xaml.cs">
       <DependentUpon>nouvelleArrivageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\reglageWindow.xaml.cs">
+      <DependentUpon>reglageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\aideUserControl.xaml.cs">
       <DependentUpon>aideUserControl.xaml</DependentUpon>
@@ -156,11 +173,8 @@
     <Compile Include="tabsUserControl\clientUserControl1.xaml.cs">
       <DependentUpon>clientUserControl1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tabsUserControl\contenuDeCuisineUserControl.xaml.cs">
-      <DependentUpon>contenuDeCuisineUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="tabsUserControl\cuisineUserControl.xaml.cs">
-      <DependentUpon>cuisineUserControl.xaml</DependentUpon>
+    <Compile Include="tabsUserControl\ConfirmationPetitDejeunerUserControl.xaml.cs">
+      <DependentUpon>ConfirmationPetitDejeunerUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\employesUserControl.xaml.cs">
       <DependentUpon>employesUserControl.xaml</DependentUpon>
@@ -180,20 +194,17 @@
     <Compile Include="tabsUserControl\listFournisseurUserControl.xaml.cs">
       <DependentUpon>listFournisseurUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tabsUserControl\materialCuisineUserControl.xaml.cs">
-      <DependentUpon>materialCuisineUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="tabsUserControl\materialRoomUserControl.xaml.cs">
       <DependentUpon>materialRoomUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\materialUserControl.xaml.cs">
       <DependentUpon>materialUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tabsUserControl\modifierMatérielCuisineUserControl.xaml.cs">
-      <DependentUpon>modifierMatérielCuisineUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="tabsUserControl\notificationUserControl.xaml.cs">
       <DependentUpon>notificationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\PetitDejeunUserControl.xaml.cs">
+      <DependentUpon>PetitDejeunUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\planiningTabUserControl.xaml.cs">
       <DependentUpon>planiningTabUserControl.xaml</DependentUpon>
@@ -223,6 +234,9 @@
     <Compile Include="tabsUserControl\stockGeneralUserControl.xaml.cs">
       <DependentUpon>stockGeneralUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\TypeChambreUserControl.xaml.cs">
+      <DependentUpon>TypeChambreUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\utilisateurUserControl.xaml.cs">
       <DependentUpon>utilisateurUserControl.xaml</DependentUpon>
     </Compile>
@@ -247,6 +261,7 @@
     <Compile Include="toolboxUserControl\tabBoardUserControl.xaml.cs">
       <DependentUpon>tabBoardUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="typeComboBox\Text.cs" />
     <Page Include="DashBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -291,7 +306,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="dialog windows\ContientSejourWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="dialog windows\HistoriqueArticleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\HistoriqueEquipementWindowWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\modiftyRoomWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -316,6 +343,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\nouvelleArrivageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\reglageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -362,11 +393,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tabsUserControl\contenuDeCuisineUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="tabsUserControl\cuisineUserControl.xaml">
+    <Page Include="tabsUserControl\ConfirmationPetitDejeunerUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -394,10 +421,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tabsUserControl\materialCuisineUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="tabsUserControl\materialRoomUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -406,11 +429,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tabsUserControl\modifierMatérielCuisineUserControl.xaml">
+    <Page Include="tabsUserControl\notificationUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tabsUserControl\notificationUserControl.xaml">
+    <Page Include="tabsUserControl\PetitDejeunUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -447,6 +470,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\stockGeneralUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\TypeChambreUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

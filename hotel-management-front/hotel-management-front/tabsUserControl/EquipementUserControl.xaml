@@ -37,6 +37,9 @@
                                 <Button Height="25" ToolTip="Supprimer" x:Name="deleteBtn" Click="deleteBtn_Click" >
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
                                 </Button>
+                                <Button Height="25" ToolTip="historique" Margin="10 0 10 0" x:Name="historiqueBtn" Click="historiqueBtn_Click">
+                                    <materialDesign:PackIcon Kind="HddRemove" ></materialDesign:PackIcon>
+                                </Button>
                                 <!--button  pour choisir le type de équipement-->
                                 <materialDesign:PopupBox IsEnabled="True" Opened="PopupBox_Opened" Closed="PopupBox_Closed" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                                     <materialDesign:PopupBox.ToggleContent>

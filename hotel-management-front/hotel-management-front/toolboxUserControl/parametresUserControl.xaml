@@ -13,6 +13,7 @@
             <Button x:Name="restauration" Margin="20 0 10 0" Click="restauration_Click">Restauration</Button>
             <Button x:Name="eventHistory" Margin="20 0 10 0" Click="eventHistory_Click">Journal des evenement</Button>
             <Button x:Name="aide" Margin="20 0 10 0" Click="aide_Click">Aide</Button>
+            <Button x:Name="reglage" Margin="20 0 10 0" Click="reglage_Click">réglage</Button>
         </StackPanel>
     </Grid>
 </UserControl>

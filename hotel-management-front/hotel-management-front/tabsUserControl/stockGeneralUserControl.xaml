@@ -54,8 +54,8 @@
                                     </materialDesign:PopupBox.ToggleContent>
                                     <StackPanel Orientation="Vertical">
                                         <Button x:Name="petitDéjeuner"  Click="petitDéjeuner_Click">petit déjeuner</Button>
-                                        <Button x:Name="chargeCuisine" Click="chargeCuisine_Click" >charge du cuisine</Button>
-                                        <Button x:Name="consommableChambre" Click="consommableChambre_Click" >consommables chambre</Button>
+                                      
+                                            <Button x:Name="consommableChambre" Click="consommableChambre_Click" >consommables chambre</Button>
 
                                     </StackPanel>
                                 </materialDesign:PopupBox>

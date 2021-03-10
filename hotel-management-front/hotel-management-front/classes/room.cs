@@ -60,7 +60,7 @@ namespace hotel_management_front.classes
                 com.Parameters.AddWithValue("@type", this.type);
                 com.Parameters.AddWithValue("@price", this.base_price);
                 com.Parameters.AddWithValue("@isworking", this.isWorking);
-                com.Parameters.AddWithValue("@photoPath", this.imgPath);               
+                com.Parameters.AddWithValue("@photoPath", this.imgPath);
 
                 con.Open();
                 com.ExecuteNonQuery();
@@ -137,6 +137,23 @@ namespace hotel_management_front.classes
 
             return dtbl;
         }
+        public string modiftyRoom(int IDroom)
+        {
+            string query = "UPDATE employee SET name=@name, type=@type, base_price=@price, status='Libre', works=@isworking, photo=@photoPath WHERE id_roome=@ID";
 
+            SqlCommand com = new SqlCommand(query, con);
+
+            // params
+            com.Parameters.AddWithValue("@name", this.room_name);
+            com.Parameters.AddWithValue("@type", this.type);
+            com.Parameters.AddWithValue("@price", this.base_price);
+            com.Parameters.AddWithValue("@isworking", this.isWorking);
+            com.Parameters.AddWithValue("@photoPath", this.imgPath);
+            com.Parameters.AddWithValue("@ID", IDroom);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+            return " Room modifty successfuly ";
+        }
     }
 }

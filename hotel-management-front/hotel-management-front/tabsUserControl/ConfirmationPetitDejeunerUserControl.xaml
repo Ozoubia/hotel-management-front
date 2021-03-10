@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="hotel_management_front.tabsUserControl.ConfirmationPetitDejeunerUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:hotel_management_front.tabsUserControl"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="100" d:DesignWidth="500">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock x:Name="petitdejeunTxt" VerticalAlignment="Center" Margin="10,20,2,26" FontSize="18"></TextBlock>
+            <TextBox Margin="10,20,2,26" Width="100"  x:Name="materialInfo" materialDesign:HintAssist.Hint="Quantitee" ></TextBox>
+            <Button x:Name="confirmerBtn" Margin="10,20,2,26" Click="confirmerBtn_Click" Background="LawnGreen">
+                <materialDesign:PackIcon Kind="Check" ></materialDesign:PackIcon>
+            </Button>
+            <Button x:Name="AnnulerBtn" Margin="10,20,2,26" Click="AnnulerBtn_Click" Background="Red">
+                <materialDesign:PackIcon Kind="LockReset" />
+            </Button>
+                    
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

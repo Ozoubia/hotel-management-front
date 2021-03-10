@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 namespace hotel_management_front.classes
 {
+    
     public class Cuisine
     {
         //Var 

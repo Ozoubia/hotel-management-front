@@ -1,4 +1,5 @@
 ﻿using hotel_management_front.classes;
+using hotel_management_front.dialog_windows;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -208,6 +209,10 @@ namespace hotel_management_front.tabsUserControl
         {
             this.isOpenedPopup = false;
         }
-  
+
+        private void historiqueBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new HistoriqueEquipementWindowWindow().Show();
+        }
     }
 }

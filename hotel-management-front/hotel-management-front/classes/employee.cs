@@ -131,7 +131,7 @@ namespace hotel_management_front.classes
         public void modiftyEmployee(int employeeID)
         {
             string query = "UPDATE employee SET name=@fname, lname=@lname, sex=@sex, birth_date=@birthDate, city=@city, country=@country," +
-                "telephone=@phone, CIN=@CIN, status=@status, nbr_kids=@nbrKids, CNSS=@CNSS, departement=@departement, job_title=@jobTitle, base_salary=@baseSalary, starting_date=@startingDate, ending_date=@endingDate WHERE id_employee=@ID";
+                "telephone=@phone, CIN=@CIN, status=@status, nbr_kids=@nbrKids, CNSS=@CNSS, departement=@departement, job_title=@jobTitle, base_salary=@baseSalary, starting_date=@startingDate, ending_date=@endingDate WHERE id_employee=@ID ";
 
             SqlCommand com = new SqlCommand(query, con);
 

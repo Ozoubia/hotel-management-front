@@ -54,7 +54,17 @@ namespace hotel_management_front.tabsUserControl
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            string designation = classes.GlobalVariable.dataRowView[1].ToString();
+            
+             classes.room roomObj = new classes.room();
+            DataTable data = new DataTable();
 
+          data =  roomObj.showRoomIDByName(designation);
+            
+          
+            int id = int.Parse(data.Rows[0]["id_room"].ToString());
+            new modiftyRoomWindow(id).Show();
         }
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)

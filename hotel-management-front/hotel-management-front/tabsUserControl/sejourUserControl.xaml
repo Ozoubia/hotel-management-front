@@ -20,6 +20,7 @@
             <DataGrid.Columns>
                 <!--columns-->
 
+                <DataGridTextColumn Header="ID sejour"></DataGridTextColumn>
                 <DataGridTextColumn Header="Nom"></DataGridTextColumn>
                 <DataGridTextColumn Header="Prenom" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Nom chambre" ></DataGridTextColumn>

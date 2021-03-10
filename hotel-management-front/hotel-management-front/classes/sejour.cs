@@ -91,7 +91,7 @@ namespace hotel_management_front.classes
         // returing all sejour items in the table
         public DataTable showSejourList()
         {
-            string query = "SELECT client.name, client.lname, room.name AS rname, room.type, sejour.check_in, sejour.check_out, sejour.total_amount, sejour.payement_status FROM sejour" +
+            string query = "SELECT client.name, client.lname, room.name AS rname, room.type,sejour.id_sejour, sejour.check_in, sejour.check_out, sejour.total_amount, sejour.payement_status FROM sejour" +
                 " INNER JOIN client ON sejour.id_client = client.id_client" +
                 " INNER JOIN room ON sejour.id_room = room.id_room ";
             con.Open();

@@ -48,23 +48,7 @@ namespace hotel_management_front.toolboxUserControl
             newTabItem.IsSelected = true;
         }
 
-        private void Cuisine_Click(object sender, RoutedEventArgs e)
-        {
-            Grid tabGrid = new Grid();
-
-            TabItem newTabItem = new TabItem
-            {
-                Header = "Cuisine",
-            };
-
-            GlobalVariable.tbControl.Items.Add(newTabItem);
-            newTabItem.Content = tabGrid;
-            tabGrid.Children.Clear();
-            cuisineUserControl UC1 = new cuisineUserControl();
-            tabGrid.Children.Add(UC1);
-            newTabItem.IsSelected = true;
-
-        }
+        
 
         private void equipement_Click(object sender, RoutedEventArgs e)
         {
