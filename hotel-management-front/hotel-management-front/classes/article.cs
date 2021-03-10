@@ -24,7 +24,7 @@ namespace hotel_management_front.classes
         // constructor
         public article() { }
 
-        public article(string reference, string designation, string familly, int quantity, int stockAlert, DateTime dateExpir, string fournisseur, 
+        public article(string reference, string designation, string familly, int quantity, int stockAlert, DateTime dateExpir, string fournisseur,
                         int prixAchat, int prixVente, string localisation, DateTime dateArrivage)
         {
             this.reference = reference;
@@ -82,7 +82,7 @@ namespace hotel_management_front.classes
 
                 string query4 = "UPDATE article SET quantity=@quantity , stock_alert=@stockAlert , quantity_utilisee=0 , date_expiration=@dateExp ,id_fournisseur= @idFournisseur ,prix_achat=@prixAchat ,prix_vente=@prixVente  , date_arrivage=@dateArrivage ";
 
-              
+
                 SqlCommand com1 = new SqlCommand(query4, con);
                 com1.Parameters.AddWithValue("@quantity", resultn);
                 com1.Parameters.AddWithValue("@stockAlert", this.stockAlert);
@@ -131,7 +131,7 @@ namespace hotel_management_front.classes
                 ada1.Fill(dtbl1);
                 int idFournisseur = int.Parse(dtbl1.Rows[0]["id_fournisseur"].ToString());
 
-               
+
 
 
 
@@ -216,7 +216,7 @@ namespace hotel_management_front.classes
         public DataTable FilterByLocalisation(string type)
         {
             string query = "SELECT designation , quantity FROM article WHERE type_consommable=@type";
-            
+
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
             //query parameters 
@@ -295,6 +295,30 @@ namespace hotel_management_front.classes
             ada.Fill(dtbl);
 
             return dtbl;
+        }
+        public void modiftyquantity(string Designa , int quant)
+        {
+            string query1 = "SELECT quantity FROM article WHERE designation=@Designa ";
+            SqlDataAdapter ada = new SqlDataAdapter(query1, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Designa", Designa);
+          
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+            int qun1 = (int)dtbl.Rows[0]["quantity"];
+            string query = "UPDATE article SET quantity=@quantite WHERE designation=@Designa";
+            SqlCommand com = new SqlCommand(query, con);
+            int qun = qun1 - quant;
+                // params
+            com.Parameters.AddWithValue("@quantite", qun);
+            com.Parameters.AddWithValue("@Designa", Designa);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+
         }
     }
 }

@@ -38,6 +38,7 @@ namespace hotel_management_front.tabsUserControl
             DataTable data = articleObj.showAllArticles1();
 
             articleListGrid.ItemsSource = data.DefaultView;
+
             ((DataGridTextColumn)articleListGrid.Columns[0]).Binding = new Binding("reference");
             ((DataGridTextColumn)articleListGrid.Columns[1]).Binding = new Binding("designation");
             ((DataGridTextColumn)articleListGrid.Columns[2]).Binding = new Binding("famille");
@@ -108,47 +109,18 @@ namespace hotel_management_front.tabsUserControl
             con.Close();
             //VAR
             // int quantity = (int)classes.GlobalVariable.dataRowView[3];
+            //hadha tabl cuisin nbadlo ismo golna nkhadmo bih ay haja pj tathat fih ou ki tasra resarvation nahiw qun 0 bi 9ima khra 
             int quantity = 0;
           
             string designation = classes.GlobalVariable.dataRowView[1].ToString();
             string reference1 = classes.GlobalVariable.dataRowView[0].ToString();
-            int stockAlert = (int)classes.GlobalVariable.dataRowView[4];
-            int prixAchat = (int)classes.GlobalVariable.dataRowView[5];
-            int prixVente = (int)classes.GlobalVariable.dataRowView[6];
+            
             //alimenter table de cuisine
-            classes.Cuisine cuisineObj = new classes.Cuisine( quantity, designation, reference1, stockAlert, prixAchat, prixVente);
-            cuisineObj.addCuisine1("petit Déjeuner");
+            classes.petitDejeun petitDejeunOBj = new classes.petitDejeun( quantity, designation, reference1);
+            petitDejeunOBj.addPetitDejeun();
         }
 
-        private void chargeCuisine_Click(object sender, RoutedEventArgs e)
-        {
-            //modefier le type de equipement 
-            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
-            string reference = classes.GlobalVariable.dataRowView[0].ToString();
-
-            string query = "UPDATE article SET type_consommable='charge Cuisine' WHERE reference=@ref";
-
-            SqlCommand com = new SqlCommand(query, con);
-
-            // params
-            com.Parameters.AddWithValue("@ref", reference);
-
-
-            con.Open();
-            com.ExecuteNonQuery();
-            con.Close();
-            //VAR
-            int quantity = (int)classes.GlobalVariable.dataRowView[3];
-            int quantityEquipment = 0;
-            string designation = classes.GlobalVariable.dataRowView[1].ToString();
-            string reference1 = classes.GlobalVariable.dataRowView[0].ToString();
-            int stockAlert = (int)classes.GlobalVariable.dataRowView[4];
-            int prixAchat = (int)classes.GlobalVariable.dataRowView[5];
-            int prixVente = (int)classes.GlobalVariable.dataRowView[6];
-            //s alimenter table de cuisine
-            classes.Cuisine cuisineObj = new classes.Cuisine(   quantity, designation, reference1, stockAlert, prixAchat, prixVente);
-            cuisineObj.addCuisine1("charge Cuisine");
-        }
+      
 
         private void consommableChambre_Click(object sender, RoutedEventArgs e)
         {
@@ -167,6 +139,12 @@ namespace hotel_management_front.tabsUserControl
             con.Open();
             com.ExecuteNonQuery();
             con.Close();
+
+
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            string designation = classes.GlobalVariable.dataRowView[1].ToString();
+            classes.petitDejeun petitDejeunObj = new classes.petitDejeun();
+            petitDejeunObj.dpetitDejeun(designation);
         }
 
        

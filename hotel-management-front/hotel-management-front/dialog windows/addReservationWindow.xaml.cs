@@ -181,5 +181,10 @@ namespace hotel_management_front.dialog_windows
                 versementField.Visibility = Visibility.Hidden;
             }
         }
+
+        private void clientComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

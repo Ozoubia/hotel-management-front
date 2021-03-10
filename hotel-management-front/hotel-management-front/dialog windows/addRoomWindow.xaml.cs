@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,14 +24,29 @@ namespace hotel_management_front.dialog_windows
         public addRoomWindow()
         {
             InitializeComponent();
+            fillTypeChambreCombo();
         }
 
         public string imgPath;
+        public void fillTypeChambreCombo()
+        {
+            classes.typeChambre typeChambreObj = new classes.typeChambre();
+            DataTable data = typeChambreObj.showAllTypes();
+            int data_length = data.Rows.Count;
+
+            // looping through the client list
+            for (int i = 0; i < data_length; i++)
+            {
+                string type = data.Rows[i]["typeChambre"].ToString();
+                typeComboBox1.Items.Add(type);
+            }
+
+        }
 
         private void ajouterRoomBtn_Click(object sender, RoutedEventArgs e)
         {
             string name = nomField.Text;
-            string type = typeField.Text;
+            string type = typeComboBox1.Text;
             int price = int.Parse(prixField.Text);
             bool isWorking;
             if (isWorkingField.Text == "Oui")

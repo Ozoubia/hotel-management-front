@@ -1,4 +1,5 @@
 ﻿using hotel_management_front.classes;
+using hotel_management_front.dialog_windows;
 using hotel_management_front.tabsUserControl;
 using System;
 using System.Collections.Generic;
@@ -142,5 +143,11 @@ namespace hotel_management_front.toolboxUserControl
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
+
+        private void reglage_Click(object sender, RoutedEventArgs e)
+        {
+            new reglageWindow().Show();
+        }
     }
 }
+

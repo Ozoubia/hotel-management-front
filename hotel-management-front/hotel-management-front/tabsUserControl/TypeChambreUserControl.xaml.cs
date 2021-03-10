@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace hotel_management_front.tabsUserControl
 {
     /// <summary>
-    /// Logique d'interaction pour contenuDeCuisineUserControl.xaml
+    /// Logique d'interaction pour TypeChambreUserControl.xaml
     /// </summary>
-    public partial class contenuDeCuisineUserControl : UserControl
+    public partial class TypeChambreUserControl : UserControl
     {
-        public contenuDeCuisineUserControl()
+        public TypeChambreUserControl()
         {
             InitializeComponent();
         }
