@@ -24,7 +24,14 @@ namespace hotel_management_front.dialog_windows
         public modifyEmployeeWindow()
         {
             InitializeComponent();
+            getPreviousInfo();
+             
 
+        }
+
+        // to get the previous (clicked ) employee info
+        private void getPreviousInfo()
+        {
             // employee object
             classes.employee employeeObj = new classes.employee();
 
@@ -32,7 +39,7 @@ namespace hotel_management_front.dialog_windows
             int rowIndex = int.Parse(classes.GlobalVariable.dataRowView[0].ToString());
 
             // getting the employee information of the clicked index
-            DataTable result =  employeeObj.getEmployee(rowIndex);
+            DataTable result = employeeObj.getEmployee(rowIndex);
 
             // assigning the variable to the fields
             nomField.Text = result.Rows[0]["name"].ToString();
@@ -51,7 +58,6 @@ namespace hotel_management_front.dialog_windows
             salaireField.Text = result.Rows[0]["base_salary"].ToString();
             dateEntreeField.SelectedDate = DateTime.Parse(result.Rows[0]["starting_date"].ToString());
             dateSortieField.SelectedDate = DateTime.Parse(result.Rows[0]["ending_date"].ToString());
-
         }
 
         private void cancelBtn_Click(object sender, RoutedEventArgs e)

@@ -36,24 +36,27 @@ namespace hotel_management_front
             string user = usernameField.Text;
             string pass = passwordField.Password;
 
-            classes.user userOjb = new classes.user(user, pass);
+            user userOjb = new user(user, pass);
             bool result = userOjb.login();
 
             //if successful do this 
             if (result)
             {
-                classes.GlobalVariable.username = user;
-                new DashBoard(classes.GlobalVariable.username).Show();
+                // showing the main window
+                GlobalVariable.username = user;
+                new DashBoard(GlobalVariable.username).Show();
                 this.Close();
-                
-               
-                //historique
+
+                //login historique
                 string par = "Login";
-               string nom = classes.GlobalVariable.username;
+                string nom = GlobalVariable.username;
                 DateTime dateAction = DateTime.Today;
                 classes.client clientObj = new classes.client();
                 clientObj.ajouterHistorique(nom, par, dateAction);
-              
+
+                //getting the user permission and storing them in the global variable permission list
+                GlobalVariable.permissionList = userOjb.GetUserPermissions();
+
             }
             else
             {

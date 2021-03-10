@@ -77,6 +77,7 @@
     <Compile Include="classes\Notification.cs" />
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\reservation.cs" />
+    <Compile Include="classes\role.cs" />
     <Compile Include="classes\room.cs" />
     <Compile Include="classes\sejour.cs" />
     <Compile Include="classes\Material.cs" />
@@ -96,6 +97,9 @@
     <Compile Include="dialog windows\AddFournisseur.xaml.cs">
       <DependentUpon>AddFournisseur.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialog windows\addGroupWindow.xaml.cs">
+      <DependentUpon>addGroupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialog windows\addMaterialWindow.xaml.cs">
       <DependentUpon>addMaterialWindow.xaml</DependentUpon>
     </Compile>
@@ -114,6 +118,9 @@
     <Compile Include="dialog windows\addTakingWindow.xaml.cs">
       <DependentUpon>addTakingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialog windows\addUserWindow.xaml.cs">
+      <DependentUpon>addUserWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialog windows\HistoriqueArticleWindow.xaml.cs">
       <DependentUpon>HistoriqueArticleWindow.xaml</DependentUpon>
     </Compile>
@@ -131,6 +138,9 @@
     </Compile>
     <Compile Include="dialog windows\modifyProductWindow.xaml.cs">
       <DependentUpon>modifyProductWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\modifyUserWindow.xaml.cs">
+      <DependentUpon>modifyUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialog windows\nouvelleArrivageWindow.xaml.cs">
       <DependentUpon>nouvelleArrivageWindow.xaml</DependentUpon>
@@ -267,6 +277,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="dialog windows\addGroupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="dialog windows\addMaterialWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -291,6 +305,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="dialog windows\addUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="dialog windows\HistoriqueArticleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -312,6 +330,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\modifyProductWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\modifyUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

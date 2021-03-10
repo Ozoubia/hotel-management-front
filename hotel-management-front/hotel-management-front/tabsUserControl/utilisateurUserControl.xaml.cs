@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
+using hotel_management_front.dialog_windows;
+using System.Windows.Threading;
 
 namespace hotel_management_front.tabsUserControl
 {
@@ -22,49 +24,72 @@ namespace hotel_management_front.tabsUserControl
     /// </summary>
     public partial class utilisateurUserControl : UserControl
     {
+
+        // timer used for refresh
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
         public utilisateurUserControl()
         {
             InitializeComponent();
+            showUseriList();
         }
 
-        SqlConnection con = new SqlConnection(classes.GlobalVariable.databasePath);
+        //function to fill the User list
+        public void showUseriList()
+        {
+            classes.user userObj = new classes.user();
+            DataTable data = userObj.showAllUsers();
 
+            userGrid.ItemsSource = data.DefaultView;
+            ((DataGridTextColumn)userGrid.Columns[0]).Binding = new Binding("username");
+            ((DataGridTextColumn)userGrid.Columns[1]).Binding = new Binding("isActive");
 
+        }
+
+        // add user click event
         private void addUserBtn_Click(object sender, RoutedEventArgs e)
         {
-            //checking if a user exists 
-            string user = usernameField.Text;
-            string pass = passwordField.Password;
-            string query = "SELECT * FROM users WHERE username=@name AND password=@pass";
-            SqlDataAdapter ada = new SqlDataAdapter(query, con);
-
-            //query parameters 
-            ada.SelectCommand.Parameters.AddWithValue("@name", user);
-            ada.SelectCommand.Parameters.AddWithValue("@pass", pass);
-
-            // command result 
-            DataTable dtbl = new DataTable();
-            ada.Fill(dtbl);
-            //user already exists 
-            if (dtbl.Rows.Count == 1)
-            {
-                MessageBox.Show("User already exists");
-            }
-            else
-            {
-                string query1= "INSERT INTO users (username, password, isActive) VALUES (@name, @pass, @state)";
-                SqlCommand com = new SqlCommand(query1, con);
-                com.Parameters.AddWithValue("@name", user);
-                com.Parameters.AddWithValue("@pass", pass);
-                com.Parameters.AddWithValue("@state", true);
-
-                con.Open();
-                com.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("user added");
-            }
+            new addUserWindow().Show();
         }
 
-        
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // saving the index of the row in the datarowview var
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+
+            // opening the modify page
+            new modifyUserWindow().Show();
+        }
+
+        private void permissionBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #region timer grid refresh part
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            this.dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            this.dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            showUseriList();
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // stopping the timer
+            this.dispatcherTimer.Stop();
+        }
+        #endregion
+
+        // shows the add group window
+        private void addGroupeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new addGroupWindow().Show();
+        }
     }
 }
