@@ -29,7 +29,8 @@ namespace hotel_management_front.tabsUserControl
         //VAR 
         DateTime time1;
         string nameRoom;
-        public ConfirmationPetitDejeunerUserControl(string NomDejeun ,int quantite ,DateTime time , string nameR )
+        int idsejour;
+        public ConfirmationPetitDejeunerUserControl(string NomDejeun ,int quantite ,DateTime time , string nameR  ,int  idsej)
         {
           
             InitializeComponent();
@@ -37,20 +38,27 @@ namespace hotel_management_front.tabsUserControl
             materialInfo.Text = quantite.ToString();
             this.time1 = time;
             this.nameRoom = nameR;
+            this.idsejour = idsej;
         }
 
         private void confirmerBtn_Click(object sender, RoutedEventArgs e)
         {
-           //  int  s =int.Parse( materialInfo.Text);
-           // string Nom = petitdejeunTxt.Text;
+             // int  s =int.Parse( materialInfo.Text);
+             //string Nom = petitdejeunTxt.Text;
              //classes.article articleObj = new classes.article();
              // articleObj.modiftyquantity(Nom, s);
-           
-            string designatio = petitdejeunTxt.Text;
-            int quna = int.Parse(materialInfo.Text);
-            classes.detailHistoriqueClass1 detailHistoriqueObj = new classes.detailHistoriqueClass1(quna, designatio);
-            string masg = detailHistoriqueObj.adddetail();
-            MessageBox.Show(masg);
+
+
+
+            DateTime date = DateTime.Today;
+             string designatio = petitdejeunTxt.Text;
+             int quna = int.Parse(materialInfo.Text);
+            MessageBox.Show(idsejour.ToString());
+            classes.HistoriqueArticleChambreClass  Obj = new classes.HistoriqueArticleChambreClass();
+            string s1 = Obj.remplirQuantity(quna ,this.idsejour, date, designatio);
+            MessageBox.Show(s1);
+
+
 
 
 

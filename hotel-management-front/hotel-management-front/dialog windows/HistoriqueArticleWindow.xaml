@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBox Margin="10 0 50 0" TextChanged="searchBar_TextChanged" x:Name="searchBar" Width="300" FontSize="15" materialDesign:HintAssist.Hint="Rechercher" materialDesign:TextFieldAssist.DecorationVisibility="Hidden" BorderThickness="0" MinWidth="200" VerticalAlignment="Center" ></TextBox>
@@ -38,5 +39,27 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <DataGrid Grid.Row="2" IsReadOnly="True" x:Name="HistoArticleChambreGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto"  >
+            <DataGrid.Columns>
+                <!--columns-->
+                <DataGridTextColumn Header="ID sejour" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Date sejour" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Nom chambre" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Typen" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Designation" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Quantite" ></DataGridTextColumn>
+                
+                <!--button-->
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
+    
 </Window>

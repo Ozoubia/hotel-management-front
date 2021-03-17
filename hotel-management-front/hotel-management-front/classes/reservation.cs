@@ -188,9 +188,12 @@ namespace hotel_management_front.classes
             else
             {
                 // inserting into the sejour table
-                string query3 = "INSERT INTO sejour (id_client, id_room, check_in, check_out, total_amount, payement_status)" +
-                                " VALUES (@clientID, @roomID, @checkin, @checkout, @totalAmount, @payementStatus)";
-
+                string query3 = "INSERT INTO sejour (id_client, id_room, check_in, check_out, total_amount, payement_status , nbr_days)" +
+                                " VALUES (@clientID, @roomID, @checkin, @checkout, @totalAmount, @payementStatus , @Nbdays)";
+                //number of days
+                DateTime start = checkin.Date;
+                DateTime end = checkout.Date;
+                var nbrDays = ((end - start).TotalDays + 1);
                 SqlCommand com = new SqlCommand(query3, con);
 
                 // params
@@ -200,7 +203,8 @@ namespace hotel_management_front.classes
                 com.Parameters.AddWithValue("@checkout", checkout);
                 com.Parameters.AddWithValue("@totalAmount", total_amount);
                 com.Parameters.AddWithValue("@payementStatus", payementStatus);
-                
+                com.Parameters.AddWithValue("@Nbdays", nbrDays);
+
                 con.Open();
                 com.ExecuteNonQuery();
                 con.Close();

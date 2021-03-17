@@ -20,17 +20,21 @@ namespace hotel_management_front.classes
         DateTime date;
         string type;
         int IDsejour;
+        int quantite;
+        string designation;
        
 
         public HistoriqueArticleChambreClass()
         {
         }
-        public HistoriqueArticleChambreClass(string nomchamb, DateTime dateSej,  string typeChambre  , int idSej)
+        public HistoriqueArticleChambreClass(string nomchamb, DateTime dateSej,  string typeChambre  , int idSej , int quantity , string design)
         {
             this.nomchambre = nomchamb;
             this.date = dateSej;
             this.type = typeChambre;
             this.IDsejour = idSej;
+            this.quantite = quantity;
+            this.designation = design;
 
         }
         public string addHistorique()
@@ -52,8 +56,8 @@ namespace hotel_management_front.classes
               //  return "Employee already exists";
             //}
            // else { 
-                string query1 = "INSERT INTO HistoriqueArticleChambre (Nom_chambre, date_sejour, type ,id_sejour ) " +
-                   "VALUES (@NomChambre, @Date, @Type ,@idSejour )";
+                string query1 = "INSERT INTO HistoriqueArticleChambre (Nom_chambre, date_sejour, type ,id_sejour ,quantity ,designation ) " +
+                   "VALUES (@NomChambre, @Date, @Type ,@idSejour ,@quant , @designa )";
 
             SqlCommand com = new SqlCommand(query1, con);
 
@@ -61,11 +65,12 @@ namespace hotel_management_front.classes
             com.Parameters.AddWithValue("@NomChambre", this.nomchambre);
             com.Parameters.AddWithValue("@Date", this.date);
             com.Parameters.AddWithValue("@Type", this.type);
-           
             com.Parameters.AddWithValue("@idSejour", this.IDsejour);
+            com.Parameters.AddWithValue("@quant ", this.quantite);
+            com.Parameters.AddWithValue("@designa", this.designation);
 
 
-                con.Open();
+            con.Open();
             com.ExecuteNonQuery();
             con.Close();
         //}
@@ -107,9 +112,9 @@ namespace hotel_management_front.classes
             return data;
 
         }
-        public void remplirQuantity(int Idsejour , int Idhistorique ,int quant , string designationA) 
+        public string remplirQuantity( int quant ,int Idsejour , DateTime time  , string designationA) 
         {
-            string query1 = "UPDATE HistoriqueArticleChambre SET quantity=@Quant , designation=@designationArticel WHERE id_sejour=@ID  ";
+            string query1 = "UPDATE HistoriqueArticleChambre SET quantity=@Quant  WHERE id_sejour=@ID AND  date_sejour =@dateSejour AND designation=@designationArticel ";
 
             SqlCommand com1 = new SqlCommand(query1, con);
 
@@ -117,20 +122,32 @@ namespace hotel_management_front.classes
             com1.Parameters.AddWithValue("@Quant", quant);
             com1.Parameters.AddWithValue("@designationArticel", designationA);
             com1.Parameters.AddWithValue("@ID", Idsejour);
+            com1.Parameters.AddWithValue("@dateSejour", time);
 
 
-            string query = "UPDATE HistoriqueArticleChambre SET quantity=@Quant , designation=@designationArticel WHERE id_sejour=@ID and ID_historiqueArticleChambre !=@idH ";
-           
-            SqlCommand com = new SqlCommand(query, con);
-
-            // params
-            com.Parameters.AddWithValue("@Quant", quant);
-            com.Parameters.AddWithValue("@designationArticel", designationA);
-            com.Parameters.AddWithValue("@ID", Idsejour);
-            com.Parameters.AddWithValue("@idH ", Idhistorique);
+          
             con.Open();
-            com.ExecuteNonQuery();
+            com1.ExecuteNonQuery();
             con.Close();
+            return "modifier";
+        }
+
+        public DataTable showAllhistoriqueChambreBydesignation(string designa)
+        {
+         
+            string query = "SELECT * FROM HistoriqueArticleChambre WHERE designation=@design AND quantity>0";
+
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@design", designa);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
         }
     } 
 }

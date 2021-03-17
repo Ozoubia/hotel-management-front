@@ -29,6 +29,7 @@
                 <DataGridTextColumn Header="Date depart" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Montant total" ></DataGridTextColumn>
                 <DataGridTextColumn Header="status payement" ></DataGridTextColumn>
+                <DataGridTextColumn Header="nombre des jours " ></DataGridTextColumn>
 
                 <!--button-->
                 <DataGridTemplateColumn>

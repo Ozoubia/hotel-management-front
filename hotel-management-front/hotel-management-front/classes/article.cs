@@ -80,10 +80,11 @@ namespace hotel_management_front.classes
                 int resultn = qun + this.quantity;
                 //the case of the article already exists been modified some attributes
 
-                string query4 = "UPDATE article SET quantity=@quantity , stock_alert=@stockAlert , quantity_utilisee=0 , date_expiration=@dateExp ,id_fournisseur= @idFournisseur ,prix_achat=@prixAchat ,prix_vente=@prixVente  , date_arrivage=@dateArrivage ";
+                string query4 = "UPDATE article SET quantity=@quantity , stock_alert=@stockAlert , quantity_utilisee=0 , date_expiration=@dateExp ,id_fournisseur= @idFournisseur ,prix_achat=@prixAchat ,prix_vente=@prixVente  , date_arrivage=@dateArrivage WHERE reference=@reference ";
 
 
                 SqlCommand com1 = new SqlCommand(query4, con);
+                com1.Parameters.AddWithValue("@reference", this.reference);
                 com1.Parameters.AddWithValue("@quantity", resultn);
                 com1.Parameters.AddWithValue("@stockAlert", this.stockAlert);
                 com1.Parameters.AddWithValue("@dateExp", this.dateExp);

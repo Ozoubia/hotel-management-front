@@ -23,6 +23,8 @@ namespace hotel_management_front.tabsUserControl
     public partial class sejourUserControl : UserControl
     {
         
+
+
         public sejourUserControl()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace hotel_management_front.tabsUserControl
         //function to fill the sejour list
         public void showSejourList()
         {
+
             classes.sejour sejourObj = new classes.sejour();
             DataTable data = sejourObj.showSejourList();
 
@@ -45,14 +48,14 @@ namespace hotel_management_front.tabsUserControl
             ((DataGridTextColumn)sejourListGrid.Columns[6]).Binding = new Binding("check_out");
             ((DataGridTextColumn)sejourListGrid.Columns[7]).Binding = new Binding("total_amount");
             ((DataGridTextColumn)sejourListGrid.Columns[8]).Binding = new Binding("payement_status");
-
+            ((DataGridTextColumn)sejourListGrid.Columns[9]).Binding = new Binding("nbr_days");
 
         }
 
         private void terminateBtn_Click(object sender, RoutedEventArgs e)
         {
             // saving the index of the row in the datarowview var
-          //   classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            //   classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
             //classes.sejour sejourObj = new classes.sejour();
 
@@ -68,30 +71,69 @@ namespace hotel_management_front.tabsUserControl
 
             //update dataGrid after deletion            
             //          showSejourList();
-           classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+
             string type = classes.GlobalVariable.dataRowView[3].ToString();
-            DateTime date = DateTime.Parse(classes.GlobalVariable.dataRowView[6].ToString());
+            DateTime date = DateTime.Parse(classes.GlobalVariable.dataRowView[5].ToString());
             string rommName = classes.GlobalVariable.dataRowView[2].ToString();
             string v = classes.GlobalVariable.dataRowView[4].ToString();
-           int IDsejour = int.Parse(v);
-            MessageBox.Show(type);
-           
+            int IDsejour = int.Parse(v);
+
             //récupérer le nombre de lignes il existe dans le table prototype
             classes.prototype prototypeObj = new classes.prototype();
             DataTable data1 = new DataTable();
-             data1 = prototypeObj.showAllprototypeByType(type);
+            data1 = prototypeObj.showAllprototypeByType(type);
             int nb = data1.Rows.Count;
             MessageBox.Show(nb.ToString());
+            //récupérer le nombre des jour 
+            int nbjour = int.Parse(classes.GlobalVariable.dataRowView[9].ToString());
+            int nbr = nb * nbjour;
+            MessageBox.Show("nb jour", nbjour.ToString());
 
+            List<string> designationList = new List<string>();
             for (int i = 0; i < nb; i++)
             {
-                classes.HistoriqueArticleChambreClass historiqueArticleChambreClassObj = new classes.HistoriqueArticleChambreClass(rommName, date,  type,  IDsejour);
-                string mag = historiqueArticleChambreClassObj.addHistorique();
+                designationList.Add(data1.Rows[i]["designation"].ToString());
             }
-            new ContientSejourWindow(type , date , rommName).Show();
-       
-            
+
+            DateTime time = date;
+            int j = 1;
+            int x = 0;
+            for (int i = 0; i < nbr; i++)
+            {
+                if (i == 0)
+                {
+                    classes.HistoriqueArticleChambreClass obj2 = new classes.HistoriqueArticleChambreClass(rommName, time, type, IDsejour, 0, designationList[x]);
+                    string mag = obj2.addHistorique();
+                }
+
+                if (j < nbjour && i> 0 )
+                {
+                    
+                   // MessageBox.Show(mag +" "+ time.ToString());
+                    time = time.AddDays(1);
+                    j += 1;
+                     classes.HistoriqueArticleChambreClass obj2 = new classes.HistoriqueArticleChambreClass(rommName, time, type, IDsejour, 0, designationList[x]);
+                    string mag = obj2.addHistorique();
+                    continue;
+                }
+
+                if (j == nbjour)
+                {
+                    x++;
+                    classes.HistoriqueArticleChambreClass obj = new classes.HistoriqueArticleChambreClass(rommName, date, type, IDsejour, 0, designationList[x]);
+                    string mag1 = obj.addHistorique();
+                    time = date.Date;
+                    j = 1;
+                    continue;
+                }
+
+
             }
+
+          
+            new ContientSejourWindow(type, date, rommName , IDsejour).Show();
+        }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -102,5 +144,8 @@ namespace hotel_management_front.tabsUserControl
         {
 
         }
+
     }
+  
 }
+

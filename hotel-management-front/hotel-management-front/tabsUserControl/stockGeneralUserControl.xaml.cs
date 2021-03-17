@@ -114,10 +114,16 @@ namespace hotel_management_front.tabsUserControl
           
             string designation = classes.GlobalVariable.dataRowView[1].ToString();
             string reference1 = classes.GlobalVariable.dataRowView[0].ToString();
-            
-            //alimenter table de cuisine
+
+            //alimenter table de petitDejeun
             classes.petitDejeun petitDejeunOBj = new classes.petitDejeun( quantity, designation, reference1);
             petitDejeunOBj.addPetitDejeun();
+
+            //supprimer Consommables Chambre dans le table de ConsommablesChambre quand cliquez option petitDejeun
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            string designation1 = classes.GlobalVariable.dataRowView[1].ToString();
+            classes.consommablesChambre Obj = new classes.consommablesChambre();
+            Obj.supprimerConsommablesChambre(designation1);
         }
 
       
@@ -140,11 +146,17 @@ namespace hotel_management_front.tabsUserControl
             com.ExecuteNonQuery();
             con.Close();
 
-
+            //supprimer petit déjeuner dans le table de déjeuner quand cliquez option consommable chambre
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
             string designation = classes.GlobalVariable.dataRowView[1].ToString();
             classes.petitDejeun petitDejeunObj = new classes.petitDejeun();
             petitDejeunObj.dpetitDejeun(designation);
+            //alimenter le tableau consommable chambre
+            int quantity = 0;
+            string designation1 = classes.GlobalVariable.dataRowView[1].ToString();
+            string reference1 = classes.GlobalVariable.dataRowView[0].ToString();  
+            classes.consommablesChambre OBj = new classes.consommablesChambre(quantity, designation1, reference1);
+            OBj.addconsommablesChambre();
         }
 
        
@@ -153,7 +165,8 @@ namespace hotel_management_front.tabsUserControl
         {
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
             string reference = classes.GlobalVariable.dataRowView[0].ToString();
-            new HistoriqueArticleWindow(reference).Show();
+            string designationD = classes.GlobalVariable.dataRowView[1].ToString();
+            new HistoriqueArticleWindow(reference , designationD).Show();
         }
     }
 }

@@ -24,12 +24,14 @@ namespace hotel_management_front.dialog_windows
         string type;
         DateTime dateSej;
         string nameChambre;
+        int idSejour;
        
-        public ContientSejourWindow( string typeChambre , DateTime date , string nomchambre )
+        public ContientSejourWindow( string typeChambre , DateTime date , string nomchambre , int idSej)
         {
             this.type = typeChambre;
             this.dateSej = date;
             this.nameChambre = nomchambre ;
+            this.idSejour = idSej;
 
 
             InitializeComponent();
@@ -50,7 +52,7 @@ namespace hotel_management_front.dialog_windows
                 string mater = data.Rows[i]["designation"].ToString();
                 int quantite = int.Parse(data.Rows[i]["quantity_petitDejeun"].ToString());
          
-                SingleGrid.Children.Add(new ConfirmationPetitDejeunerUserControl(mater , quantite , dateSej , nameChambre));
+                SingleGrid.Children.Add(new ConfirmationPetitDejeunerUserControl(mater , quantite , dateSej , nameChambre , this.idSejour));
 
             }
         }
