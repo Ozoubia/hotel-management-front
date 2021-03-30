@@ -1,4 +1,5 @@
-﻿using hotel_management_front.dialog_windows;
+﻿using hotel_management_front.classes;
+using hotel_management_front.dialog_windows;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -87,6 +88,21 @@ namespace hotel_management_front.tabsUserControl
 
             //update dataGrid after deletion            
             showReservationsList();
+            // Se déplacer involontairement à Séjour
+            Grid tabGrid = new Grid();
+
+            TabItem newTabItem = new TabItem
+            {
+                Header = "Sejour",
+            };
+
+
+            GlobalVariable.tbControl.Items.Add(newTabItem);
+            newTabItem.Content = tabGrid;
+            tabGrid.Children.Clear();
+            sejourUserControl UC1 = new sejourUserControl();
+            tabGrid.Children.Add(UC1);
+            newTabItem.IsSelected = true;
         }
     }
 }

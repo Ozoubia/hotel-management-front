@@ -1,6 +1,8 @@
-﻿using System;
+﻿using hotel_management_front.classes;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,8 @@ namespace hotel_management_front.dialog_windows
     /// </summary>
     public partial class nouvelleArrivageWindow : Window
     {
+        // connection variable
+        SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
         public nouvelleArrivageWindow()
         {
             InitializeComponent();
@@ -61,11 +65,14 @@ namespace hotel_management_front.dialog_windows
             
             DateTime dateArrivage = DateTime.Parse(dateArrivageField.SelectedDate.Value.Date.ToShortDateString());
             classes.EquipementClass  EquipementObj = new classes.EquipementClass(quantity ,designation , reference , stockAlert , prixAchat);
+            classes.article obj = new classes.article();
+            
             classes.article articleObj = new classes.article(reference, designation, famille, quantity, stockAlert, dateExpi, fournisseurName, prixAchat,
-                                            prixVente, localisation, dateArrivage);
+                                            prixVente, localisation, dateArrivage , 0  );
+
             if (localisation == "consommable")
             {
-                string result = articleObj.addArticle();
+               string result = articleObj.addArticle();
                 
                 MessageBox.Show(result);
 
@@ -84,9 +91,37 @@ namespace hotel_management_front.dialog_windows
             clientObj1.ajouterHistorique(nom, par, dateAction);
 
 
+            //modifier le prix moyen
+            string query1 = "SELECT * FROM historiqueArticle WHERE designationArticl=@Desig ";
+            SqlDataAdapter ada = new SqlDataAdapter(query1, con);
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Desig", designation);
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+            int nb = dtbl.Rows.Count;
+            if(nb == 1 || nb == 0) 
+            {
+                classes.article obj1 = new classes.article();
+                obj.modiftyPrixMoyen(designation, prixAchat);
+            }
+            else if(nb > 0)
+            {
+                classes.article obj1 = new classes.article();
+                double prix = obj1.calculePrixReel(designation , quantity , prixAchat);
+                 obj.modiftyPrixMoyen(designation, prix);
+                classes.petitDejeun obj2 = new petitDejeun();
+                obj2.modiftyPrixMoyen(designation, prix);
+                classes.consommablesChambre obj3 = new consommablesChambre();
+                obj3.modiftyPrixMoyen(designation , prix);
+
+
+            }
+
+
         }
 
-    private void annulerBtn_Click(object sender, RoutedEventArgs e)
+        private void annulerBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

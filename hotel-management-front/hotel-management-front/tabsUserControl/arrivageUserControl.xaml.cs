@@ -24,6 +24,7 @@ namespace hotel_management_front.tabsUserControl
         public arrivageUserControl()
         {
             InitializeComponent();
+            
         }
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
