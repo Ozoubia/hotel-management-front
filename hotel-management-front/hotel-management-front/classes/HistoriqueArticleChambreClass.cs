@@ -84,7 +84,9 @@ namespace hotel_management_front.classes
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
             DataTable data = new DataTable();
             adapt.Fill(data);
+            con.Close();
             return data;
+            
         }
         public DataTable showIDsejour(DateTime date1, string nomChambre)
         {

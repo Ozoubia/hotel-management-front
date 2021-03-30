@@ -48,7 +48,7 @@ namespace hotel_management_front.tabsUserControl
             ((DataGridTextColumn)articleListGrid.Columns[6]).Binding = new Binding("prix_vente");
             ((DataGridTextColumn)articleListGrid.Columns[7]).Binding = new Binding("localisation");
             ((DataGridTextColumn)articleListGrid.Columns[8]).Binding = new Binding("type_consommable");
-
+            ((DataGridTextColumn)articleListGrid.Columns[9]).Binding = new Binding("prix_moyen");
 
         }
 
@@ -114,9 +114,10 @@ namespace hotel_management_front.tabsUserControl
           
             string designation = classes.GlobalVariable.dataRowView[1].ToString();
             string reference1 = classes.GlobalVariable.dataRowView[0].ToString();
+            double prix= double.Parse(classes.GlobalVariable.dataRowView[9].ToString());
 
             //alimenter table de petitDejeun
-            classes.petitDejeun petitDejeunOBj = new classes.petitDejeun( quantity, designation, reference1);
+            classes.petitDejeun petitDejeunOBj = new classes.petitDejeun( quantity, designation, reference1 , prix);
             petitDejeunOBj.addPetitDejeun();
 
             //supprimer Consommables Chambre dans le table de ConsommablesChambre quand cliquez option petitDejeun
@@ -124,9 +125,13 @@ namespace hotel_management_front.tabsUserControl
             string designation1 = classes.GlobalVariable.dataRowView[1].ToString();
             classes.consommablesChambre Obj = new classes.consommablesChambre();
             Obj.supprimerConsommablesChambre(designation1);
+
+            //supprimer Consommables Chambre dans le table de prototypeConsommable quand cliquez option petitDejeun
+            classes.prototypeConsommable Obj1 = new classes.prototypeConsommable();
+            Obj1.SupprimerConsomable(designation1);
         }
 
-      
+
 
         private void consommableChambre_Click(object sender, RoutedEventArgs e)
         {
@@ -149,13 +154,18 @@ namespace hotel_management_front.tabsUserControl
             //supprimer petit déjeuner dans le table de déjeuner quand cliquez option consommable chambre
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
             string designation = classes.GlobalVariable.dataRowView[1].ToString();
+            classes.prototype Obj = new classes.prototype();
+            Obj.SupprimerPetitDejeun(designation);
+
+            //supprimer petit déjeuner dans le table de prototype quand cliquez option consommable chambre
             classes.petitDejeun petitDejeunObj = new classes.petitDejeun();
             petitDejeunObj.dpetitDejeun(designation);
             //alimenter le tableau consommable chambre
             int quantity = 0;
             string designation1 = classes.GlobalVariable.dataRowView[1].ToString();
-            string reference1 = classes.GlobalVariable.dataRowView[0].ToString();  
-            classes.consommablesChambre OBj = new classes.consommablesChambre(quantity, designation1, reference1);
+            string reference1 = classes.GlobalVariable.dataRowView[0].ToString();
+            double prix = double.Parse(classes.GlobalVariable.dataRowView[9].ToString());
+            classes.consommablesChambre OBj = new classes.consommablesChambre(quantity, designation1, reference1, prix);
             OBj.addconsommablesChambre();
         }
 
@@ -167,6 +177,9 @@ namespace hotel_management_front.tabsUserControl
             string reference = classes.GlobalVariable.dataRowView[0].ToString();
             string designationD = classes.GlobalVariable.dataRowView[1].ToString();
             new HistoriqueArticleWindow(reference , designationD).Show();
+            classes.article article = new article();
+          // double t = article.calculePrixReel(designationD);
+          //  MessageBox.Show(t.ToString());
         }
     }
 }

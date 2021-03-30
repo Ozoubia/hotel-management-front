@@ -1,4 +1,5 @@
-﻿using hotel_management_front.tabsUserControl;
+﻿
+using hotel_management_front.tabsUserControl;
 using System;
 using System.Collections.Generic;
 using System.Data;

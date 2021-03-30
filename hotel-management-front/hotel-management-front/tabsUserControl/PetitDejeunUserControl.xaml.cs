@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,11 +61,15 @@ namespace hotel_management_front.tabsUserControl
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
 
-             string desinationD = petitdejeunTxt.Text;
+            string desinationD = petitdejeunTxt.Text;
             int quantite = int.Parse(materialInfo.Text);
             bool chechedD = isChecked;
+            classes.petitDejeun obj = new classes.petitDejeun();
+            DataTable data = new DataTable();
+            data = obj.SelcetPrixMoyen(desinationD);
+            double prix = double.Parse(data.Rows[0]["prix_moyen"].ToString());
             string typeCh = classes.GlobalVariable.chambreType;
-            classes.prototype prototypeObj = new classes.prototype(desinationD, quantite, typeCh, chechedD);
+            classes.prototype prototypeObj = new classes.prototype(desinationD, quantite, typeCh, chechedD , prix);
             string result = prototypeObj.addprototype();
             MessageBox.Show(result);
            

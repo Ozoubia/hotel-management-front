@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:hotel_management_front.dialog_windows"
         mc:Ignorable="d"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="HistoriqueArticleWindow" Height="450" Width="960">
+        Title="HistoriqueArticleWindow" Height="650" Width="960">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
@@ -39,8 +40,13 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Text="Prix Achet moyen" Margin="580 0 0 0" Foreground="Red" FontSize="25" Width="240" RenderTransformOrigin="0.879,0.545"/>
+            <TextBlock x:Name="prixAchetFild" Margin="10 0 0 0 " Width="90" Height="30"></TextBlock>
+        </StackPanel>
+       
 
-        <DataGrid Grid.Row="2" IsReadOnly="True" x:Name="HistoArticleChambreGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto"  >
+        <DataGrid Grid.Row="3" IsReadOnly="True" x:Name="HistoArticleChambreGrid" Background="White" AutoGenerateColumns="False" Margin="10" Height="auto"  >
             <DataGrid.Columns>
                 <!--columns-->
                 <DataGridTextColumn Header="ID sejour" ></DataGridTextColumn>

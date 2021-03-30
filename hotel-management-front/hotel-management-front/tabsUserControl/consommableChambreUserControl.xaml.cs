@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,9 +44,12 @@ namespace hotel_management_front.tabsUserControl
             string desinationD = consommableTxt.Text;
             int quantite = int.Parse(materialInfo.Text);
             bool chechedD = isChecked;
-
+            classes.consommablesChambre obj = new classes.consommablesChambre();
+            DataTable data = new DataTable();
+            data = obj.SelcetPrixMoyen(desinationD);
+            double prix = double.Parse(data.Rows[0]["prix_moyen"].ToString());
             string typeCh = classes.GlobalVariable.chambreType1;
-            classes.prototypeConsommable prototypeObj = new classes.prototypeConsommable(desinationD, quantite, typeCh, chechedD);
+            classes.prototypeConsommable prototypeObj = new classes.prototypeConsommable(desinationD, quantite, typeCh, chechedD, prix);
             string result = prototypeObj.addprototype();
             MessageBox.Show(result);
         }

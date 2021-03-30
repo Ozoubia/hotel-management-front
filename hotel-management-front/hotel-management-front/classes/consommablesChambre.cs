@@ -15,17 +15,19 @@ namespace hotel_management_front.classes
         int quantityConsommable;
         string designationConsommable;
         string referenceConsommable;
+        double prixMoyen;
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
 
         public consommablesChambre()
         {
         }
-        public consommablesChambre(int quantite, string designation, string reference)
+        public consommablesChambre(int quantite, string designation, string reference ,double prix)
         {
             this.quantityConsommable = quantite;
             this.designationConsommable = designation;
             this.referenceConsommable = reference;
+            this.prixMoyen = prix;
         }
         public void addconsommablesChambre()
         {
@@ -44,8 +46,8 @@ namespace hotel_management_front.classes
                 if (dtbl.Rows.Count < 1)
                 {
                     // inseting into the general stock
-                    string query2 = "INSERT INTO consommablesChambre (quantity_consommable ,designation_consommable ,reference_consommable ) " +
-                        "VALUES ( 0,@designation, @reference)";
+                    string query2 = "INSERT INTO consommablesChambre (quantity_consommable ,designation_consommable ,reference_consommable ,prix_moyen ) " +
+                        "VALUES ( 0,@designation, @reference ,@prix)";
 
                     SqlCommand com = new SqlCommand(query2, con);
 
@@ -53,6 +55,7 @@ namespace hotel_management_front.classes
                     com.Parameters.AddWithValue("@quantity", this.quantityConsommable);
                     com.Parameters.AddWithValue("@designation", this.designationConsommable);
                     com.Parameters.AddWithValue("@reference", this.referenceConsommable);
+                    com.Parameters.AddWithValue("@prix", this.prixMoyen);
 
                     con.Open();
                     com.ExecuteNonQuery();
@@ -121,6 +124,33 @@ namespace hotel_management_front.classes
             }
 
             return designationList;
+        }
+        public void modiftyPrixMoyen(string Designa, double quant)
+        {
+            string query = "UPDATE consommablesChambre SET prix_moyen=@prix WHERE designation_consommable=@Designa";
+            SqlCommand com = new SqlCommand(query, con);
+
+            // params
+            com.Parameters.AddWithValue("@prix", quant);
+            com.Parameters.AddWithValue("@Designa", Designa);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+        }
+        public DataTable SelcetPrixMoyen(string disignation)
+        {
+            string query = "SELECT prix_moyen FROM consommablesChambre WHERE designation_consommable=@Designa";
+
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Designa", disignation);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
         }
     }
 }

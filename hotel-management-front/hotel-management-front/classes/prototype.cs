@@ -17,15 +17,17 @@ namespace hotel_management_front.classes
         int quantity_petitDejeun;
         string type_petitDejeun;
         bool checke;
+        double prixMoyen;
       public  prototype()
         {
         }
-        public prototype(string designationD, int quantity, string typeDej, bool check)
+        public prototype(string designationD, int quantity, string typeDej, bool check , double prix)
         {
             this.designation = designationD;
             this.quantity_petitDejeun = quantity;
             this.type_petitDejeun = typeDej;
             this.checke = check;
+            this.prixMoyen = prix;
         }
         public string addprototype()
         {
@@ -47,8 +49,8 @@ namespace hotel_management_front.classes
             }
             else
             {
-                string query1 = "INSERT INTO prototype (designation, quantity_petitDejeun, type_petitDejeun, checked) " +
-                  "VALUES (@designationD, @quantity, @type, @check)";
+                string query1 = "INSERT INTO prototype (designation, quantity_petitDejeun, type_petitDejeun, checked ,prix_moyen) " +
+                  "VALUES (@designationD, @quantity, @type, @check ,@prix)";
 
                 SqlCommand com = new SqlCommand(query1, con);
 
@@ -57,6 +59,7 @@ namespace hotel_management_front.classes
                 com.Parameters.AddWithValue("@quantity", this.quantity_petitDejeun);
                 com.Parameters.AddWithValue("@type", this.type_petitDejeun);
                 com.Parameters.AddWithValue("@check", this.checke);
+                com.Parameters.AddWithValue("@prix", this.prixMoyen);
 
                 con.Open();
                 com.ExecuteNonQuery();
@@ -110,6 +113,34 @@ namespace hotel_management_front.classes
 
             return dtbl;
         }
+
+        public void SupprimerPetitDejeun(string Designation)
+
+        {
+            string query = "SELECT * FROM prototype WHERE designation=@Designation";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Designation", Designation);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+            if (dtbl.Rows.Count >= 1)
+            {
+                string query1 = "DELETE FROM prototype WHERE designation =@Designation";
+                SqlCommand cmd = new SqlCommand(query1, con);
+
+                cmd.Parameters.AddWithValue("@Designation", Designation);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+
+
+        }
     }
+
 
 }

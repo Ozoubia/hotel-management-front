@@ -35,7 +35,13 @@ namespace hotel_management_front.dialog_windows
 
 
             InitializeComponent();
+            classes.GlobalVariable.prixTotal = 0;
             showSingleGrid();
+            showConsommablesGrid();
+            DateTime date1 = DateTime.Today;
+            dateField.Text = date1.ToString();
+            dateField1.Text= date1.ToString();
+            prixTotalFild.Text = classes.GlobalVariable.prixTotal.ToString();
         }
 
         private void showSingleGrid() 
@@ -51,10 +57,34 @@ namespace hotel_management_front.dialog_windows
             {
                 string mater = data.Rows[i]["designation"].ToString();
                 int quantite = int.Parse(data.Rows[i]["quantity_petitDejeun"].ToString());
-         
-                SingleGrid.Children.Add(new ConfirmationPetitDejeunerUserControl(mater , quantite , dateSej , nameChambre , this.idSejour));
+
+                PetitDejeunerGrid.Children.Add(new ConfirmationPetitDejeunerUserControl(mater, quantite, dateSej, nameChambre, this.idSejour));
 
             }
+        }
+
+        private void showConsommablesGrid()
+        {
+            classes.prototypeConsommable prototypeObj = new classes.prototypeConsommable();
+            DataTable data = prototypeObj.showAllprototypeByType(this.type);
+            int nbrEqui = data.Rows.Count;
+
+
+
+            for (int i = 0; i < nbrEqui; i++)
+
+            {
+                string mater = data.Rows[i]["designation"].ToString();
+                int quantite = int.Parse(data.Rows[i]["quantity_consomable"].ToString());
+
+                ConsommablesGrid.Children.Add(new ConfirmationConsomableUserControl(mater, quantite, dateSej, nameChambre, this.idSejour));
+
+            }
+        }
+
+        private void tarminerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            prixTotalFild.Text = classes.GlobalVariable.prixTotal.ToString();
         }
     }
 }

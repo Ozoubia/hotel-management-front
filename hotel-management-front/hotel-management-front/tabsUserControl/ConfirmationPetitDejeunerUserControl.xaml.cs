@@ -23,6 +23,7 @@ namespace hotel_management_front.tabsUserControl
     /// </summary>
     public partial class ConfirmationPetitDejeunerUserControl : UserControl
     {
+        
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
 
@@ -30,11 +31,13 @@ namespace hotel_management_front.tabsUserControl
         DateTime time1;
         string nameRoom;
         int idsejour;
+        public double prixMoy;
         public ConfirmationPetitDejeunerUserControl(string NomDejeun ,int quantite ,DateTime time , string nameR  ,int  idsej)
         {
           
             InitializeComponent();
-            petitdejeunTxt.Text = NomDejeun;
+             prixMoy =0 ;
+        petitdejeunTxt.Text = NomDejeun;
             materialInfo.Text = quantite.ToString();
             this.time1 = time;
             this.nameRoom = nameR;
@@ -43,20 +46,30 @@ namespace hotel_management_front.tabsUserControl
 
         private void confirmerBtn_Click(object sender, RoutedEventArgs e)
         {
-             // int  s =int.Parse( materialInfo.Text);
-             //string Nom = petitdejeunTxt.Text;
-             //classes.article articleObj = new classes.article();
-             // articleObj.modiftyquantity(Nom, s);
+              int  s =int.Parse( materialInfo.Text);
+             string Nom = petitdejeunTxt.Text;
+             classes.article articleObj = new classes.article();
+              articleObj.modiftyquantity(Nom, s);
 
 
 
             DateTime date = DateTime.Today;
              string designatio = petitdejeunTxt.Text;
              int quna = int.Parse(materialInfo.Text);
-            MessageBox.Show(idsejour.ToString());
+           //MessageBox.Show(idsejour.ToString());
             classes.HistoriqueArticleChambreClass  Obj = new classes.HistoriqueArticleChambreClass();
             string s1 = Obj.remplirQuantity(quna ,this.idsejour, date, designatio);
-            MessageBox.Show(s1);
+           // MessageBox.Show(s1);
+
+            //calculer prix total 
+            classes.petitDejeun obj = new classes.petitDejeun();
+
+            DataTable table = obj.SelcetPrixMoyen(Nom);
+            double prix = double.Parse(table.Rows[0]["prix_moyen"].ToString());
+             prixMoy = prix * quna;
+            classes.GlobalVariable.prixTotal = classes.GlobalVariable.prixTotal + prixMoy;
+            MessageBox.Show(classes.GlobalVariable.prixTotal.ToString());
+
 
 
 

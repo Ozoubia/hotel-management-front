@@ -77,6 +77,7 @@
     <Compile Include="classes\GlobalVariable.cs" />
     <Compile Include="classes\histoArrivee.cs" />
     <Compile Include="classes\HistoriqueArticleChambreClass.cs" />
+    <Compile Include="classes\historiqueConsommablesChambre.cs" />
     <Compile Include="classes\Notification.cs" />
     <Compile Include="classes\petitDejeun.cs" />
     <Compile Include="classes\presence.cs" />
@@ -184,6 +185,9 @@
     </Compile>
     <Compile Include="tabsUserControl\clientUserControl1.xaml.cs">
       <DependentUpon>clientUserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\ConfirmationConsomableUserControl.xaml.cs">
+      <DependentUpon>ConfirmationConsomableUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\ConfirmationPetitDejeunerUserControl.xaml.cs">
       <DependentUpon>ConfirmationPetitDejeunerUserControl.xaml</DependentUpon>
@@ -417,6 +421,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\clientUserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\ConfirmationConsomableUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

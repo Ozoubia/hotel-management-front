@@ -18,15 +18,17 @@ namespace hotel_management_front.classes
         int quantity_Consommable;
         string type_Consommable;
         bool checke;
+        double prixMoyen;
         public prototypeConsommable() 
         {
         }
-        public prototypeConsommable(string designationD, int quantity, string typeDej, bool check)
+        public prototypeConsommable(string designationD, int quantity, string typeDej, bool check , double prix)
         {
             this.designation = designationD;
             this.quantity_Consommable = quantity;
             this.type_Consommable = typeDej;
             this.checke = check;
+            this.prixMoyen = prix;
         }
         public string addprototype()
         {
@@ -48,8 +50,8 @@ namespace hotel_management_front.classes
             }
             else
             {
-                string query1 = "INSERT INTO prototypeConsommable (designation, quantity_consomable, type_consomable, checked) " +
-                  "VALUES (@designationD, @quantity, @type, @check)";
+                string query1 = "INSERT INTO prototypeConsommable (designation, quantity_consomable, type_consomable, checked , prix_moyen) " +
+                  "VALUES (@designationD, @quantity, @type, @check , @prix)";
 
                 SqlCommand com = new SqlCommand(query1, con);
 
@@ -58,6 +60,7 @@ namespace hotel_management_front.classes
                 com.Parameters.AddWithValue("@quantity", this.quantity_Consommable);
                 com.Parameters.AddWithValue("@type", this.type_Consommable);
                 com.Parameters.AddWithValue("@check", this.checke);
+                com.Parameters.AddWithValue("@prix", this.prixMoyen);
 
                 con.Open();
                 com.ExecuteNonQuery();
@@ -111,6 +114,33 @@ namespace hotel_management_front.classes
             ada.Fill(data);
 
             return data;
+        }
+
+        public void SupprimerConsomable(string Designation)
+
+        {
+            string query = "SELECT * FROM prototypeConsommable WHERE designation=@Designation";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Designation", Designation);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+            if (dtbl.Rows.Count >= 1)
+            {
+                string query1 = "DELETE FROM prototypeConsommable WHERE designation =@Designation";
+                SqlCommand cmd = new SqlCommand(query1, con);
+
+                cmd.Parameters.AddWithValue("@Designation", Designation);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+
+
         }
     }
 }

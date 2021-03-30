@@ -23,12 +23,13 @@ namespace hotel_management_front.tabsUserControl
     public partial class sejourUserControl : UserControl
     {
         
-
-
         public sejourUserControl()
         {
+
+            
             InitializeComponent();
             showSejourList();
+            
         }
 
         //function to fill the sejour list
@@ -54,6 +55,7 @@ namespace hotel_management_front.tabsUserControl
 
         private void terminateBtn_Click(object sender, RoutedEventArgs e)
         {
+            
             // saving the index of the row in the datarowview var
             //   classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
 
@@ -72,7 +74,7 @@ namespace hotel_management_front.tabsUserControl
             //update dataGrid after deletion            
             //          showSejourList();
             classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
-
+            
             string type = classes.GlobalVariable.dataRowView[3].ToString();
             DateTime date = DateTime.Parse(classes.GlobalVariable.dataRowView[5].ToString());
             string rommName = classes.GlobalVariable.dataRowView[2].ToString();
@@ -89,13 +91,18 @@ namespace hotel_management_front.tabsUserControl
             int nbjour = int.Parse(classes.GlobalVariable.dataRowView[9].ToString());
             int nbr = nb * nbjour;
             MessageBox.Show("nb jour", nbjour.ToString());
+            ///////////////////////////////////////////////////////
+            classes.HistoriqueArticleChambreClass objHisto = new classes.HistoriqueArticleChambreClass();
+            DataTable table = objHisto.showAllhistoriqueChambre();
+            int n = table.Rows.Count;
+            ///////////////////////////////////////////////////
 
             List<string> designationList = new List<string>();
             for (int i = 0; i < nb; i++)
             {
                 designationList.Add(data1.Rows[i]["designation"].ToString());
             }
-
+            ////alimenter petit dejeun avec chambre qui consomer dans le table de HistoriqueArticleChambre quand cliquez option sejour
             DateTime time = date;
             int j = 1;
             int x = 0;
@@ -107,13 +114,13 @@ namespace hotel_management_front.tabsUserControl
                     string mag = obj2.addHistorique();
                 }
 
-                if (j < nbjour && i> 0 )
+                if (j < nbjour && i > 0)
                 {
-                    
-                   // MessageBox.Show(mag +" "+ time.ToString());
+
+                    // MessageBox.Show(mag +" "+ time.ToString());
                     time = time.AddDays(1);
                     j += 1;
-                     classes.HistoriqueArticleChambreClass obj2 = new classes.HistoriqueArticleChambreClass(rommName, time, type, IDsejour, 0, designationList[x]);
+                    classes.HistoriqueArticleChambreClass obj2 = new classes.HistoriqueArticleChambreClass(rommName, time, type, IDsejour, 0, designationList[x]);
                     string mag = obj2.addHistorique();
                     continue;
                 }
@@ -130,22 +137,84 @@ namespace hotel_management_front.tabsUserControl
 
 
             }
+            ////alimenter Consommables Chambre avec chambre qui consomer dans le table de historiqueConsommablesChambre quand cliquez option sejour
+            classes.prototypeConsommable Obj = new classes.prototypeConsommable();
+            DataTable dataConsomable = new DataTable();
+            dataConsomable = Obj.showAllprototypeByType(type);
+            int nbConsomable = data1.Rows.Count;
+            int nbrTotal = nbConsomable * nbjour;
+            DateTime date1 = DateTime.Parse(classes.GlobalVariable.dataRowView[5].ToString());
+            DateTime time1 = date1;
 
-          
-            new ContientSejourWindow(type, date, rommName , IDsejour).Show();
-        }
+            List<string> designationList1 = new List<string>();
+            for (int i = 0; i < nb; i++)
+            {
+                designationList1.Add(dataConsomable.Rows[i]["designation"].ToString());
+            }
+            int k = 1;
+            int x1 = 0;
+            for (int i = 0; i < nbrTotal; i++)
+            {
+                if (i == 0)
+                {
+                    classes.historiqueConsommablesChambre obj2 = new classes.historiqueConsommablesChambre(rommName, time1, type, IDsejour, 0, designationList1[x1]);
+                    string mag = obj2.addHistoriqueConsomablesChambre();
+                }
 
-        private void EditBtn_Click(object sender, RoutedEventArgs e)
-        {
+                if (k < nbjour && i > 0)
+                {
 
-        }
 
-        private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
-        {
+                    time1 = time1.AddDays(1);
+                    k += 1;
+                    classes.historiqueConsommablesChambre obj2 = new classes.historiqueConsommablesChambre(rommName, time1, type, IDsejour, 0, designationList1[x1]);
+                    string mag = obj2.addHistoriqueConsomablesChambre();
+                    continue;
+                }
 
-        }
+                if (k == nbjour)
+                {
+                    x1++;
+                    classes.historiqueConsommablesChambre obj = new classes.historiqueConsommablesChambre(rommName, date, type, IDsejour, 0, designationList1[x1]);
+                    string mag1 = obj.addHistoriqueConsomablesChambre();
+                    time1 = date1.Date;
+                    k = 1;
+                    continue;
+                }
+            }
 
+            int nbrTable = n + nbr;
+            DataTable table1 = objHisto.showAllhistoriqueChambre();
+            int nombre = table1.Rows.Count;
+            if (nbrTable == nombre)
+            {
+
+
+                // changing the color
+                
+
+
+
+
+            }
+
+
+                new ContientSejourWindow(type, date, rommName, IDsejour).Show();
+            }
+
+            private void EditBtn_Click(object sender, RoutedEventArgs e)
+            {
+
+            }
+
+            private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
+            {
+
+            }
+
+        
+    }
     }
   
-}
+
 

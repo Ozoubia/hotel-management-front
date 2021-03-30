@@ -25,6 +25,7 @@ namespace hotel_management_front.dialog_windows
             InitializeComponent();
             showHistoriqueArticleList(reference1);
             showHistoriquePetitDejeunChambreList( designationDej);
+            //////showprixMoyen(designationDej);
         }
         public void showHistoriqueArticleList(string reference)
         {
@@ -56,6 +57,12 @@ namespace hotel_management_front.dialog_windows
             ((DataGridTextColumn)HistoArticleChambreGrid.Columns[4]).Binding = new Binding("designation");
             ((DataGridTextColumn)HistoArticleChambreGrid.Columns[5]).Binding = new Binding("quantity");
         }
+        //public void showprixMoyen(string disignation) 
+        //{
+        //    classes.article obj = new classes.article();
+        //    double d = obj.calculePrixReel(disignation);
+        //    prixAchetFild.Text = d.ToString();
+        //}
 
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)

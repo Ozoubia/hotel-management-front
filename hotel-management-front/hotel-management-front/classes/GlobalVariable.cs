@@ -24,6 +24,8 @@ namespace hotel_management_front.classes
         public static string chambreType;
         // type chambre 
         public static string chambreType1;
+        // prixtotal
+        public static double prixTotal;
 
 
 
