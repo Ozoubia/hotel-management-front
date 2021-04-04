@@ -188,8 +188,8 @@ namespace hotel_management_front.classes
             else
             {
                 // inserting into the sejour table
-                string query3 = "INSERT INTO sejour (id_client, id_room, check_in, check_out, total_amount, payement_status , nbr_days)" +
-                                " VALUES (@clientID, @roomID, @checkin, @checkout, @totalAmount, @payementStatus , @Nbdays)";
+                string query3 = "INSERT INTO sejour (id_client, id_room, check_in, check_out, total_amount, payement_status , nbr_days, isValidated)" +
+                                " VALUES (@clientID, @roomID, @checkin, @checkout, @totalAmount, @payementStatus , @Nbdays, 'False')";
                 //number of days
                 DateTime start = checkin.Date;
                 DateTime end = checkout.Date;
