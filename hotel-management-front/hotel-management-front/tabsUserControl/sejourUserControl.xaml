@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:hotel_management_front.tabsUserControl"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded">
     <Grid>
         
         <Grid.RowDefinitions>
@@ -37,12 +37,12 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                
+
                                 <Button Height="25" Margin="0 0 10 0" ToolTip="Modifier" x:Name="EditBtn" Click="EditBtn_Click">
                                     <materialDesign:PackIcon Kind="PencilOutline" ></materialDesign:PackIcon>
                                 </Button>
 
-                                <Button Height="25" ToolTip="terminer" x:Name="termaBtn" Click="terminateBtn_Click" Loaded="termaBtn_Loaded">
+                                <Button Height="25" ToolTip="terminer" x:Name="termaBtn" Click="terminateBtn_Click" >
                                     <materialDesign:PackIcon Kind="Check" ></materialDesign:PackIcon>
                                 </Button>
                             </StackPanel>

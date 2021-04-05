@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace hotel_management_front.tabsUserControl
 {
@@ -22,7 +23,10 @@ namespace hotel_management_front.tabsUserControl
     /// </summary>
     public partial class sejourUserControl : UserControl
     {
-        
+
+        // timer used for refresh
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
         public sejourUserControl()
         {
 
@@ -91,12 +95,7 @@ namespace hotel_management_front.tabsUserControl
             int nbjour = int.Parse(classes.GlobalVariable.dataRowView[9].ToString());
             int nbr = nb * nbjour;
             MessageBox.Show("nb jour", nbjour.ToString());
-            ///////////////////////////////////////////////////////
-            classes.HistoriqueArticleChambreClass objHisto = new classes.HistoriqueArticleChambreClass();
-            DataTable table = objHisto.showAllhistoriqueChambre();
-            int n = table.Rows.Count;
-            ///////////////////////////////////////////////////
-
+           
             List<string> designationList = new List<string>();
             for (int i = 0; i < nb; i++)
             {
@@ -112,6 +111,9 @@ namespace hotel_management_front.tabsUserControl
                 {
                     classes.HistoriqueArticleChambreClass obj2 = new classes.HistoriqueArticleChambreClass(rommName, time, type, IDsejour, 0, designationList[x]);
                     string mag = obj2.addHistorique();
+                    classes.DatailSejour objSejour = new classes.DatailSejour(IDsejour , time , false);
+                   string m = objSejour.addDatialSejour();
+                    MessageBox.Show(m);
                 }
 
                 if (j < nbjour && i > 0)
@@ -122,6 +124,8 @@ namespace hotel_management_front.tabsUserControl
                     j += 1;
                     classes.HistoriqueArticleChambreClass obj2 = new classes.HistoriqueArticleChambreClass(rommName, time, type, IDsejour, 0, designationList[x]);
                     string mag = obj2.addHistorique();
+                    classes.DatailSejour objSejour = new classes.DatailSejour(IDsejour, time, false);
+                    objSejour.addDatialSejour();
                     continue;
                 }
 
@@ -130,6 +134,8 @@ namespace hotel_management_front.tabsUserControl
                     x++;
                     classes.HistoriqueArticleChambreClass obj = new classes.HistoriqueArticleChambreClass(rommName, date, type, IDsejour, 0, designationList[x]);
                     string mag1 = obj.addHistorique();
+                    classes.DatailSejour objSejour = new classes.DatailSejour(IDsejour, date, false);
+                    objSejour.addDatialSejour();
                     time = date.Date;
                     j = 1;
                     continue;
@@ -183,38 +189,46 @@ namespace hotel_management_front.tabsUserControl
                 }
             }
 
-            int nbrTable = n + nbr;
-            DataTable table1 = objHisto.showAllhistoriqueChambre();
-            int nombre = table1.Rows.Count;
-            if (nbrTable == nombre)
-            {
+            
+            
 
 
-                // changing the color
-                
-
-
-
-
+            new ContientSejourWindow(type, date, rommName, IDsejour).Show();
             }
 
-
-                new ContientSejourWindow(type, date, rommName, IDsejour).Show();
-            }
-
-            private void EditBtn_Click(object sender, RoutedEventArgs e)
-            {
-
-            }
+          
 
             private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
             {
 
             }
 
-        
+        #region update grid
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            this.dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            this.dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            showSejourList();
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            // stopping the timer
+            this.dispatcherTimer.Stop();
+        }
+        #endregion
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
     }
-    }
+}
   
 
 

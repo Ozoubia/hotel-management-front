@@ -101,5 +101,18 @@ namespace hotel_management_front.classes
             adapt.Fill(data);
             return data;
         }
+
+        //updating the isValidated variabe each day ( at 1 am ) 
+        public void resetIsValidated()
+        {
+            // inserting into the sejour table
+            string query3 = "UPDATE sejour SET isValidated='False'";
+
+            SqlCommand com = new SqlCommand(query3, con);
+
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+        }
     }
 }

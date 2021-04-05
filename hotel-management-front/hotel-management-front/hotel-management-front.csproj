@@ -69,6 +69,7 @@
     <Compile Include="classes\client.cs" />
     <Compile Include="classes\consommablesChambre.cs" />
     <Compile Include="classes\Cuisine.cs" />
+    <Compile Include="classes\DatailSejour.cs" />
     <Compile Include="classes\detailHistoriqueClass1.cs" />
     <Compile Include="classes\ELRoom.cs" />
     <Compile Include="classes\employee.cs" />

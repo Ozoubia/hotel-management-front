@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace hotel_management_front
 {
@@ -21,12 +22,15 @@ namespace hotel_management_front
     /// </summary>
     public partial class DashBoard : Window
     {
-        public DashBoard(string nom )
+        // timer used for refresh
+        DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
+        public DashBoard(string nom)
         {
-            
+
             InitializeComponent();
             gridMenu.Children.Clear();
-         
+
             utilisateur.Text = nom;
             gridMenu.Children.Add(new tabBoardUserControl());
             int count = 50;
@@ -35,10 +39,22 @@ namespace hotel_management_front
             {
                 gridNotification.Children.Add(new notificationUserControl(" notification "));
             }
-           
+
+            //updateSejIsValid();
         }
 
+        public void updateSejIsValid()
+        {
+            var date = DateTime.Now;
+            if (date.Hour == 1)
+            {
+                classes.sejour sejObj = new classes.sejour();
+                sejObj.resetIsValidated();
+            }
 
+        }
+
+        
 
         #region menu button
         private void dashboardBtn_Click(object sender, RoutedEventArgs e)
@@ -110,8 +126,21 @@ namespace hotel_management_front
             this.Close();
             
         }
-        
 
+        // used for timer (it doesn't work yet )
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("test"); 
+            //this.dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            //this.dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            //this.dispatcherTimer.Start();
+        }
+
+        //private void dispatcherTimer_Tick(object sender, EventArgs e)
+        //{
+        //    updateSejIsValid();
+        //    MessageBox.Show("test");
+        //}
     }
     }
 

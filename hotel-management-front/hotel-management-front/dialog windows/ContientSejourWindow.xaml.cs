@@ -85,6 +85,10 @@ namespace hotel_management_front.dialog_windows
         private void tarminerBtn_Click(object sender, RoutedEventArgs e)
         {
             prixTotalFild.Text = classes.GlobalVariable.prixTotal.ToString();
+            DateTime date2 = DateTime.Today;
+            classes.DatailSejour Objdatail = new classes.DatailSejour();
+            Objdatail.modifierQuantite(idSejour , date2);
+
         }
     }
 }
