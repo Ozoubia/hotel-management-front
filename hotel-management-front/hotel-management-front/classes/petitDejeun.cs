@@ -20,6 +20,7 @@ namespace hotel_management_front.classes
         {
 
         }
+
         public petitDejeun(int quantity_petitD, string designation_P, string reference_P)
         {
             this.quantity_petitDejeun = quantity_petitD;

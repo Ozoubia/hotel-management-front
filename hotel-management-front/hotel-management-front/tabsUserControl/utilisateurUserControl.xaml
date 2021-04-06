@@ -48,26 +48,11 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-
             <!--right column-->
-            <Grid Margin="10" Grid.Column="1" Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="50"/>
-                </Grid.RowDefinitions>
-                <!--top-->
-                <StackPanel Orientation="Horizontal" Grid.Row="0">
-                    <ComboBox x:Name="groupeCombo" materialDesign:HintAssist.Hint="Groupe" FontSize="18" Width="200">
-                        <ComboBoxItem Content="Oui"/>
-                        <ComboBoxItem Content="Non"/>
-                    </ComboBox>
-                    <Button Margin="30 0 0 0" x:Name="addGroupeBtn" Click="addGroupeBtn_Click">+</Button>
-                </StackPanel>
-                <!--middle--> 
-                <!--bottom-->
+            <Grid Grid.Column="1" x:Name="rightGrid">
                 
             </Grid>
+            
             
             <!--<StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Margin="10">
                 <StackPanel Orientation="Horizontal">

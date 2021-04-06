@@ -63,6 +63,23 @@ namespace hotel_management_front.tabsUserControl
 
         private void permissionBtn_Click(object sender, RoutedEventArgs e)
         {
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            string user = classes.GlobalVariable.dataRowView[1].ToString();
+
+            // empty grid
+            rightGrid.Children.Clear();
+
+            // getting the role of the user
+            classes.user userObj = new classes.user();
+            string userRole = userObj.getUserRoleByName(user);
+            // getting the id of the user role (exp admin, his id is 1)
+            classes.role roleObj = new classes.role();
+            DataTable data = roleObj.getRoleIdByName(userRole);
+            string roleId = data.Rows[0]["id_role"].ToString();
+
+            //new instance
+            rightGrid.Children.Add(new permissionsUserControl(roleId, userRole));
+
 
         }
 
@@ -86,10 +103,6 @@ namespace hotel_management_front.tabsUserControl
         }
         #endregion
 
-        // shows the add group window
-        private void addGroupeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            new addGroupWindow().Show();
-        }
+
     }
 }
