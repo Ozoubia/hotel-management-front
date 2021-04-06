@@ -1,4 +1,5 @@
-﻿using hotel_management_front.tabsUserControl;
+﻿
+using hotel_management_front.tabsUserControl;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -28,7 +29,10 @@ namespace hotel_management_front.dialog_windows
             InitializeComponent();
             showTypeList();
             fillTypeChambreCombo();
-            //showRightTopGrid();
+            fillTypeChambreCombo1();
+          
+
+
 
         }
 
@@ -40,6 +44,7 @@ namespace hotel_management_front.dialog_windows
             TypeListGrid.ItemsSource = data.DefaultView;
             ((DataGridTextColumn)TypeListGrid.Columns[0]).Binding = new Binding("typeChambre");
         }
+
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
 
@@ -74,6 +79,7 @@ namespace hotel_management_front.dialog_windows
             }
 
         }
+
         private void showRightTopGrid()
         {
             topGrid.Children.Clear();
@@ -125,7 +131,7 @@ namespace hotel_management_front.dialog_windows
                 List<string> designitionDejuenLIst = petitDejeunObj.showDejeun();
 
                 int nbr = designitionDejuenLIst.Count;
-                MessageBox.Show(nbr.ToString());
+                
                 for (int i = 0; i < nbr; i++)
                 {
                     string dejeun = designitionDejuenLIst[i];
@@ -135,5 +141,83 @@ namespace hotel_management_front.dialog_windows
 
             }
         }
+        //consommables chambre
+        public void fillTypeChambreCombo1()
+        {
+
+            classes.typeChambre typeChambreObj = new classes.typeChambre();
+            DataTable data = typeChambreObj.showAllTypes();
+            int data_length = data.Rows.Count;
+
+            // looping through the client list
+            for (int i = 0; i < data_length; i++)
+            {
+                string type = data.Rows[i]["typeChambre"].ToString();
+                typeComboBox1.Items.Add(type);
+            }
+
+        }
+        private void showConsommableGrid()
+        {
+            ConsommableGrid.Children.Clear();
+
+            classes.consommablesChambre Obj = new classes.consommablesChambre();
+            DataTable data = Obj.showAllconsommablesChambre();
+
+            int nbrEqui = data.Rows.Count;
+            for (int i = 0; i < nbrEqui; i++)
+            {
+                string mater = data.Rows[i]["designation_consommable"].ToString();
+
+                ConsommableGrid.Children.Add(new consommableChambreUserControl(mater, 0, false));
+
+            }
+
+        }
+        private void typeComboBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //initialiser la valeur global chambretype par ComboBox
+                 classes.GlobalVariable.chambreType1 = typeComboBox1.SelectedItem.ToString();
+
+                    //
+                    classes.prototypeConsommable prototypeObj = new classes.prototypeConsommable();
+                    DataTable data = prototypeObj.showAllprototypeByType(classes.GlobalVariable.chambreType1);
+                    int nbrEqui = data.Rows.Count;
+
+               // MessageBox.Show()
+                   if (nbrEqui == 0)
+                    {
+                        ConsommableGrid.Children.Clear();
+                        showConsommableGrid();
+                    }
+                   else
+                    {
+                        ConsommableGrid.Children.Clear();
+
+                        for (int i = 0; i < nbrEqui; i++)
+
+                        {
+                            string mater = data.Rows[i]["designation"].ToString();
+                            int quantite = int.Parse(data.Rows[i]["quantity_consomable"].ToString());
+                            bool checkedd = bool.Parse(data.Rows[i]["checked"].ToString());
+                            ConsommableGrid.Children.Add(new consommableChambreUserControl(mater, quantite, checkedd));
+
+                        }
+
+                        classes.consommablesChambre Obj = new classes.consommablesChambre();
+
+                        List<string> designitionDejuenLIst = Obj.showConsomable();
+
+                        int nbr = designitionDejuenLIst.Count;
+                        for (int i = 0; i < nbr; i++)
+                       {
+                            string consomable = designitionDejuenLIst[i];
+                            ConsommableGrid.Children.Add(new consommableChambreUserControl(consomable, 0, false));
+
+                        }
+
+                    }
+                }
+        }
+        
     }
-}

@@ -91,7 +91,7 @@ namespace hotel_management_front.classes
         // returing all sejour items in the table
         public DataTable showSejourList()
         {
-            string query = "SELECT client.name, client.lname, room.name AS rname, room.type,sejour.id_sejour, sejour.check_in, sejour.check_out, sejour.total_amount, sejour.payement_status FROM sejour" +
+            string query = "SELECT client.name, client.lname, room.name AS rname, room.type,sejour.id_sejour, sejour.check_in, sejour.check_out, sejour.total_amount, sejour.payement_status , sejour.nbr_days FROM sejour" +
                 " INNER JOIN client ON sejour.id_client = client.id_client" +
                 " INNER JOIN room ON sejour.id_room = room.id_room ";
             con.Open();
@@ -100,6 +100,19 @@ namespace hotel_management_front.classes
             DataTable data = new DataTable();
             adapt.Fill(data);
             return data;
+        }
+
+        //updating the isValidated variabe each day ( at 1 am ) 
+        public void resetIsValidated()
+        {
+            // inserting into the sejour table
+            string query3 = "UPDATE sejour SET isValidated='False'";
+
+            SqlCommand com = new SqlCommand(query3, con);
+
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
         }
     }
 }

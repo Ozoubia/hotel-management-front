@@ -8,36 +8,37 @@ using System.Threading.Tasks;
 
 namespace hotel_management_front.classes
 {
-    class prototype
+    class prototypeConsommable
     {
+
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
         //VAR
         string designation;
-        int quantity_petitDejeun;
-        string type_petitDejeun;
+        int quantity_Consommable;
+        string type_Consommable;
         bool checke;
         double prixMoyen;
-      public  prototype()
+        public prototypeConsommable() 
         {
         }
-        public prototype(string designationD, int quantity, string typeDej, bool check , double prix)
+        public prototypeConsommable(string designationD, int quantity, string typeDej, bool check , double prix)
         {
             this.designation = designationD;
-            this.quantity_petitDejeun = quantity;
-            this.type_petitDejeun = typeDej;
+            this.quantity_Consommable = quantity;
+            this.type_Consommable = typeDej;
             this.checke = check;
             this.prixMoyen = prix;
         }
         public string addprototype()
         {
             // checking if an employee exists
-            string query = "SELECT * FROM prototype WHERE designation=@designationD AND type_petitDejeun=@type";
+            string query = "SELECT * FROM prototypeConsommable WHERE designation=@designationD AND type_consomable=@type";
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
             //query parameters 
             ada.SelectCommand.Parameters.AddWithValue("@designationD", this.designation);
-            ada.SelectCommand.Parameters.AddWithValue("@type", this.type_petitDejeun);
+            ada.SelectCommand.Parameters.AddWithValue("@type", this.type_Consommable);
 
             // command result 
             DataTable dtbl = new DataTable();
@@ -49,15 +50,15 @@ namespace hotel_management_front.classes
             }
             else
             {
-                string query1 = "INSERT INTO prototype (designation, quantity_petitDejeun, type_petitDejeun, checked ,prix_moyen) " +
-                  "VALUES (@designationD, @quantity, @type, @check ,@prix)";
+                string query1 = "INSERT INTO prototypeConsommable (designation, quantity_consomable, type_consomable, checked , prix_moyen) " +
+                  "VALUES (@designationD, @quantity, @type, @check , @prix)";
 
                 SqlCommand com = new SqlCommand(query1, con);
 
                 // params
                 com.Parameters.AddWithValue("@designationD", this.designation);
-                com.Parameters.AddWithValue("@quantity", this.quantity_petitDejeun);
-                com.Parameters.AddWithValue("@type", this.type_petitDejeun);
+                com.Parameters.AddWithValue("@quantity", this.quantity_Consommable);
+                com.Parameters.AddWithValue("@type", this.type_Consommable);
                 com.Parameters.AddWithValue("@check", this.checke);
                 com.Parameters.AddWithValue("@prix", this.prixMoyen);
 
@@ -67,10 +68,11 @@ namespace hotel_management_front.classes
 
                 return "prototype added successfuly";
             }
+           
         }
         public DataTable showAllprototype()
         {
-            string query = "SELECT * FROM prototype";
+            string query = "SELECT * FROM prototypeConsommable";
             con.Open();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
@@ -81,7 +83,7 @@ namespace hotel_management_front.classes
         public List<string> showAllprototypeDesgnition()
         {
             List<string> designationList = new List<string>();
-            string query = "SELECT designation FROM prototype";
+            string query = "SELECT designation FROM prototypeConsommable";
             con.Open();
             SqlCommand cmd = new SqlCommand(query, con);
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
@@ -92,7 +94,7 @@ namespace hotel_management_front.classes
             // filling the permissions list
             for (int i = 0; i < nbrRows; i++)
             {
-                string permission = data.Rows[i]["designation_PetitD"].ToString();
+                string permission = data.Rows[i]["designation"].ToString();
                 designationList.Add(permission);
             }
 
@@ -100,24 +102,24 @@ namespace hotel_management_front.classes
         }
         public DataTable showAllprototypeByType(string typeD)
         {
-            string query = "SELECT * FROM prototype WHERE type_petitDejeun=@type";
-           
+            string query = "SELECT * FROM prototypeConsommable WHERE type_consomable=@type";
+
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
             //query parameters 
             ada.SelectCommand.Parameters.AddWithValue("@type", typeD);
 
             // command result 
-            DataTable dtbl = new DataTable();
-            ada.Fill(dtbl);
+            DataTable data = new DataTable();
+            ada.Fill(data);
 
-            return dtbl;
+            return data;
         }
 
-        public void SupprimerPetitDejeun(string Designation)
+        public void SupprimerConsomable(string Designation)
 
         {
-            string query = "SELECT * FROM prototype WHERE designation=@Designation";
+            string query = "SELECT * FROM prototypeConsommable WHERE designation=@Designation";
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
             //query parameters 
@@ -128,7 +130,7 @@ namespace hotel_management_front.classes
             ada.Fill(dtbl);
             if (dtbl.Rows.Count >= 1)
             {
-                string query1 = "DELETE FROM prototype WHERE designation =@Designation";
+                string query1 = "DELETE FROM prototypeConsommable WHERE designation =@Designation";
                 SqlCommand cmd = new SqlCommand(query1, con);
 
                 cmd.Parameters.AddWithValue("@Designation", Designation);
@@ -141,6 +143,4 @@ namespace hotel_management_front.classes
 
         }
     }
-
-
 }

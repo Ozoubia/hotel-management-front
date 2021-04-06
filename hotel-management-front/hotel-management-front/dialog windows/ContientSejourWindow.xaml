@@ -6,19 +6,36 @@
         xmlns:local="clr-namespace:hotel_management_front.dialog_windows"
         mc:Ignorable="d"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="ContientSejourWindow" Height="600" Width="350">
-  
+        Title="ContientSejourWindow" Height="600" Width="380">
+
     <Grid >
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" x:Name="SingleGrid" Grid.Row="0"></StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Row="1" RenderTransformOrigin="0.497,0.45">
-            <Button x:Name="tarminerBtn" Background="LawnGreen" Margin="110,10,108,10" Height="22" >
+        <StackPanel Orientation="Horizontal"  Grid.Row="0" >
+            <TextBlock Text="Petit déjeuner" FontSize="20" x:Name="titreField" Height="30" Width="150" Margin="10,5,10,0" />
+            <TextBlock  x:Name="dateField" FontSize="25" Width="100" Height="30" ></TextBlock>
+
+        </StackPanel>
+        <StackPanel Orientation="Vertical" x:Name="PetitDejeunerGrid" Grid.Row="1" >
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  Grid.Row="2" >
+            <TextBlock Text="Consommables Chambre" FontSize="20" x:Name="titreField1" Height="30" Width="220" Margin="10,5,10,0" />
+            <TextBlock  x:Name="dateField1" FontSize="25" Width="100" Height="30" ></TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" x:Name="ConsommablesGrid" Grid.Row="3" >
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="5" >
+            <Button x:Name="tarminerBtn" Background="LawnGreen" Margin="110,10,108,10" Height="22" Click="tarminerBtn_Click" >
                 <materialDesign:PackIcon Kind="Check" Height="12" Width="35" Background="Black"></materialDesign:PackIcon>
             </Button>
+            <TextBlock x:Name="prixTotalFild"  Height="30" Width="70"></TextBlock>
         </StackPanel>
     </Grid>
-    
+
 </Window>

@@ -29,6 +29,7 @@
                 <DataGridTextColumn Header="prix Vente" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Localisation" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Type du Localisation" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Prix Moyen" ></DataGridTextColumn>
 
                 <!--button-->
                 <DataGridTemplateColumn>

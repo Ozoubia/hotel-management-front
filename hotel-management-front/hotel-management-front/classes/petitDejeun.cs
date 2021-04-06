@@ -14,6 +14,7 @@ namespace hotel_management_front.classes
         int quantity_petitDejeun;
         string designation_PetitD;
         string reference_PetitD;
+        double prixMonyen;
         // connection variable
         SqlConnection con = new SqlConnection(GlobalVariable.databasePath);
         public petitDejeun()
@@ -21,11 +22,12 @@ namespace hotel_management_front.classes
 
         }
 
-        public petitDejeun(int quantity_petitD, string designation_P, string reference_P)
+        public petitDejeun(int quantity_petitD, string designation_P, string reference_P , double prix)
         {
             this.quantity_petitDejeun = quantity_petitD;
             this.designation_PetitD = designation_P;
             this.reference_PetitD = reference_P;
+            this.prixMonyen = prix;
         }
         public void addPetitDejeun()
         {
@@ -44,8 +46,8 @@ namespace hotel_management_front.classes
                 if (dtbl.Rows.Count < 1)
                 {
                     // inseting into the general stock
-                    string query2 = "INSERT INTO petitDejeun (quantity_petitDejeun ,designation_PetitD ,reference_PetitD ) " +
-                        "VALUES ( 0,@designation, @reference)";
+                    string query2 = "INSERT INTO petitDejeun (quantity_petitDejeun ,designation_PetitD ,reference_PetitD ,prix_moyen ) " +
+                        "VALUES ( 0,@designation, @reference , @prix)";
 
                     SqlCommand com = new SqlCommand(query2, con);
 
@@ -53,7 +55,7 @@ namespace hotel_management_front.classes
                     com.Parameters.AddWithValue("@quantity", this.quantity_petitDejeun);
                     com.Parameters.AddWithValue("@designation", this.designation_PetitD);
                     com.Parameters.AddWithValue("@reference", this.reference_PetitD);
-
+                    com.Parameters.AddWithValue("@prix", this.prixMonyen);
                     con.Open();
                     com.ExecuteNonQuery();
                     con.Close();
@@ -152,6 +154,32 @@ namespace hotel_management_front.classes
             adapt.Fill(data);
             return data;
         }
+        public void modiftyPrixMoyen(string Designa, double quant)
+        {
+            string query = "UPDATE petitDejeun SET prix_moyen=@prix WHERE designation_PetitD=@Designa";
+            SqlCommand com = new SqlCommand(query, con);
 
+            // params
+            com.Parameters.AddWithValue("@prix", quant);
+            com.Parameters.AddWithValue("@Designa", Designa);
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+        }
+        public DataTable SelcetPrixMoyen(string disignation )
+        { 
+            string query = "SELECT prix_moyen FROM petitDejeun WHERE designation_PetitD=@Designa";
+
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@Designa", disignation);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
+        }
     }
 }

@@ -20,10 +20,12 @@ namespace hotel_management_front.dialog_windows
     /// </summary>
     public partial class HistoriqueArticleWindow : Window
     {
-        public HistoriqueArticleWindow(string reference1)
+        public HistoriqueArticleWindow(string reference1 ,string designationDej)
         {
             InitializeComponent();
             showHistoriqueArticleList(reference1);
+            showHistoriquePetitDejeunChambreList( designationDej);
+            //////showprixMoyen(designationDej);
         }
         public void showHistoriqueArticleList(string reference)
         {
@@ -43,6 +45,24 @@ namespace hotel_management_front.dialog_windows
 
 
         }
+        public void showHistoriquePetitDejeunChambreList(string designationDejeun) 
+        {
+            classes.HistoriqueArticleChambreClass Obj =new  classes.HistoriqueArticleChambreClass();
+            DataTable data = Obj.showAllhistoriqueChambreBydesignation(designationDejeun);
+            HistoArticleChambreGrid.ItemsSource = data.DefaultView;
+            ((DataGridTextColumn)HistoArticleChambreGrid.Columns[0]).Binding = new Binding("id_sejour");
+            ((DataGridTextColumn)HistoArticleChambreGrid.Columns[1]).Binding = new Binding("date_sejour");
+            ((DataGridTextColumn)HistoArticleChambreGrid.Columns[2]).Binding = new Binding("Nom_chambre");
+            ((DataGridTextColumn)HistoArticleChambreGrid.Columns[3]).Binding = new Binding("type");
+            ((DataGridTextColumn)HistoArticleChambreGrid.Columns[4]).Binding = new Binding("designation");
+            ((DataGridTextColumn)HistoArticleChambreGrid.Columns[5]).Binding = new Binding("quantity");
+        }
+        //public void showprixMoyen(string disignation) 
+        //{
+        //    classes.article obj = new classes.article();
+        //    double d = obj.calculePrixReel(disignation);
+        //    prixAchetFild.Text = d.ToString();
+        //}
 
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)

@@ -73,6 +73,31 @@
                         </Grid>
                     
                 </TabItem>
+                <TabItem>
+                    <!--header-->
+                    <TabItem.Header>
+                        consommables chambre
+
+                    </TabItem.Header>
+                    <!-- content-->
+                    <Grid>
+                        <!-- consommables chambre -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal" Grid.Row="0">
+                            <ComboBox x:Name="typeComboBox1" IsEditable="True" materialDesign:HintAssist.Hint="Type Chambre"  Width="150" FontFamily="Algerian" FontSize="18" Margin="300,5,50,0" SelectionChanged="typeComboBox1_SelectionChanged"></ComboBox>
+                        </StackPanel>
+                        <!--right grid-->
+                        <Grid Grid.Row="1">
+                            <StackPanel Orientation="Vertical" x:Name="ConsommableGrid" Grid.Row="1"></StackPanel>
+                        </Grid>
+                    </Grid>
+
+                </TabItem>
+
+                
             </TabControl>
             </StackPanel>
       

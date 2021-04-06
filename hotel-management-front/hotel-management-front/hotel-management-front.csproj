@@ -67,7 +67,9 @@
     </ApplicationDefinition>
     <Compile Include="classes\article.cs" />
     <Compile Include="classes\client.cs" />
+    <Compile Include="classes\consommablesChambre.cs" />
     <Compile Include="classes\Cuisine.cs" />
+    <Compile Include="classes\DatailSejour.cs" />
     <Compile Include="classes\detailHistoriqueClass1.cs" />
     <Compile Include="classes\ELRoom.cs" />
     <Compile Include="classes\employee.cs" />
@@ -76,10 +78,12 @@
     <Compile Include="classes\GlobalVariable.cs" />
     <Compile Include="classes\histoArrivee.cs" />
     <Compile Include="classes\HistoriqueArticleChambreClass.cs" />
+    <Compile Include="classes\historiqueConsommablesChambre.cs" />
     <Compile Include="classes\Notification.cs" />
     <Compile Include="classes\petitDejeun.cs" />
     <Compile Include="classes\presence.cs" />
     <Compile Include="classes\prototype.cs" />
+    <Compile Include="classes\prototypeConsommable.cs" />
     <Compile Include="classes\reservation.cs" />
     <Compile Include="classes\role.cs" />
     <Compile Include="classes\room.cs" />
@@ -183,8 +187,14 @@
     <Compile Include="tabsUserControl\clientUserControl1.xaml.cs">
       <DependentUpon>clientUserControl1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\ConfirmationConsomableUserControl.xaml.cs">
+      <DependentUpon>ConfirmationConsomableUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\ConfirmationPetitDejeunerUserControl.xaml.cs">
       <DependentUpon>ConfirmationPetitDejeunerUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\consommableChambreUserControl.xaml.cs">
+      <DependentUpon>consommableChambreUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\employesUserControl.xaml.cs">
       <DependentUpon>employesUserControl.xaml</DependentUpon>
@@ -418,7 +428,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="tabsUserControl\ConfirmationConsomableUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\ConfirmationPetitDejeunerUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\consommableChambreUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

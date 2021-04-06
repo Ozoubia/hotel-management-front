@@ -22,8 +22,13 @@ namespace hotel_management_front.classes
         public static string ContenuTable;
         // type chambre 
         public static string chambreType;
+        // type chambre 
+        public static string chambreType1;
+        // prixtotal
+        public static double prixTotal;
+        // color butten de sejour valider 
+        public static string sejColorBtn;
 
-    
 
         //used to store the logged in user permissions (exp : add client ...)
         public static List<string> permissionList = new List<string>();
