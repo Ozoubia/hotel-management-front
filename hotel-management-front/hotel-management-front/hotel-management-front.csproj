@@ -223,6 +223,9 @@
     <Compile Include="tabsUserControl\notificationUserControl.xaml.cs">
       <DependentUpon>notificationUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\permissionsUserControl.xaml.cs">
+      <DependentUpon>permissionsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\PetitDejeunUserControl.xaml.cs">
       <DependentUpon>PetitDejeunUserControl.xaml</DependentUpon>
     </Compile>
@@ -470,6 +473,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\notificationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\permissionsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

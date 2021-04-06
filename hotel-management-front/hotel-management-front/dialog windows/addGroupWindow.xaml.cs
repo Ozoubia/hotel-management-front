@@ -72,6 +72,7 @@ namespace hotel_management_front.dialog_windows
                 classes.role roleObj = new classes.role(roleField.Text);
                 string result = roleObj.addRole();
                 MessageBox.Show(result);
+                roleField.Text = "";
                 //refresh grid
                 showRoleList();
         }
