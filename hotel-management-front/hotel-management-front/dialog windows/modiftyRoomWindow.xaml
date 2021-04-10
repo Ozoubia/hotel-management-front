@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:hotel_management_front.dialog_windows"
         mc:Ignorable="d"
           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="modiftyRoomWindow" Height="450" Width="800">
+        Title="Modifier chambre" Height="450" Width="800"  WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -16,7 +16,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <TextBlock Text="AJOUTER CLIENT" HorizontalAlignment="Center"   VerticalAlignment="Top" Margin="180,0,5,2" Foreground="Gray" FontSize="25" Width="240" RenderTransformOrigin="0.879,0.545"/>
+            <TextBlock Text="MODIFIER CHAMBRE" HorizontalAlignment="Center"   VerticalAlignment="Top" Margin="180,0,5,2" Foreground="Gray" FontSize="25" Width="240" RenderTransformOrigin="0.879,0.545"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1">
             <TextBox Text="" x:Name="nomField" materialDesign:HintAssist.Hint="Nom"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
@@ -26,7 +26,7 @@
             <TextBox Text="" x:Name="prixField" materialDesign:HintAssist.Hint="Prix de base"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="30,0,5,2" FontFamily="Algerian" FontSize="18" Width="137"/>
             <!--add image button-->
             <StackPanel Orientation="Vertical" Margin="200 50 0 0">
-                <Button x:Name="addRoomImg" >ajouter image</Button>
+                <Button x:Name="addRoomImg" Click="addRoomImg_Click">ajouter image</Button>
                 <TextBlock x:Name="addStatus" HorizontalAlignment="Center"></TextBlock>
             </StackPanel>
         </StackPanel>

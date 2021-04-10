@@ -42,7 +42,7 @@
                                     <materialDesign:PackIcon Kind="PencilOutline" ></materialDesign:PackIcon>
                                 </Button>
 
-                                <Button Height="25" ToolTip="terminer" x:Name="termaBtn" Click="terminateBtn_Click" >
+                                <Button Height="25" ToolTip="terminer" x:Name="termaBtn" Click="terminateBtn_Click" Loaded="termaBtn_Loaded">
                                     <materialDesign:PackIcon Kind="Check" ></materialDesign:PackIcon>
                                 </Button>
                             </StackPanel>

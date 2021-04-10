@@ -28,12 +28,9 @@ namespace hotel_management_front.tabsUserControl
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
         public sejourUserControl()
-        {
-
-            
+        {           
             InitializeComponent();
-            showSejourList();
-            
+            showSejourList();         
         }
 
         //function to fill the sejour list
@@ -226,6 +223,26 @@ namespace hotel_management_front.tabsUserControl
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
           
+        }
+
+        private void termaBtn_Loaded(object sender, RoutedEventArgs e)
+        {
+            // getting id sejour
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            string id_sejour = classes.GlobalVariable.dataRowView[4].ToString();
+
+            // get button status
+            classes.DatailSejour detsejObj = new classes.DatailSejour();
+            string status = detsejObj.getStatusBySejour(int.Parse(id_sejour));
+
+            //getting the button instance
+            Button btn = sender as Button;
+
+            if (status == "True")
+            {
+                btn.Background = Brushes.Red;
+                btn.IsEnabled = false;
+            }
         }
     }
 }
