@@ -18,16 +18,21 @@ namespace hotel_management_front.classes
         int idSejour;
         DateTime date;
         bool isValidated;
+
+        //empty constructor
         public DatailSejour() 
         { 
         }
+
+        //constructor
         public DatailSejour(int idSej , DateTime time , bool isVal)
         {
             this.idSejour = idSej;
             this.date = time;
             this.isValidated = isVal;
-
         }
+
+        //fill detail sejour table
         public string addDatialSejour() 
 
         {
@@ -66,7 +71,9 @@ namespace hotel_management_front.classes
             }
             return "aaaaa";
         }
-          public void modifierQuantite(int idSje , DateTime time)
+
+        //edit validated status of the sejour date
+        public void modifierQuantite(int idSje , DateTime time)
         {
             string query1 = " UPDATE DatailSejour SET is_Validated = 'true'  WHERE id_sejour = @ID AND data_Sejour= @dateSejour ";
             SqlCommand com1 = new SqlCommand(query1, con);
@@ -80,6 +87,24 @@ namespace hotel_management_front.classes
             con.Open();
             com1.ExecuteNonQuery();
             con.Close();
+        }
+
+        //get the status of the sejour on today's date
+        public string getStatusBySejour(int idSejour)
+        {
+            string query = "SELECT is_Validated FROM DatailSejour WHERE data_Sejour=@date AND id_Sejour=@ID  ";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@date", DateTime.Today);
+            ada.SelectCommand.Parameters.AddWithValue("@ID", idSejour);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            string status = dtbl.Rows[0]["is_Validated"].ToString();
+            return status;
         }
     }
 }

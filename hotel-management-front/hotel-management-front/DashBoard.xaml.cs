@@ -127,20 +127,7 @@ namespace hotel_management_front
             
         }
 
-        // used for timer (it doesn't work yet )
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("test"); 
-            //this.dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            //this.dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
-            //this.dispatcherTimer.Start();
-        }
 
-        //private void dispatcherTimer_Tick(object sender, EventArgs e)
-        //{
-        //    updateSejIsValid();
-        //    MessageBox.Show("test");
-        //}
     }
     }
 

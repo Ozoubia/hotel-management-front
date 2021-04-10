@@ -137,9 +137,11 @@ namespace hotel_management_front.classes
 
             return dtbl;
         }
+
+        // modify room
         public string modiftyRoom(int IDroom)
         {
-            string query = "UPDATE employee SET name=@name, type=@type, base_price=@price, status='Libre', works=@isworking, photo=@photoPath WHERE id_roome=@ID";
+            string query = "UPDATE room SET name=@name, type=@type, base_price=@price, status='Libre', works=@isworking, photo=@photoPath WHERE id_room=@ID";
 
             SqlCommand com = new SqlCommand(query, con);
 
@@ -154,6 +156,23 @@ namespace hotel_management_front.classes
             com.ExecuteNonQuery();
             con.Close();
             return " Room modifty successfuly ";
+        }
+
+        // function that takes a room  ID and return all its information as a datatable
+        public DataTable getRoomInfo(int roomID)
+        {
+            // checking if an employee exists
+            string query = "SELECT * FROM room WHERE id_room=@id";
+            SqlDataAdapter ada = new SqlDataAdapter(query, con);
+
+            //query parameters 
+            ada.SelectCommand.Parameters.AddWithValue("@id", roomID);
+
+            // command result 
+            DataTable dtbl = new DataTable();
+            ada.Fill(dtbl);
+
+            return dtbl;
         }
     }
 }
