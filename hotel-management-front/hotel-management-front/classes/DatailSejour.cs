@@ -103,8 +103,24 @@ namespace hotel_management_front.classes
             DataTable dtbl = new DataTable();
             ada.Fill(dtbl);
 
-            string status = dtbl.Rows[0]["is_Validated"].ToString();
-            return status;
+          if (dtbl.Rows.Count > 0)
+            {
+                string status = dtbl.Rows[0]["is_Validated"].ToString();
+                return status;
+            }
+
+            return "False";
+        }
+        public DataTable showallDatail() 
+        {
+            string query = "SELECT * FROM DatailSejour";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            DataTable data = new DataTable();
+            adapt.Fill(data);
+            return data;
         }
     }
+    
 }
