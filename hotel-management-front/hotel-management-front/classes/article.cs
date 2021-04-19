@@ -108,9 +108,10 @@ namespace hotel_management_front.classes
                 // the case of the article already exists been modified some attributes
 
 
-                string query4 = "UPDATE article SET quantity=@quantity";
+                string query4 = "UPDATE article SET quantity=@quantity WHERE reference=@reference";
                 SqlCommand com1 = new SqlCommand(query4, con);
                 com1.Parameters.AddWithValue("@quantity", resultn);
+                com1.Parameters.AddWithValue("@reference", this.reference);
                 con.Open();
                 com1.ExecuteNonQuery();
                 con.Close();
