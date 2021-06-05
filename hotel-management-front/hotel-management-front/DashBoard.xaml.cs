@@ -62,8 +62,6 @@ namespace hotel_management_front
             gridMenu.Children.Clear();
             gridMenu.Children.Add(new tabBoardUserControl());
 
-      
-
         }
 
         private void hotelBtn_Click(object sender, RoutedEventArgs e)
@@ -97,7 +95,8 @@ namespace hotel_management_front
 
         private void chargeBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            gridMenu.Children.Clear();
+            gridMenu.Children.Add(new chargeUserControl());
         }
 
         private void fournisseurBtn_Click(object sender, RoutedEventArgs e)
