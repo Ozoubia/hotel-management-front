@@ -32,7 +32,7 @@ namespace hotel_management_front.tabsUserControl
             showRoomList();
         }
 
-        //function to fill the employee list
+        //function to fill the room list
         public void showRoomList()
         {
             classes.room roomObj = new classes.room();

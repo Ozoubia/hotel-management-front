@@ -1,0 +1,27 @@
+﻿<Window x:Class="hotel_management_front.dialog_windows.TrasactionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:hotel_management_front.dialog_windows"
+        mc:Ignorable="d"
+        Title="Transaction" Height="200" Width="320" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--first row--> 
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock x:Name="TransFromField" FontSize="20"></TextBlock>
+            <TextBlock FontWeight="bold" FontSize="20" Margin="30 0 30 0">VERS</TextBlock>
+            <TextBlock x:Name="TransToField" FontSize="20"></TextBlock>
+        </StackPanel>
+        <!--field-->
+        <TextBox Grid.Row="1" Width="150" Margin="10" x:Name="SommeField"></TextBox>
+
+        <!--button-->
+        <Button Grid.Row="2" Width="100" x:Name="confirmBtn" Click="confirmBtn_Click">Confirmer</Button>
+    </Grid>
+</Window>

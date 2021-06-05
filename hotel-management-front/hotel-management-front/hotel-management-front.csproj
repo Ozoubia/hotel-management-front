@@ -66,6 +66,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="classes\article.cs" />
+    <Compile Include="classes\caisse.cs" />
+    <Compile Include="classes\charge.cs" />
     <Compile Include="classes\client.cs" />
     <Compile Include="classes\consommablesChambre.cs" />
     <Compile Include="classes\Cuisine.cs" />
@@ -94,6 +96,9 @@
     <Compile Include="classes\stats.cs" />
     <Compile Include="classes\typeChambre.cs" />
     <Compile Include="classes\user.cs" />
+    <Compile Include="dialog windows\addChargeWindow.xaml.cs">
+      <DependentUpon>addChargeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="dialog windows\addemergencyEquipmentWindow.xaml.cs">
       <DependentUpon>addemergencyEquipmentWindow.xaml</DependentUpon>
     </Compile>
@@ -126,6 +131,9 @@
     </Compile>
     <Compile Include="dialog windows\addTakingWindow.xaml.cs">
       <DependentUpon>addTakingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\alimenterWindow.xaml.cs">
+      <DependentUpon>alimenterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialog windows\ContientSejourWindow.xaml.cs">
       <DependentUpon>ContientSejourWindow.xaml</DependentUpon>
@@ -166,23 +174,23 @@
     <Compile Include="dialog windows\reglageWindow.xaml.cs">
       <DependentUpon>reglageWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dialog windows\TrasactionWindow.xaml.cs">
+      <DependentUpon>TrasactionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\aideUserControl.xaml.cs">
       <DependentUpon>aideUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\arrivageUserControl.xaml.cs">
       <DependentUpon>arrivageUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="tabsUserControl\bonqueUserControl.xaml.cs">
-      <DependentUpon>bonqueUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="tabsUserControl\caissePersonnelUserControl.xaml.cs">
-      <DependentUpon>caissePersonnelUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="tabsUserControl\caissePrincipaleUserControl.xaml.cs">
-      <DependentUpon>caissePrincipaleUserControl.xaml</DependentUpon>
+    <Compile Include="tabsUserControl\caissesUserControl.xaml.cs">
+      <DependentUpon>caissesUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\chambreUserControl.xaml.cs">
       <DependentUpon>chambreUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\chargeListUserControl.xaml.cs">
+      <DependentUpon>chargeListUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\clientUserControl1.xaml.cs">
       <DependentUpon>clientUserControl1.xaml</DependentUpon>
@@ -211,6 +219,9 @@
     <Compile Include="tabsUserControl\histoArriUserControl.xaml.cs">
       <DependentUpon>histoArriUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="tabsUserControl\inventaireUserControl.xaml.cs">
+      <DependentUpon>inventaireUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="tabsUserControl\listFournisseurUserControl.xaml.cs">
       <DependentUpon>listFournisseurUserControl.xaml</DependentUpon>
     </Compile>
@@ -222,6 +233,9 @@
     </Compile>
     <Compile Include="tabsUserControl\notificationUserControl.xaml.cs">
       <DependentUpon>notificationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tabsUserControl\opCaissesUserControl.xaml.cs">
+      <DependentUpon>opCaissesUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="tabsUserControl\permissionsUserControl.xaml.cs">
       <DependentUpon>permissionsUserControl.xaml</DependentUpon>
@@ -266,6 +280,9 @@
     <Compile Include="toolboxUserControl\caisseUserControl.xaml.cs">
       <DependentUpon>caisseUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="toolboxUserControl\chargeUserControl.xaml.cs">
+      <DependentUpon>chargeUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="toolboxUserControl\fournisseurUserControl.xaml.cs">
       <DependentUpon>fournisseurUserControl.xaml</DependentUpon>
     </Compile>
@@ -286,6 +303,10 @@
     </Compile>
     <Compile Include="typeComboBox\Text.cs" />
     <Page Include="DashBoard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\addChargeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -330,6 +351,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\addTakingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\alimenterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -385,6 +410,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="dialog windows\TrasactionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -408,19 +437,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="tabsUserControl\bonqueUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="tabsUserControl\caissePersonnelUserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="tabsUserControl\caissePrincipaleUserControl.xaml">
+    <Page Include="tabsUserControl\caissesUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\chambreUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\chargeListUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -460,6 +485,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="tabsUserControl\inventaireUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="tabsUserControl\listFournisseurUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -473,6 +502,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="tabsUserControl\notificationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="tabsUserControl\opCaissesUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -529,6 +562,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="toolboxUserControl\caisseUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="toolboxUserControl\chargeUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

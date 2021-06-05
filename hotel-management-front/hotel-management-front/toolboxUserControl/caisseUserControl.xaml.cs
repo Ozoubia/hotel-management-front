@@ -27,55 +27,50 @@ namespace hotel_management_front.toolboxUserControl
             InitializeComponent();
         }
 
-        
-
-        
-        private void bonqueBtn_Click(object sender, RoutedEventArgs e)
+        private void caisseBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
             {
-                Header = "Bonque",
+                Header = "Caisses",
             };
             GlobalVariable.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
-            bonqueUserControl UC1 = new bonqueUserControl();
+            caissesUserControl UC1 = new caissesUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
 
-        private void caissePersonnelBtn_Click(object sender, RoutedEventArgs e)
+        private void opCaisseBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
             {
-                Header = "Caisse Personnel",
+                Header = "Operations Caisses",
             };
-
             GlobalVariable.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
-            caissePersonnelUserControl UC1 = new caissePersonnelUserControl();
+            opCaissesUserControl UC1 = new opCaissesUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
 
-        private void caissePrincipaleBtn_Click(object sender, RoutedEventArgs e)
+        private void inventaireBtn_Click(object sender, RoutedEventArgs e)
         {
             Grid tabGrid = new Grid();
 
             TabItem newTabItem = new TabItem
             {
-                Header = "Caisse Principale",
+                Header = "Inventaire",
             };
-
             GlobalVariable.tbControl.Items.Add(newTabItem);
             newTabItem.Content = tabGrid;
             tabGrid.Children.Clear();
-            caissePrincipaleUserControl UC1 = new caissePrincipaleUserControl();
+            inventaireUserControl UC1 = new inventaireUserControl();
             tabGrid.Children.Add(UC1);
             newTabItem.IsSelected = true;
         }
