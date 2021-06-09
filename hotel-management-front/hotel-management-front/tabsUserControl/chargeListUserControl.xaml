@@ -35,6 +35,9 @@
                                 <Button Height="25" ToolTip="Supprimer" x:Name="deleteBtn" >
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
                                 </Button>
+                                <Button Height="25" x:Name="confirmerCharge"  Click="confirmerCharge_Click" Background="Green" Margin="10 0 10 0" >
+                                    <materialDesign:PackIcon Kind="Check" ></materialDesign:PackIcon>
+                                </Button>
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
