@@ -26,11 +26,14 @@ namespace hotel_management_front.tabsUserControl
 
         // timer used for refresh
         DispatcherTimer dispatcherTimer = new DispatcherTimer();
+       
 
         public chargeListUserControl()
         {
             InitializeComponent();
             showChargeList();
+        
+            
         }
 
 
@@ -72,5 +75,18 @@ namespace hotel_management_front.tabsUserControl
             this.dispatcherTimer.Stop();
         }
         #endregion
+
+        private void confirmerCharge_Click(object sender, RoutedEventArgs e)
+        {
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            int somme = int.Parse(classes.GlobalVariable.dataRowView[2].ToString());
+            classes.charge chargeObj = new classes.charge();
+            chargeObj.diminuerCaisse(somme);
+            
+
+
+
+
+        }
     }
 }

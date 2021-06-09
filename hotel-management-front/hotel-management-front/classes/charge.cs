@@ -58,6 +58,23 @@ namespace hotel_management_front.classes
 
             return dtbl;
         }
+        public void diminuerCaisse(int somme)
+        {
+            
+            string query1 = "INSERT INTO caisseHot (somme , date) VALUES (@somme, @date)";
+
+
+            SqlCommand com = new SqlCommand(query1, con);
+
+            // params
+            com.Parameters.AddWithValue("@somme", somme * -1);
+            com.Parameters.AddWithValue("@date", DateTime.Today);
+
+            con.Open();
+            com.ExecuteNonQuery();
+            con.Close();
+        }
     }
+
 
 }
