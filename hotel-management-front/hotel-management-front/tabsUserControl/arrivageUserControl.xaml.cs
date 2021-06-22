@@ -1,6 +1,7 @@
 ﻿using hotel_management_front.dialog_windows;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,23 @@ namespace hotel_management_front.tabsUserControl
         public arrivageUserControl()
         {
             InitializeComponent();
-            
+            showArrivageList();
+
+
+        }
+        public void showArrivageList()
+        {
+            classes.Arrivage arrivageOBj = new classes.Arrivage();
+            DataTable data = arrivageOBj.showAllArrivage();
+
+            arrivageListGrid.ItemsSource = data.DefaultView;
+            ((DataGridTextColumn)arrivageListGrid.Columns[0]).Binding = new Binding("date_arrivage");
+            ((DataGridTextColumn)arrivageListGrid.Columns[1]).Binding = new Binding("prixTotal");
+            ((DataGridTextColumn)arrivageListGrid.Columns[2]).Binding = new Binding("payee");
+            ((DataGridTextColumn)arrivageListGrid.Columns[3]).Binding = new Binding("Rest_payee");
+         
+
+
         }
 
         private void searchBar_TextChanged(object sender, TextChangedEventArgs e)
@@ -44,6 +61,15 @@ namespace hotel_management_front.tabsUserControl
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void historiqueBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            classes.GlobalVariable.dataRowView = (DataRowView)((Button)e.Source).DataContext;
+            DateTime date = DateTime.Parse(classes.GlobalVariable.dataRowView[1].ToString());
+             new histoArrivageWindow( date).Show();
 
         }
     }

@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="classes\Arrivage.cs" />
     <Compile Include="classes\article.cs" />
     <Compile Include="classes\caisse.cs" />
     <Compile Include="classes\charge.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="classes\EquipementClass.cs" />
     <Compile Include="classes\fournisseur.cs" />
     <Compile Include="classes\GlobalVariable.cs" />
+    <Compile Include="classes\HistoArrivage.cs" />
     <Compile Include="classes\histoArrivee.cs" />
     <Compile Include="classes\HistoriqueArticleChambreClass.cs" />
     <Compile Include="classes\historiqueConsommablesChambre.cs" />
@@ -140,6 +142,9 @@
     </Compile>
     <Compile Include="dialog windows\addUserWindow.xaml.cs">
       <DependentUpon>addUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="dialog windows\histoArrivageWindow.xaml.cs">
+      <DependentUpon>histoArrivageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="dialog windows\HistoriqueArticleWindow.xaml.cs">
       <DependentUpon>HistoriqueArticleWindow.xaml</DependentUpon>
@@ -363,6 +368,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="dialog windows\addUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dialog windows\histoArrivageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

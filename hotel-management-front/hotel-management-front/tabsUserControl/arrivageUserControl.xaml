@@ -21,9 +21,7 @@
             <DataGrid.Columns>
                 <!--columns-->
                 <DataGridTextColumn Header="Date arrivage" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Nom" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Prenom" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Prix achat" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Prix total" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Payee" ></DataGridTextColumn>
                 <DataGridTextColumn Header="Rest a payer" ></DataGridTextColumn>
                 
@@ -33,11 +31,14 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                                <Button Height="25" Margin="0 0 10 0" ToolTip="Modifier" x:Name="EditBtn" Click="EditBtn_Click">
+                                <Button Height="25" Margin="0 0 10 0" ToolTip="Modifier" x:Name="EditBtn" Background="Blue" Click="EditBtn_Click">
                                     <materialDesign:PackIcon Kind="PencilOutline" ></materialDesign:PackIcon>
                                 </Button>
-                                <Button Height="25" ToolTip="Supprimer" x:Name="deleteBtn" Click="deleteBtn_Click" >
+                                <Button Height="25" ToolTip="Supprimer" x:Name="deleteBtn" Background="Red" Click="deleteBtn_Click" >
                                     <materialDesign:PackIcon Kind="Delete" ></materialDesign:PackIcon>
+                                </Button>
+                                <Button Height="25" ToolTip="historique" Margin="10 0 10 0" x:Name="historiqueBtn" Background="Green" Click="historiqueBtn_Click">
+                                    <materialDesign:PackIcon Kind="HddRemove" ></materialDesign:PackIcon>
                                 </Button>
                             </StackPanel>
                         </DataTemplate>
