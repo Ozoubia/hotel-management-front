@@ -52,6 +52,7 @@ namespace hotel_management_front.dialog_windows
 
         private void ajouterClientBtn_Click(object sender, RoutedEventArgs e)
         {
+
             string reference = referenceField.Text;
             string designation = designationField.Text;
             string famille = familleField.Text;
@@ -60,29 +61,29 @@ namespace hotel_management_front.dialog_windows
             DateTime dateExpi = DateTime.Parse(dateExpirField.SelectedDate.Value.Date.ToShortDateString());
             string fournisseurName = fournisseurComboBox.Text;
             int prixAchat = int.Parse(prixAchatField.Text);
-            int prixVente = int.Parse(prixVenteField.Text);     
+            int prixVente = int.Parse(prixVenteField.Text);
             string localisation = localisationField.Text;
-            
+
             DateTime dateArrivage = DateTime.Parse(dateArrivageField.SelectedDate.Value.Date.ToShortDateString());
-            classes.EquipementClass  EquipementObj = new classes.EquipementClass(quantity ,designation , reference , stockAlert , prixAchat);
+            classes.EquipementClass EquipementObj = new classes.EquipementClass(quantity, designation, reference, stockAlert, prixAchat);
             classes.article obj = new classes.article();
-            
+
             classes.article articleObj = new classes.article(reference, designation, famille, quantity, stockAlert, dateExpi, fournisseurName, prixAchat,
-                                            prixVente, localisation, dateArrivage , 0  );
+                                            prixVente, localisation, dateArrivage, 0);
 
             if (localisation == "consommable")
             {
-               string result = articleObj.addArticle();
-                
+                string result = articleObj.addArticle();
+
                 MessageBox.Show(result);
 
             }
-            if(localisation == "équipement")
+            if (localisation == "équipement")
             {
-                 string result1 = EquipementObj.addequipement();
+                string result1 = EquipementObj.addequipement();
                 MessageBox.Show(result1);
             }
-          
+
             // add action to history log
             string par = "Ajouter Arrivage ";
             string nom = classes.GlobalVariable.username;
@@ -100,25 +101,55 @@ namespace hotel_management_front.dialog_windows
             DataTable dtbl = new DataTable();
             ada.Fill(dtbl);
             int nb = dtbl.Rows.Count;
-            if(nb == 1 || nb == 0) 
+            if (nb == 1 || nb == 0)
             {
                 classes.article obj1 = new classes.article();
                 obj.modiftyPrixMoyen(designation, prixAchat);
             }
-            else if(nb > 0)
+            else if (nb > 0)
             {
                 classes.article obj1 = new classes.article();
-                double prix = obj1.calculePrixReel(designation , quantity , prixAchat);
-                 obj.modiftyPrixMoyen(designation, prix);
+                double prix = obj1.calculePrixReel(designation, quantity, prixAchat);
+                obj.modiftyPrixMoyen(designation, prix);
                 classes.petitDejeun obj2 = new petitDejeun();
                 obj2.modiftyPrixMoyen(designation, prix);
                 classes.consommablesChambre obj3 = new consommablesChambre();
-                obj3.modiftyPrixMoyen(designation , prix);
+                obj3.modiftyPrixMoyen(designation, prix);
 
 
             }
 
 
+            //remplir le table de arrivage
+
+
+            classes.Arrivage arrivageObj = new Arrivage();
+            DataTable data = new DataTable();
+            data = arrivageObj.groupByDate(dateArrivage);
+            int nb1 = data.Rows.Count;
+
+
+            DateTime dateArrivage1 = DateTime.Parse(data.Rows[0]["date_arrivage"].ToString());
+            int prixT = int.Parse(data.Rows[0]["somme"].ToString());
+            arrivageObj.addarrivage(dateArrivage1, prixT);
+
+
+
+            string[] fullname = fournisseurName.Split(' ');
+            String nomF = fullname[0];
+            string prenomF = fullname[1];
+            //Récupération id_fournisseur 
+
+            classes.Arrivage arrivageObj2 = new classes.Arrivage();
+           int  id = arrivageObj2.recupererIdFourniseur(nomF, prenomF);
+            ////////////////////////////////////////////////////////////////////////////////
+            //calculer le prix total  des produit fourmi par  un seul fournisseur
+
+           int sommeTotal = arrivageObj2.groupByFournisseur(id , dateArrivage);
+            //////////////////////////////////////////////////////////////////////////
+            //remplir le table de Histoarrivage
+            classes.HistoArrivage histoArrivageObj = new HistoArrivage();
+            histoArrivageObj.addhistoriqueArrivage(nomF, prenomF, sommeTotal , dateArrivage);
         }
 
         private void annulerBtn_Click(object sender, RoutedEventArgs e)

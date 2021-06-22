@@ -193,8 +193,6 @@ namespace hotel_management_front.classes
 
         public DataTable showAllArticleCuisineBytype(string type)
         {
-
-
             string query = "SELECT * FROM cuisine  WHERE type_C =@type and quantity_cuisine > 0 ";
             SqlDataAdapter ada = new SqlDataAdapter(query, con);
 
@@ -206,10 +204,6 @@ namespace hotel_management_front.classes
             ada.Fill(dtbl);
 
             return dtbl;
-
-            
-
-
         }
         public DataTable showAllArticleCuisineBytype1(string type)
         {
